@@ -62,7 +62,8 @@ AuthController.authenticateUser = function(req, res) {
                             success: true,
                             token: 'JWT ' + token,
                             role: user.role,
-                            name:user.user_name
+                            name:user.user_name,
+                            partner_id:user.partner_id
                         });
                     } else {
                         res.status(404).json({ message: 'Login failed!' });
