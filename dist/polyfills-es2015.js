@@ -5982,8 +5982,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\git hub\AdminpannelToManageTeam\Frontend\src\polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! F:\git hub\AdminpannelToManageTeam\Frontend\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+__webpack_require__(/*! F:\git hub\reseller\Frontend\src\polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! F:\git hub\reseller\Frontend\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
 
 /***/ })
