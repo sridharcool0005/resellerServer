@@ -19,11 +19,11 @@ const APIRoutes = function (passport) {
   // POST Routes.
   router.post('/signup', AuthController.signUp);
   router.post('/authenticate', AuthController.authenticateUser);
-  router.get('/getClients', clientController.getclients);
-  router.get('/getuserdata', clientController.getuserdata);
-  router.post('/getuserDetails', clientController.getuserDetails);
-  router.put('/updateclientData', clientController.updateclientData);
-  router.post('/deleteclient', clientController.deleteclient);
+  router.get('/partner/:partner_id/getClients', clientController.getclients);
+  router.get('/partner/:partner_id/getuserdata', clientController.getuserdata);
+  router.post('/partner/:partner_id/getuserDetails', clientController.getuserDetails);
+  router.put('/partner/:partner_id/updateclientData',clientController.updateclientData);
+  router.post('/partner/:partner_id/deleteclient',clientController.deleteclient);
   router.post('/addPackages', packageController.addPackage);
   router.put('/updatePackage', packageController.updatePackage);
   router.get('/getAllPackages', packageController.getAllPackages);
@@ -48,11 +48,11 @@ const APIRoutes = function (passport) {
     router.post('/getOrderId',billingcontroller.getOrderId);
     router.get('/getpremiumplanlist',billingcontroller.getpremiumplanlist);
     router.post('/postofficeApi', clientController.postofficeApi);
-    router.post('/getplanexpirycontacts', analyticsController.getplanexpirycontacts);
-    router.get('/getplanexpirycontactsAll', analyticsController.getplanexpirycontactsAll);
+    router.post('/partner/:partner_id/getplanexpirycontacts',analyticsController.getplanexpirycontacts);
+    router.get('/partner/:partner_id/getplanexpirycontactsAll', analyticsController.getplanexpirycontactsAll);
     router.post('/insertnotifications', analyticsController.insertnotifications);
-    router.post('/registeredcontactstracking', analyticsController.registeredcontactstracking);
-    router.get('/getTodayregisterdData', analyticsController.getTodayregisterdData);
+    router.post('/partner/:partner_id/registeredcontactstracking',analyticsController.registeredcontactstracking);
+    router.get('/partner/:partner_id/getTodayregisterdData',analyticsController.getTodayregisterdData);
     router.get('/fetchProfessions', clientController.fetchProfessions);
     router.get('/getAllpremiumplans', packageController.getAllportal_premiumplans_master);
     router.post('/getpremiumplandetails', packageController.getpremiumplandetails);

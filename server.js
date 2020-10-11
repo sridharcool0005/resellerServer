@@ -54,7 +54,7 @@ app.use('/api', require('./app/routes/evidenceroute'));
 app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
-// Start the server.
+
 app.listen('3005', function() {
-    console.log('Magic happens at http://localhost:3002/! We are now all now doomed!');
+    console.log('Magic happens at http://localhost:3005/! We are now all now doomed!');
 });
