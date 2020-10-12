@@ -36,7 +36,7 @@ const APIRoutes = function (passport) {
   router.post('/getpurchaseDataByDate', analyticsController.getpurchaseDataByDate);
   router.put('/updatePaymentStatus', analyticsController.updatePaymentStatus);
   router.post('/activationEmail', clientController.activationEmail);
-  router.post('/addnewClient', clientController.addnewClient);
+  router.post('/partner/:partner_id/addnewClient', clientController.addnewClient);
   router.get('/getAllTickets', helpController.getAllTickets);
   router.put('/updateticketstatus', helpController.updateticketstatus);
   router.post('/getDataByQuery', helpController.getDataByQuery);
