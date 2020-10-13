@@ -58,6 +58,8 @@ const APIRoutes = function (passport) {
     router.post('/getpremiumplandetails', packageController.getpremiumplandetails);
     router.post('/updatePremiumPlan', packageController.updatePremiumPlan);
     router.post('/deletePremiumPack', packageController.deletePremiumPack);
+    router.post('/partner/:partner_id/ChangePassword', clientController.ChangePassword);
+
   // GET Routes.
   router.get('/profile', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, UserController.index));
   router.get('/admin', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, AdminController.index));

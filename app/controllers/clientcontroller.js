@@ -5,6 +5,8 @@ var http = require('http');
 const crypto = require("crypto");
 const request = require('request');
 
+const bcrypt = require('bcryptjs')
+const saltRounds = 10;
 
 var db = mysql.createConnection({
 
@@ -559,5 +561,24 @@ module.exports.fetchProfessions = async (req, res) => {
       res.send(body)
 
     }
+  });
+}
+
+
+module.exports.ChangePassword = async (req, res) => {
+  const partner_id = req.params.partner_id;
+console.log(req.body.password,partner_id);
+  bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+    var sql = "UPDATE portalusers SET  password =? WHERE  partner_id =?";
+console.log(hash)
+   db.query(sql,[hash,partner_id], function (err, result, fields) {
+    if (err) throw err;
+    res.send({
+      "code": 200,
+   status: 'success',
+      message:"Password changed successfully"
+    });
+  })
+
   });
 }

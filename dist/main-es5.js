@@ -419,6 +419,17 @@ module.exports = "<button mat-stroked-button color=\"primary\" routerLink=\"/car
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/changepassword/changepassword.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/changepassword/changepassword.component.html ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<div  class=\"marginal mrgset\" >\n  <mdb-card >\n\n    <mdb-card-header class=\"info-color white-text text-center py-4\">\n      <h5>\n        <strong>Change Password</strong>\n      </h5>\n    </mdb-card-header>\n\n\n\n    <mdb-card-body class=\"px-lg-5 pt-0\">\n\n\n      <form class=\"text-center\" [formGroup]=\"registerForm\"  (ngSubmit)=\"changePassword()\"  style=\"color: #757575;\">\n\n\n        <div class=\"md-form\">\n          <input type=\"email\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\"  mdbInput>\n          <label for=\"materialLoginFormEmail\">New Password</label>\n          <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.password.errors.required\">Password is required</div>\n            <div *ngIf=\"f.password.errors.minlength\">Password must be at least 6 characters</div>\n        </div>\n        </div>\n\n\n        <div class=\"md-form\">\n          <input type=\"password\" formControlName=\"confirmPassword\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.confirmPassword.errors }\" mdbInput>\n          <label for=\"materialLoginFormPassword\">Confirm Password</label>\n          <div *ngIf=\"submitted && f.confirmPassword.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.confirmPassword.errors.required\">Confirm Password is required</div>\n            <div *ngIf=\"f.confirmPassword.errors.mustMatch\">Passwords must match</div>\n        </div>\n        </div>\n\n        <div class=\"srmc\">\n        <button  mdbBtn color=\"info\" outline=\"true\" rounded=\"true\" block=\"true\" class=\"my-4 waves-effect z-depth-0 bttn\" mdbWavesEffect\n          type=\"submit\" >Change</button>\n        </div>\n\n      </form>\n\n\n    </mdb-card-body>\n\n  </mdb-card>\n  </div>\n\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/clientsManage/add-clients/add-clients.component.html":
 /*!************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/clientsManage/add-clients/add-clients.component.html ***!
@@ -580,7 +591,7 @@ module.exports = "<mat-divider></mat-divider>\n<footer>\n  ©All Rights Reserved
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n        <button mat-icon-button (click)=\"toggleSideBar()\">\n            <mat-icon>menu</mat-icon>\n        </button>\n\n        <span> NUTANTEK </span>\n\n        <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"flex-end\">\n            <ul fxLayout=\"row\" fxLayoutGap=\"20px\">\n                <li>\n                    <button mat-icon-button>\n                        <mat-icon>settings</mat-icon>\n                    </button>\n                </li>\n                <!-- <li>\n                    <button mat-icon-button>\n                        <mat-icon>help_outline</mat-icon>\n                    </button>\n                </li> -->\n                <li>\n                    <button mat-button [matMenuTriggerFor]=\"menu\">\n                        <mat-icon>person_outline</mat-icon>\n                    </button>\n\n                    <mat-menu #menu=\"matMenu\">\n                      <!-- <button mat-menu-item routerLink=\"/userprofile\" *ngIf=\"role =='admin'\">\n                        <mat-icon>exit_to_app</mat-icon>\n                        Profile\n                    </button> -->\n                        <button mat-menu-item (click)=\"onLogout()\" value=\"Logout\">\n                            <mat-icon>exit_to_app</mat-icon>\n                            Sign out\n                        </button>\n                    </mat-menu>\n\n                </li>\n            </ul>\n        </div>\n    </mat-toolbar-row>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n        <button mat-icon-button (click)=\"toggleSideBar()\">\n            <mat-icon>menu</mat-icon>\n        </button>\n\n        <span> NUTANTEK </span>\n\n        <div fxFlex fxLayout=\"row\" fxLayoutAlign=\"flex-end\">\n            <ul fxLayout=\"row\" fxLayoutGap=\"20px\">\n                <!-- <li>\n                    <button mat-icon-button>\n                        <mat-icon>settings</mat-icon>\n                    </button>\n                </li> -->\n                <!-- <li>\n                    <button mat-icon-button>\n                        <mat-icon>help_outline</mat-icon>\n                    </button>\n                </li> -->\n                <li>\n                    <button mat-button [matMenuTriggerFor]=\"menu\">\n                        <mat-icon>person_outline</mat-icon>\n                    </button>\n\n                    <mat-menu #menu=\"matMenu\">\n                      <button mat-menu-item routerLink=\"/changepassword\" >\n                        <mat-icon>exit_to_app</mat-icon>\n                      Change Password\n                    </button>\n                        <button mat-menu-item (click)=\"onLogout()\" value=\"Logout\">\n                            <mat-icon>exit_to_app</mat-icon>\n                            Sign out\n                        </button>\n                    </mat-menu>\n\n                </li>\n            </ul>\n        </div>\n    </mat-toolbar-row>\n</mat-toolbar>\n"
 
 /***/ }),
 
@@ -2589,6 +2600,9 @@ var ApiCallService = /** @class */ (function () {
     ApiCallService.prototype.deletePremiumPack = function (data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/deletePremiumPack', data);
     };
+    ApiCallService.prototype.resetPassword = function (data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/ChangePassword', data);
+    };
     // Helper Methods
     ApiCallService.prototype.setToken = function (token) {
         localStorage.setItem('token', token);
@@ -2946,6 +2960,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_pushnotify_pushnotify_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./campaign/pushnotify/pushnotify.component */ "./src/app/campaign/pushnotify/pushnotify.component.ts");
 /* harmony import */ var _campaign_notifytemplates_notifytemplates_component__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./campaign/notifytemplates/notifytemplates.component */ "./src/app/campaign/notifytemplates/notifytemplates.component.ts");
 /* harmony import */ var _campaign_sendnotification_sendnotification_component__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./campaign/sendnotification/sendnotification.component */ "./src/app/campaign/sendnotification/sendnotification.component.ts");
+/* harmony import */ var _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./changepassword/changepassword.component */ "./src/app/changepassword/changepassword.component.ts");
+
 
 
 
@@ -3011,6 +3027,7 @@ var routes = [{
                 component: _modules_posts_posts_component__WEBPACK_IMPORTED_MODULE_5__["PostsComponent"]
             },
             { path: 'userprofile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_10__["ProfileComponent"] },
+            { path: 'changepassword', component: _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_54__["ChangepasswordComponent"] },
             { path: 'client', component: _clientsManage_client_client_component__WEBPACK_IMPORTED_MODULE_11__["ClientComponent"], children: [
                     { path: 'addclient', component: _clientsManage_add_clients_add_clients_component__WEBPACK_IMPORTED_MODULE_12__["AddClientsComponent"] },
                     { path: 'editclient/:client_id', component: _clientsManage_edit_clients_edit_clients_component__WEBPACK_IMPORTED_MODULE_13__["EditClientsComponent"] },
@@ -3217,6 +3234,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_pushnotify_pushnotify_component__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./campaign/pushnotify/pushnotify.component */ "./src/app/campaign/pushnotify/pushnotify.component.ts");
 /* harmony import */ var _campaign_notifytemplates_notifytemplates_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./campaign/notifytemplates/notifytemplates.component */ "./src/app/campaign/notifytemplates/notifytemplates.component.ts");
 /* harmony import */ var _campaign_sendnotification_sendnotification_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./campaign/sendnotification/sendnotification.component */ "./src/app/campaign/sendnotification/sendnotification.component.ts");
+/* harmony import */ var _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./changepassword/changepassword.component */ "./src/app/changepassword/changepassword.component.ts");
+
 
 
 
@@ -3346,6 +3365,7 @@ var AppModule = /** @class */ (function () {
                 _campaign_pushnotify_pushnotify_component__WEBPACK_IMPORTED_MODULE_66__["PushnotifyComponent"],
                 _campaign_notifytemplates_notifytemplates_component__WEBPACK_IMPORTED_MODULE_67__["NotifytemplatesComponent"],
                 _campaign_sendnotification_sendnotification_component__WEBPACK_IMPORTED_MODULE_68__["SendnotificationComponent"],
+                _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_69__["ChangepasswordComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -4509,6 +4529,131 @@ var ViewcardsComponent = /** @class */ (function () {
     return ViewcardsComponent;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/changepassword/changepassword.component.scss":
+/*!**************************************************************!*\
+  !*** ./src/app/changepassword/changepassword.component.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".marginal {\n  margin-left: 30%;\n  width: 45%;\n}\n\nbutton.my-4.waves-effect.z-depth-0.bttn.btn.btn-rounded.btn-outline-info.btn-block {\n  width: 40%;\n  margin-left: 35%;\n}\n\nmdb-card.card {\n  margin-top: 10%;\n}\n\n@media screen and (max-width: 1060px) {\n  .marginal.mrgset {\n    width: 100%;\n    margin-left: 1%;\n  }\n\n  .srmc {\n    width: 110%;\n    margin-left: -10%;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2hhbmdlcGFzc3dvcmQvRjpcXGdpdCBodWJcXHJlc2VsbGVyXFxGcm9udGVuZC9zcmNcXGFwcFxcY2hhbmdlcGFzc3dvcmRcXGNoYW5nZXBhc3N3b3JkLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jaGFuZ2VwYXNzd29yZC9jaGFuZ2VwYXNzd29yZC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNFLGdCQUFBO0VBQ0EsVUFBQTtBQ0FGOztBREdBO0VBQ0UsVUFBQTtFQUNBLGdCQUFBO0FDQUY7O0FESUE7RUFDRSxlQUFBO0FDREY7O0FER0E7RUFFRTtJQUNFLFdBQUE7SUFDQSxlQUFBO0VDREY7O0VESUY7SUFDRSxXQUFBO0lBQ0EsaUJBQUE7RUNEQTtBQUNGIiwiZmlsZSI6InNyYy9hcHAvY2hhbmdlcGFzc3dvcmQvY2hhbmdlcGFzc3dvcmQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuLm1hcmdpbmFsIHtcclxuICBtYXJnaW4tbGVmdDogMzAlO1xyXG4gIHdpZHRoOiA0NSU7XHJcblxyXG59XHJcbmJ1dHRvbi5teS00LndhdmVzLWVmZmVjdC56LWRlcHRoLTAuYnR0bi5idG4uYnRuLXJvdW5kZWQuYnRuLW91dGxpbmUtaW5mby5idG4tYmxvY2sge1xyXG4gIHdpZHRoOiA0MCU7XHJcbiAgbWFyZ2luLWxlZnQ6IDM1JTtcclxufVxyXG5cclxuXHJcbm1kYi1jYXJkLmNhcmQge1xyXG4gIG1hcmdpbi10b3A6IDEwJTtcclxufVxyXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDYwcHgpe1xyXG5cclxuICAubWFyZ2luYWwubXJnc2V0IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDElO1xyXG59XHJcblxyXG4uc3JtYyB7XHJcbiAgd2lkdGg6IDExMCU7XHJcbiAgbWFyZ2luLWxlZnQ6IC0xMCU7XHJcbn1cclxufVxyXG4iLCIubWFyZ2luYWwge1xuICBtYXJnaW4tbGVmdDogMzAlO1xuICB3aWR0aDogNDUlO1xufVxuXG5idXR0b24ubXktNC53YXZlcy1lZmZlY3Quei1kZXB0aC0wLmJ0dG4uYnRuLmJ0bi1yb3VuZGVkLmJ0bi1vdXRsaW5lLWluZm8uYnRuLWJsb2NrIHtcbiAgd2lkdGg6IDQwJTtcbiAgbWFyZ2luLWxlZnQ6IDM1JTtcbn1cblxubWRiLWNhcmQuY2FyZCB7XG4gIG1hcmdpbi10b3A6IDEwJTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTA2MHB4KSB7XG4gIC5tYXJnaW5hbC5tcmdzZXQge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi1sZWZ0OiAxJTtcbiAgfVxuXG4gIC5zcm1jIHtcbiAgICB3aWR0aDogMTEwJTtcbiAgICBtYXJnaW4tbGVmdDogLTEwJTtcbiAgfVxufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/changepassword/changepassword.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/changepassword/changepassword.component.ts ***!
+  \************************************************************/
+/*! exports provided: ChangepasswordComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangepasswordComponent", function() { return ChangepasswordComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _app_changepassword_must_match__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../app/changepassword/must-match */ "./src/app/changepassword/must-match.ts");
+/* harmony import */ var _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
+
+
+
+
+var ChangepasswordComponent = /** @class */ (function () {
+    function ChangepasswordComponent(apicall, formBuilder, router) {
+        this.apicall = apicall;
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.password = " ";
+        this.confirmPassword = "";
+        this.model = [];
+        this.submitted = false;
+    }
+    ChangepasswordComponent.prototype.ngOnInit = function () {
+        this.registerForm = this.formBuilder.group({
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].minLength(6)]],
+            confirmPassword: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]
+        }, {
+            validator: Object(_app_changepassword_must_match__WEBPACK_IMPORTED_MODULE_4__["MustMatch"])('password', 'confirmPassword')
+        });
+    };
+    Object.defineProperty(ChangepasswordComponent.prototype, "f", {
+        get: function () { return this.registerForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    ChangepasswordComponent.prototype.changePassword = function () {
+        var _this = this;
+        this.submitted = true;
+        console.log();
+        if (this.registerForm.invalid) {
+            return;
+        }
+        console.log(this.registerForm.value);
+        this.apicall.resetPassword(this.registerForm.value).subscribe(function (res) {
+            console.log(res);
+            if (res.status === 'success') {
+                alert(res.message);
+                _this.router.navigateByUrl('home');
+            }
+            else {
+            }
+        });
+    };
+    ChangepasswordComponent.ctorParameters = function () { return [
+        { type: _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_5__["ApiCallService"] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
+    ChangepasswordComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-changepassword',
+            template: __webpack_require__(/*! raw-loader!./changepassword.component.html */ "./node_modules/raw-loader/index.js!./src/app/changepassword/changepassword.component.html"),
+            styles: [__webpack_require__(/*! ./changepassword.component.scss */ "./src/app/changepassword/changepassword.component.scss")]
+        })
+    ], ChangepasswordComponent);
+    return ChangepasswordComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/changepassword/must-match.ts":
+/*!**********************************************!*\
+  !*** ./src/app/changepassword/must-match.ts ***!
+  \**********************************************/
+/*! exports provided: MustMatch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MustMatch", function() { return MustMatch; });
+// custom validator to check that two fields match
+function MustMatch(controlName, matchingControlName) {
+    return function (formGroup) {
+        var control = formGroup.controls[controlName];
+        var matchingControl = formGroup.controls[matchingControlName];
+        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+            // return if another validator has already found an error on the matchingControl
+            return;
+        }
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ mustMatch: true });
+        }
+        else {
+            matchingControl.setErrors(null);
+        }
+    };
+}
 
 
 /***/ }),
