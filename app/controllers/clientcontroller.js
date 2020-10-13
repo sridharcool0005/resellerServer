@@ -569,7 +569,7 @@ module.exports.ChangePassword = async (req, res) => {
   const partner_id = req.params.partner_id;
 console.log(req.body.password,partner_id);
   bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-    var sql = "UPDATE portalusers SET  password =? WHERE  partner_id =?";
+    var sql = "UPDATE portal_adminusers SET  password =? WHERE  partner_id =?";
 console.log(hash)
    db.query(sql,[hash,partner_id], function (err, result, fields) {
     if (err) throw err;
