@@ -2560,19 +2560,19 @@ var ApiCallService = /** @class */ (function () {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/postofficeApi', data);
     };
     ApiCallService.prototype.getplanexpirycontacts = function (data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getplanexpirycontacts', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getplanexpirycontacts', data);
     };
     ApiCallService.prototype.getplanexpirycontactsAll = function () {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getplanexpirycontactsAll');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getplanexpirycontactsAll');
     };
     ApiCallService.prototype.insertnotifications = function (data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/insertnotifications', data);
     };
     ApiCallService.prototype.registeredcontactstracking = function (data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/registeredcontactstracking', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/registeredcontactstracking', data);
     };
     ApiCallService.prototype.getTodayregisterdData = function () {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getTodayregisterdData');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getTodayregisterdData');
     };
     ApiCallService.prototype.getAllpremiumplans = function () {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getAllpremiumplans');
