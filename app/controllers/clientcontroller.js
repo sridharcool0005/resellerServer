@@ -679,7 +679,8 @@ const saveDetails = async (req) => {
       name: req.body.name,
       mobilenumber: req.body.mobilenumber,
       message: 'APK Download',
-      subject: ' APK Download'
+      subject: ' APK Download',
+      partner_id: req.params.partner_id,
     };
      db.query(query, newTemplate, function (err, result, fields) {
       if (err) {
@@ -694,4 +695,75 @@ const saveDetails = async (req) => {
 }catch(error){
   throw error;
 }
+}
+
+module.exports.getuserdataCount = async function (req, res) {
+  const partner_id=req.params.partner_id;
+  
+  countQuery = "SELECT COUNT(client_id) AS NumberOfclients FROM portal_users WHERE partner_id =? and  (created_on between CURRENT_date and CURRENT_DATE  + interval 1 day) order by created_on asc"
+  await db.query(countQuery,[partner_id], function (err, result, fields) {
+    if (err) throw err;
+    res.send({
+      "code": 200,
+     status: "success",
+      result
+    });
+  });
+}
+
+
+
+module.exports.getuserdataCountweekly = async function (req, res) {
+  const partner_id=req.params.partner_id;
+ 
+  countQuery = "SELECT COUNT(client_id) AS NumberOfclients FROM portal_users WHERE partner_id =? and  (created_on between CURRENT_date and CURRENT_DATE - interval 7 day) order by created_on asc"
+  await db.query(countQuery,[partner_id], function (err, result, fields) {
+    if (err) throw err;
+    res.send({
+      "code": 200,
+      status: "success",
+       result
+    });
+  });
+}
+module.exports.getplanexpirytoday= async function (req, res) {
+  const partner_id=req.params.partner_id;
+  
+  countQuery = "SELECT COUNT(client_id) AS NumberOfclients FROM portal_users WHERE partner_id =? and  (plan_expiry_date between CURRENT_date and CURRENT_DATE  + interval 1 day) order by created_on asc"
+  await db.query(countQuery,[partner_id], function (err, result, fields) {
+    if (err) throw err;
+    res.send({
+      "code": 200,
+      status: "success",
+       result
+    });
+  });
+}
+
+module.exports.getplanexpirynextweek= async function (req, res) {
+  const partner_id=req.params.partner_id;
+  
+  countQuery = "SELECT COUNT(client_id) AS NumberOfclients FROM portal_users WHERE partner_id =? and  (plan_expiry_date between CURRENT_date and CURRENT_DATE  + interval 7 day) order by created_on asc"
+  await db.query(countQuery,[partner_id], function (err, result, fields) {
+    if (err) throw err;
+    res.send({
+      "code": 200,
+      status: "success",
+       result
+    });
+  });
+}
+
+module.exports.getclientscount= async function (req, res) {
+  const partner_id=req.params.partner_id;
+  
+  countQuery = "SELECT  COUNT(IF(account_plan_id = 'P1005', 1, NULL)) 'Freedom',  COUNT(IF(account_plan_id = 'P1008', 1, NULL)) 'Silver', COUNT(IF(account_plan_id = 'P1016', 1, NULL)) 'Gold',COUNT(IF(account_plan_id = 'P1020', 1, NULL)) 'Diamond' FROM portal_users where partner_id =?"
+  await db.query(countQuery,[partner_id], function (err, result, fields) {
+    if (err) throw err;
+    res.send({
+      "code": 200,
+      status: "success",
+     result
+    });
+  });
 }

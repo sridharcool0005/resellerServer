@@ -10,9 +10,9 @@ const UserController = require('../controllers/userController');
 const AdminController = require('../controllers/adminController');
 const packageController = require('../controllers/packageController');
 const analyticsController = require('../controllers/analyticsController');
-const helpController= require('../controllers/helpdeskcontroller');
-const bulkprofilecontroller=require('../controllers/bulkprofilecontroller');
-const billingcontroller=require('../controllers/billingcontroller');
+const helpController = require('../controllers/helpdeskcontroller');
+const bulkprofilecontroller = require('../controllers/bulkprofilecontroller');
+const billingcontroller = require('../controllers/billingcontroller');
 
 
 const APIRoutes = function (passport) {
@@ -22,8 +22,8 @@ const APIRoutes = function (passport) {
   router.get('/partner/:partner_id/getClients', clientController.getclients);
   router.get('/partner/:partner_id/getuserdata', clientController.getuserdata);
   router.post('/partner/:partner_id/getuserDetails', clientController.getuserDetails);
-  router.put('/partner/:partner_id/updateclientData',clientController.updateclientData);
-  router.post('/partner/:partner_id/deleteclient',clientController.deleteclient);
+  router.put('/partner/:partner_id/updateclientData', clientController.updateclientData);
+  router.post('/partner/:partner_id/deleteclient', clientController.deleteclient);
   router.post('/addPackages', packageController.addPackage);
   router.put('/updatePackage', packageController.updatePackage);
   router.get('/getAllPackages', packageController.getAllPackages);
@@ -44,24 +44,28 @@ const APIRoutes = function (passport) {
   router.post('/updateclientStatus', clientController.updateclientStatus);
   router.post('/getclientsbyfilter', clientController.getclientsbyfilter);
   router.get('/getsmspackagelist', billingcontroller.getsmspackagelist)
-    router.post('/getclientdetails', billingcontroller.getclientdetails);
-    router.post('/getOrderId',billingcontroller.getOrderId);
-    router.get('/getpremiumplanlist',billingcontroller.getpremiumplanlist);
-    router.post('/postofficeApi', clientController.postofficeApi);
-    router.post('/partner/:partner_id/getplanexpirycontacts',analyticsController.getplanexpirycontacts);
-    router.get('/partner/:partner_id/getplanexpirycontactsAll', analyticsController.getplanexpirycontactsAll);
-    router.post('/insertnotifications', analyticsController.insertnotifications);
-    router.post('/partner/:partner_id/registeredcontactstracking',analyticsController.registeredcontactstracking);
-    router.get('/partner/:partner_id/getTodayregisterdData',analyticsController.getTodayregisterdData);
-    router.get('/fetchProfessions', clientController.fetchProfessions);
-    router.get('/getAllpremiumplans', packageController.getAllportal_premiumplans_master);
-    router.post('/getpremiumplandetails', packageController.getpremiumplandetails);
-    router.post('/updatePremiumPlan', packageController.updatePremiumPlan);
-    router.post('/deletePremiumPack', packageController.deletePremiumPack);
-    router.post('/partner/:partner_id/ChangePassword', clientController.ChangePassword);
-router.post('/submitcustomerdetails', clientController.submitcustomerdetails);
-  router.post('/verifyOTP', clientController.verifyAndSaveDetails);
-
+  router.post('/getclientdetails', billingcontroller.getclientdetails);
+  router.post('/getOrderId', billingcontroller.getOrderId);
+  router.get('/getpremiumplanlist', billingcontroller.getpremiumplanlist);
+  router.post('/postofficeApi', clientController.postofficeApi);
+  router.post('/partner/:partner_id/getplanexpirycontacts', analyticsController.getplanexpirycontacts);
+  router.get('/partner/:partner_id/getplanexpirycontactsAll', analyticsController.getplanexpirycontactsAll);
+  router.post('/insertnotifications', analyticsController.insertnotifications);
+  router.post('/partner/:partner_id/registeredcontactstracking', analyticsController.registeredcontactstracking);
+  router.get('/partner/:partner_id/getTodayregisterdData', analyticsController.getTodayregisterdData);
+  router.get('/fetchProfessions', clientController.fetchProfessions);
+  router.get('/getAllpremiumplans', packageController.getAllportal_premiumplans_master);
+  router.post('/getpremiumplandetails', packageController.getpremiumplandetails);
+  router.post('/updatePremiumPlan', packageController.updatePremiumPlan);
+  router.post('/deletePremiumPack', packageController.deletePremiumPack);
+  router.post('/partner/:partner_id/ChangePassword', clientController.ChangePassword);
+  router.post('/submitcustomerdetails', clientController.submitcustomerdetails);
+  router.post('/partner/:partner_id/verifyOTP', clientController.verifyAndSaveDetails);
+  router.get('/partner/:partner_id/userdataCountweekly', clientController.getuserdataCountweekly);
+  router.get('/partner/:partner_id/getplanexpirytoday', clientController.getplanexpirytoday);
+  router.get('/partner/:partner_id/getplanexpirynextweek', clientController.getplanexpirynextweek);
+  router.get('/partner/:partner_id/getclientscount', clientController.getclientscount);
+  router.get('/partner/:partner_id/getuserdataCount', clientController.getuserdataCount);
   // GET Routes.
   router.get('/profile', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, UserController.index));
   router.get('/admin', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, AdminController.index));
