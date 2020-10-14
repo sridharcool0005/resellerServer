@@ -582,3 +582,116 @@ console.log(hash)
 
   });
 }
+
+
+module.exports.submitcustomerdetails = async (req, res) => {
+  const { name, mobilenumber } = req.body;
+  if (!name && !mobilenumber) {
+    res.status(400).send({ status: 'false', message: 'plz make sure to enter valid data' });
+  }
+
+  try {
+    const sendSMS = await sendOTP(mobilenumber);
+    if (sendSMS) {
+        res.status(200).send({ status: "success", message: 'message sent sucessfully' })
+    }
+  } catch (e) {
+    res.status(400).send({ status: 'error', message: e.message })
+  }
+}
+
+
+const sendOTP = async (mobilenumber) => {
+  console.log('sendOTP')
+  return new Promise((resolve, reject) => {
+    const options = {
+      url: 'https://nutanapp.nutansms.in/sendOTPdownload.php',
+      qs: { mobilenumber: mobilenumber },
+      json: true,
+    }
+     request(options, (err, response, body) => {
+      if (err) {
+        console.log(err)
+        reject(err);
+      } else {
+        console.log(body);
+        resolve(true);
+      }
+    });
+  });
+}
+
+
+module.exports.verifyAndSaveDetails = async (req, res) => {
+  try {
+ const verifiedOtp = await verifyOTP(req);
+ const savedDetails = await saveDetails(req);
+ if (verifiedOtp && savedDetails) {
+  res.send({success: true, message: 'OTP verified. Please click to Download APK.'});
+ } else {
+  res.send({success: false, message: 'Unable to verify otp and save details'})
+ }
+} catch(error) {
+  res.send({success: false, message: error})
+}
+}
+
+const verifyOTP =async (req) => {
+
+  try {
+    return new Promise((resolve,reject) => {
+
+  const {otp,mobilenumber}=req.body;
+    const options = {
+      url: 'https://nutanapp.nutansms.in/verifyOTPdownload.php',
+      qs: { mobilenumber: mobilenumber, otp: otp },
+      json: true,
+    }
+     request(options, (err, response, body) => {
+      if (err) {
+        reject(err);
+      } else {
+        // console.log(body)
+       if(body.type == "success"){
+         resolve(true)
+        } else {
+          reject(body.message)
+        }
+      }
+  });
+
+});
+} catch(E) {
+  throw e;
+}
+}
+
+const saveDetails = async (req) => {
+  try{
+  console.log('saving user')
+  
+  return new Promise((resolve, reject) => {
+ 
+    const query_id = crypto.randomBytes(4).toString("hex");
+    const query = "INSERT INTO portal_users_query_feedback SET ?"
+    var newTemplate = {
+      query_id: query_id,
+      name: req.body.name,
+      mobilenumber: req.body.mobilenumber,
+      message: 'APK Download',
+      subject: ' APK Download'
+    };
+     db.query(query, newTemplate, function (err, result, fields) {
+      if (err) {
+        console.log(err)
+        reject(err);
+      } else {
+        resolve(true);
+      }
+    });
+ 
+  });
+}catch(error){
+  throw error;
+}
+}

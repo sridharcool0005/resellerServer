@@ -496,6 +496,17 @@ module.exports = "\n\n\n\n<div class=\"card\">\n  <h3 class=\"card-header text-c
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/downloadapk/downloadapk.component.html":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/downloadapk/downloadapk.component.html ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\" >\n  <div class=\"row\">\n    <div class=\"col-md-4\"></div>\n    <div class=\"col-md-8\">\n      <form class=\" mesida text-center border border-light p-5 \" (ngSubmit)=\"regform.form.valid&&downloadapk(regform.form.value)\" #regform=\"ngForm\">\n        <h4 class=\"h4 mb-4\"><img src=\"assets/img/logo.png\" width=\"25%\">&nbsp;Nutan App</h4>\n        <p class=\"h4 mb-4\"> APK Download Center</p>\n<div *ngIf=\"!otpSent\">\n        <p>Fill Up your details to download Apk</p>\n        <!-- Name -->\n        <div>\n        <input type=\"text\" id=\"defaultSubscriptionFormPassword\" class=\"form-control mb-4\" placeholder=\"Name\" name=\"name\" ngModel  #name=\"ngModel\"\n        [ngClass]=\"{ 'is-invalid': regform.submitted && name.invalid }\" required >\n        <div *ngIf=\"regform.submitted && name.invalid\" class=\"invalid-feedback\">\n          <div *ngIf=\"name.errors.required\"> Name is required</div>\n        </div>\n</div>\n\n<div>\n        <!-- Email -->\n        <input type=\"text\" id=\"defaultSubscriptionFormEmail\" class=\"form-control mb-4\" placeholder=\"MobileNumber\" minlength=\"10\" maxlength=\"10\" name=\"mobilenumber\" ngModel pattern=\"[6-9]{1}[0-9]{9}\"  #mobile=\"ngModel\"\n        [ngClass]=\"{ 'is-invalid': regform.submitted && mobile.invalid }\" required >\n        <div *ngIf=\"regform.submitted && mobile.invalid\" class=\"invalid-feedback\">\n          <div *ngIf=\"mobile.errors.required\">Mobile Number is required</div>\n          <div *ngIf=\"mobile.errors.minlength\">please enter a valid mobile number</div>\n          <div *ngIf=\"mobile.errors.pattern\">must be a valid Mobile number</div>\n        </div>\n</div>\n        <!-- Sign in button -->\n        <button class=\"btn btn-info btn-block\" type=\"Submit\">Submit</button>\n      </div>\n      </form>\n\n    </div>\n  </div>\n</div>\n\n<div class=\"container otp\" *ngIf=\"otpSent == 'success'\">\n  <div class=\"row\">\n    <div class=\"col-md-4\"></div>\n    <div class=\"col-md-3 otpverify mdeia\" *ngIf=\"messageType !== 'success'\">\n      <h6><b>Enter OTP received </b></h6>\n      <ng-otp-input type=\"Number\" (onInputChange)=\"onOtpChange($event)\"  [config]=\"{length:4}\"></ng-otp-input>\n      <div class=\"alert alert-danger\" role=\"alert\" *ngIf=\"messageType == 'error'\">\n        {{otpMessage}}\n           </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"container downloadapk\">\n  <div class=\"row\">\n    <div class=\"col-md-4\"></div>\n    <div class=\"col-md-6 sucess\">\n      <div class=\"alert alert-success mdia\" role=\"alert\" *ngIf=\"messageType == 'success'\">\n        {{otpMessage}}\n        </div>\n      <div *ngIf=\"messageType == 'success'\" class=\"downloadbutton\">\n       <a href=\"http://billmart.nutansms.in/nutanapp.apk\"><button mdbBtn type=\"Submit\" gradient=\"blue\" rounded=\"true\" class=\"center\" mdbWavesEffect>Download Apk</button></a>\n      <a href=\"https://nutanapp.nutantek.com\"><button class=\"btn purple-gradient\">Home</button></a>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/helpdesk/helpdesk/helpdesk.component.html":
 /*!*************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/helpdesk/helpdesk/helpdesk.component.html ***!
@@ -2603,6 +2614,12 @@ var ApiCallService = /** @class */ (function () {
     ApiCallService.prototype.resetPassword = function (data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/ChangePassword', data);
     };
+    ApiCallService.prototype.submitcustomerdetails = function (data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/submitcustomerdetails', data);
+    };
+    ApiCallService.prototype.verifyOTP = function (data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/verifyOTP', data);
+    };
     // Helper Methods
     ApiCallService.prototype.setToken = function (token) {
         localStorage.setItem('token', token);
@@ -2961,6 +2978,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_notifytemplates_notifytemplates_component__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./campaign/notifytemplates/notifytemplates.component */ "./src/app/campaign/notifytemplates/notifytemplates.component.ts");
 /* harmony import */ var _campaign_sendnotification_sendnotification_component__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./campaign/sendnotification/sendnotification.component */ "./src/app/campaign/sendnotification/sendnotification.component.ts");
 /* harmony import */ var _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./changepassword/changepassword.component */ "./src/app/changepassword/changepassword.component.ts");
+/* harmony import */ var _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./downloadapk/downloadapk.component */ "./src/app/downloadapk/downloadapk.component.ts");
+
 
 
 
@@ -3092,6 +3111,7 @@ var routes = [{
         path: 'login', component: _user_user_component__WEBPACK_IMPORTED_MODULE_6__["UserComponent"],
         children: [{ path: '', component: _user_sign_in_sign_in_component__WEBPACK_IMPORTED_MODULE_8__["SignInComponent"] }]
     },
+    { path: 'downloadapk', component: _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_55__["DownloadapkComponent"] },
     {
         path: '', redirectTo: '/login', pathMatch: 'full'
     },
@@ -3235,6 +3255,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_notifytemplates_notifytemplates_component__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./campaign/notifytemplates/notifytemplates.component */ "./src/app/campaign/notifytemplates/notifytemplates.component.ts");
 /* harmony import */ var _campaign_sendnotification_sendnotification_component__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./campaign/sendnotification/sendnotification.component */ "./src/app/campaign/sendnotification/sendnotification.component.ts");
 /* harmony import */ var _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./changepassword/changepassword.component */ "./src/app/changepassword/changepassword.component.ts");
+/* harmony import */ var _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./downloadapk/downloadapk.component */ "./src/app/downloadapk/downloadapk.component.ts");
+/* harmony import */ var ng_otp_input__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ng-otp-input */ "./node_modules/ng-otp-input/fesm5/ng-otp-input.js");
+
+
 
 
 
@@ -3366,8 +3390,10 @@ var AppModule = /** @class */ (function () {
                 _campaign_notifytemplates_notifytemplates_component__WEBPACK_IMPORTED_MODULE_67__["NotifytemplatesComponent"],
                 _campaign_sendnotification_sendnotification_component__WEBPACK_IMPORTED_MODULE_68__["SendnotificationComponent"],
                 _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_69__["ChangepasswordComponent"],
+                _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_70__["DownloadapkComponent"],
             ],
             imports: [
+                ng_otp_input__WEBPACK_IMPORTED_MODULE_71__["NgOtpInputModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
@@ -3387,7 +3413,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_16__["MatExpansionModule"],
                 _material_material_module__WEBPACK_IMPORTED_MODULE_18__["MaterialModule"],
                 angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_31__["MDBBootstrapModule"],
-                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_31__["WavesModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_31__["TableModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_31__["IconsModule"],
+                angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_31__["WavesModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_31__["TableModule"], angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_31__["IconsModule"]
             ],
             providers: [{
                     provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HTTP_INTERCEPTORS"],
@@ -5220,6 +5246,93 @@ var ViewclientsComponent = /** @class */ (function () {
         })
     ], ViewclientsComponent);
     return ViewclientsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/downloadapk/downloadapk.component.scss":
+/*!********************************************************!*\
+  !*** ./src/app/downloadapk/downloadapk.component.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "form {\n  width: 50%;\n}\n\n.col-md-2.otpverify {\n  margin-top: 2%;\n  margin-left: -3%;\n}\n\n.container.downloadapk {\n  margin-top: -13%;\n}\n\n.downloadbutton {\n  margin-left: -60%;\n}\n\nbutton.center.blue-gradient {\n  margin-left: 45%;\n  margin-top: 2%;\n}\n\n.col-md-8 {\n  margin-top: 2%;\n}\n\n.container.otp {\n  margin-top: 15%;\n}\n\n.col-md-3.otpverify {\n  margin-top: -15%;\n  margin-left: 5%;\n}\n\n.alert.alert-success {\n  width: 65%;\n}\n\nbutton.btn.purple-gradient {\n  margin-top: 2%;\n}\n\n@media screen and (max-width: 1060px) {\n  form.mesida {\n    width: 100%;\n    margin-bottom: 10%;\n  }\n\n  .col-md-3.otpverify.mdeia {\n    margin-left: 15%;\n    padding: 5%;\n  }\n\n  .alert.alert-success.mdia {\n    width: 100%;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZG93bmxvYWRhcGsvRjpcXGdpdCBodWJcXHJlc2VsbGVyXFxGcm9udGVuZC9zcmNcXGFwcFxcZG93bmxvYWRhcGtcXGRvd25sb2FkYXBrLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9kb3dubG9hZGFway9kb3dubG9hZGFway5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVFLFVBQUE7QUNBRjs7QURJQTtFQUNFLGNBQUE7RUFDQSxnQkFBQTtBQ0RGOztBREdBO0VBQ0UsZ0JBQUE7QUNBRjs7QURFQTtFQUNFLGlCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxnQkFBQTtFQUNBLGNBQUE7QUNFRjs7QURBQTtFQUNFLGNBQUE7QUNHRjs7QUREQTtFQUNFLGVBQUE7QUNJRjs7QURGQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtBQ0tGOztBREZBO0VBQ0UsVUFBQTtBQ0tGOztBREhBO0VBQ0UsY0FBQTtBQ01GOztBREhBO0VBQ0E7SUFDRSxXQUFBO0lBQ0Esa0JBQUE7RUNNQTs7RURKRjtJQUNFLGdCQUFBO0lBQ0EsV0FBQTtFQ09BOztFRExGO0lBQ0UsV0FBQTtFQ1FBO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9kb3dubG9hZGFway9kb3dubG9hZGFway5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImZvcm17XHJcblxyXG4gIHdpZHRoOiA1MCU7XHJcbn1cclxuXHJcblxyXG4uY29sLW1kLTIub3RwdmVyaWZ5IHtcclxuICBtYXJnaW4tdG9wOiAyJTtcclxuICBtYXJnaW4tbGVmdDogLTMlO1xyXG59XHJcbi5jb250YWluZXIuZG93bmxvYWRhcGsge1xyXG4gIG1hcmdpbi10b3A6IC0xMyU7XHJcbn1cclxuLmRvd25sb2FkYnV0dG9uIHtcclxuICBtYXJnaW4tbGVmdDogLTYwJTtcclxufVxyXG5idXR0b24uY2VudGVyLmJsdWUtZ3JhZGllbnQge1xyXG4gIG1hcmdpbi1sZWZ0OiA0NSU7XHJcbiAgbWFyZ2luLXRvcDogMiU7XHJcbn1cclxuLmNvbC1tZC04IHtcclxuICBtYXJnaW4tdG9wOiAyJTtcclxufVxyXG4uY29udGFpbmVyLm90cCB7XHJcbiAgbWFyZ2luLXRvcDogMTUlO1xyXG59XHJcbi5jb2wtbWQtMy5vdHB2ZXJpZnl7XHJcbiAgbWFyZ2luLXRvcDogLTE1JTtcclxuICBtYXJnaW4tbGVmdDogNSU7XHJcblxyXG59XHJcbi5hbGVydC5hbGVydC1zdWNjZXNzIHtcclxuICB3aWR0aDogNjUlO1xyXG59XHJcbmJ1dHRvbi5idG4ucHVycGxlLWdyYWRpZW50IHtcclxuICBtYXJnaW4tdG9wOiAyJTtcclxufVxyXG5cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTA2MHB4KXtcclxuZm9ybS5tZXNpZGF7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgbWFyZ2luLWJvdHRvbTogMTAlO1xyXG59XHJcbi5jb2wtbWQtMy5vdHB2ZXJpZnkubWRlaWEge1xyXG4gIG1hcmdpbi1sZWZ0OiAxNSU7XHJcbiAgcGFkZGluZzogNSU7XHJcbn1cclxuLmFsZXJ0LmFsZXJ0LXN1Y2Nlc3MubWRpYSB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxufVxyXG4iLCJmb3JtIHtcbiAgd2lkdGg6IDUwJTtcbn1cblxuLmNvbC1tZC0yLm90cHZlcmlmeSB7XG4gIG1hcmdpbi10b3A6IDIlO1xuICBtYXJnaW4tbGVmdDogLTMlO1xufVxuXG4uY29udGFpbmVyLmRvd25sb2FkYXBrIHtcbiAgbWFyZ2luLXRvcDogLTEzJTtcbn1cblxuLmRvd25sb2FkYnV0dG9uIHtcbiAgbWFyZ2luLWxlZnQ6IC02MCU7XG59XG5cbmJ1dHRvbi5jZW50ZXIuYmx1ZS1ncmFkaWVudCB7XG4gIG1hcmdpbi1sZWZ0OiA0NSU7XG4gIG1hcmdpbi10b3A6IDIlO1xufVxuXG4uY29sLW1kLTgge1xuICBtYXJnaW4tdG9wOiAyJTtcbn1cblxuLmNvbnRhaW5lci5vdHAge1xuICBtYXJnaW4tdG9wOiAxNSU7XG59XG5cbi5jb2wtbWQtMy5vdHB2ZXJpZnkge1xuICBtYXJnaW4tdG9wOiAtMTUlO1xuICBtYXJnaW4tbGVmdDogNSU7XG59XG5cbi5hbGVydC5hbGVydC1zdWNjZXNzIHtcbiAgd2lkdGg6IDY1JTtcbn1cblxuYnV0dG9uLmJ0bi5wdXJwbGUtZ3JhZGllbnQge1xuICBtYXJnaW4tdG9wOiAyJTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTA2MHB4KSB7XG4gIGZvcm0ubWVzaWRhIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBtYXJnaW4tYm90dG9tOiAxMCU7XG4gIH1cblxuICAuY29sLW1kLTMub3RwdmVyaWZ5Lm1kZWlhIHtcbiAgICBtYXJnaW4tbGVmdDogMTUlO1xuICAgIHBhZGRpbmc6IDUlO1xuICB9XG5cbiAgLmFsZXJ0LmFsZXJ0LXN1Y2Nlc3MubWRpYSB7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/downloadapk/downloadapk.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/downloadapk/downloadapk.component.ts ***!
+  \******************************************************/
+/*! exports provided: DownloadapkComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DownloadapkComponent", function() { return DownloadapkComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
+
+
+var DownloadapkComponent = /** @class */ (function () {
+    function DownloadapkComponent(userService, router) {
+        this.userService = userService;
+        this.router = router;
+        this.otpSent = '';
+        this.otpMessage = '';
+        this.messageType = '';
+    }
+    DownloadapkComponent.prototype.ngOnInit = function () {
+    };
+    DownloadapkComponent.prototype.downloadapk = function (data) {
+        var _this = this;
+        console.log(data);
+        this.userdata = data;
+        this.userService.submitcustomerdetails(data).subscribe(function (res) {
+            if (res.status === 'success') {
+                alert('OTP sent to your Mobile Number successfully.');
+                _this.otpSent = res.status;
+            }
+        });
+    };
+    DownloadapkComponent.prototype.onOtpChange = function (data) {
+        var _this = this;
+        console.log(data.length);
+        if (data.length === 4) {
+            this.userdata.otp = data;
+            console.log(this.userdata);
+            this.userService.verifyOTP(this.userdata).subscribe(function (res) {
+                if (res.success) {
+                    _this.otpMessage = 'OTP verified. Please click to Download APK.';
+                    _this.messageType = 'success';
+                    console.log(_this.messageType);
+                }
+                else {
+                    _this.otpMessage = res.message;
+                    _this.messageType = 'error';
+                }
+            });
+        }
+    };
+    DownloadapkComponent.ctorParameters = function () { return [
+        { type: _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
+    DownloadapkComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-downloadapk',
+            template: __webpack_require__(/*! raw-loader!./downloadapk.component.html */ "./node_modules/raw-loader/index.js!./src/app/downloadapk/downloadapk.component.html"),
+            styles: [__webpack_require__(/*! ./downloadapk.component.scss */ "./src/app/downloadapk/downloadapk.component.scss")]
+        })
+    ], DownloadapkComponent);
+    return DownloadapkComponent;
 }());
 
 
