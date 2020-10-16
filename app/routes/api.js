@@ -25,6 +25,7 @@ const APIRoutes = function (passport) {
   router.put('/partner/:partner_id/updateclientData', clientController.updateclientData);
   router.post('/partner/:partner_id/deleteclient', clientController.deleteclient);
   router.post('/partner/:partner_id/addPackages', packageController.addPackage);
+  router.post('/partner/:partner_id/addPremiumPackage', packageController.addPremiumPackage);
   router.put('/partner/:partner_id/updatePackage', packageController.updatePackage);
   router.get('/partner/:partner_id/getAllPackages', packageController.getAllPackages);
   router.post('/partner/:partner_id/getPackageDetails', packageController.getPackageDetails);

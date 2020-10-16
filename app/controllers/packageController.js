@@ -60,7 +60,8 @@ module.exports.addPackage = async function (req, res) {
             package_price:package_price,
             package_validity_in_months:package_validity_in_months,
             package_details1:package_details,
-            package_status: package_status
+            package_status: package_status,
+            
          
         };
 
