@@ -151,7 +151,7 @@ module.exports = "<router-outlet></router-outlet>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-tab-group mat-align-tabs=\"center\">\n  <mat-tab label=\"View Packages\"><app-view-package></app-view-package></mat-tab>\n  <mat-tab label=\"View Premium Plans\"><app-viewpremiumplans></app-viewpremiumplans></mat-tab>\n</mat-tab-group>\n"
+module.exports = "<mat-tab-group mat-align-tabs=\"center\">\n  <!-- <mat-tab label=\"View Packages\"><app-view-package></app-view-package></mat-tab> -->\n  <mat-tab label=\"View Premium Plans\"><app-viewpremiumplans></app-viewpremiumplans></mat-tab>\n</mat-tab-group>\n"
 
 /***/ }),
 
