@@ -42,7 +42,7 @@ module.exports.addPackage = async function (req, res) {
     const partner_id=req.params.partner_id;
     const { package_name,package_route, package_unit_price,
         package_sms_credits,package_price,package_validity_in_months,package_details,package_status}=req.body;
-    query = "SELECT last_package_id  FROM counter"
+    query = "SELECT last_package_id  FROM portal_counter"
     await database.query(query, function (err, result, fields) {
         if (err) throw err;
         var last_package_id = result[0].last_package_id;
@@ -165,7 +165,7 @@ module.exports.getAllportal_premiumplans_master = async function (req, res) {
 module.exports.addPremiumPackage = async function (req, res) {
     const partner_id=req.params.partner_id;
     const { package_name, free_sms_credits,package_gst_rate,package_gst_amount, package_list_price, package_offered_price, total_package_price, is_sim_allowed, is_min_bal_req, package_validity_in_months, package_status,package_details1,package_details2,package_details3}=req.body;
-    query = "SELECT last_package_id  FROM counter"
+    query = "SELECT last_package_id  FROM portal_counter"
     await database.query(query, function (err, result, fields) {
         if (err) throw err;
         var last_package_id = result[0].last_package_id;
