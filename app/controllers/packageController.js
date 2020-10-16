@@ -70,7 +70,7 @@ module.exports.addPackage = async function (req, res) {
             if (err) throw err;
             if (result) {
                 const values = [tempPackageId, last_package_id]
-                var sql = "UPDATE counter SET last_package_id =? WHERE last_package_id =?";
+                var sql = "UPDATE portal_counter SET last_package_id =? WHERE last_package_id =?";
                 database.query(sql, values, function (err, result) {
                     if (err) throw err;
                     console.log(result.affectedRows + " record(s) updated");
@@ -203,7 +203,7 @@ module.exports.addPremiumPackage = async function (req, res) {
             if (err) throw err;
             if (result) {
                 const values = [tempPackageId, last_package_id]
-                var sql = "UPDATE counter SET last_package_id =? WHERE last_package_id =?";
+                var sql = "UPDATE portal_counter SET last_package_id =? WHERE last_package_id =?";
                 database.query(sql, values, function (err, result) {
                     if (err) throw err;
                     console.log(result.affectedRows + " record(s) updated");
