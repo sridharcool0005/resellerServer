@@ -189,7 +189,8 @@ module.exports.addPremiumPackage = async function (req, res) {
             package_details1:package_details1,
             package_details2:package_details2,
             package_details3:package_details3,
-            package_status:	package_status
+            package_status:	package_status,
+            package_icon: "null",
         };
 
         const createNewPackage = "INSERT INTO  portal_premiumplans_master SET ?";
