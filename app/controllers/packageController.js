@@ -189,6 +189,11 @@ module.exports.addPremiumPackage = async function (req, res) {
             package_details1:package_details1,
             package_details2:package_details2,
             package_details3:package_details3,
+            package_details4:package_details3,
+            package_details5:package_details3,
+            package_details6:package_details3,
+            package_details7:package_details3,
+            package_details8:package_details3,
             package_status:	package_status,
             package_icon: "null",
         };
