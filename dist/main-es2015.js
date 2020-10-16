@@ -122,6 +122,17 @@ module.exports = "<form (ngSubmit)=\"regform.form.valid&&add(regform.form.value)
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/PackageManage/add-premium-pack/add-premium-pack.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/PackageManage/add-premium-pack/add-premium-pack.component.html ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<form (ngSubmit)=\"regform.form.valid&&add(regform.form.value)\" #regform=\"ngForm\">\n\n  <div class=\"medias mymedia text-center border border-light p-5 \" >\n    <div class=\"container\">\n      <div class=\"row\">\n      <img src=\"assets/img/addsmspack.jpg\" class=\"pack\" width=\"25%\">\n\n        <input type=\"text\"  class=\"form-control mb-4\" placeholder=\"Package Name\" [(ngModel)]=\"package_name\" name=\"package_name\"   #packagename=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && packagename.invalid }\" required>\n        <div *ngIf=\"regform.submitted && packagename.invalid\" class=\"invalid-feedback\">\n          <div *ngIf=\"packagename.errors.required\">PackageName is required</div>\n        </div>\n\n        <div class=\"col-md-6\">\n          <select class=\"form-control mb-4\" name=\"is_sim_allowed\" [(ngModel)]=\"is_sim_allowed\"    #sim_allowed=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && sim_allowed.invalid }\" required >\n            <option value=\"\" selected disabled>select</option>\n            <option value=\"YES\">YES</option>\n            <option value=\"NO\">NO</option>\n          </select>\n          <div *ngIf=\"regform.submitted && sim_allowed.invalid\" class=\"invalid-feedback\">\n            <div *ngIf=\"sim_allowed.errors.required\">filed is required</div>\n          </div>\n        </div>\n        <div class=\"col-md-6\">\n          <select class=\"form-control mb-4\" name=\"is_min_bal_req\" [(ngModel)]=\"is_min_bal_req\"    #min_bal_req=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && min_bal_req.invalid }\" required >\n            <option value=\"\" selected disabled>select</option>\n            <option value=\"YES\">YES</option>\n            <option value=\"NO\">NO</option>\n          </select>\n          <div *ngIf=\"regform.submitted && min_bal_req.invalid\" class=\"invalid-feedback\">\n            <div *ngIf=\"min_bal_req.errors.required\">filed is required</div>\n          </div>\n        </div>\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"free sms credits \" name=\"free_sms_credits\" [(ngModel)]=\"free_sms_credits\"  #sms_credits=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && sms_credits.invalid }\" required>\n      <div *ngIf=\"regform.submitted && sms_credits.invalid\" class=\"invalid-feedback\">\n        <div *ngIf=\"sms_credits.errors.required\">filed is required</div>\n      </div>\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"list Price \" name=\"package_list_price\"  [(ngModel)]=\"package_list_price\"  #list_price=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && list_price.invalid }\" required>\n      <div *ngIf=\"regform.submitted && list_price.invalid\" class=\"invalid-feedback\">\n        <div *ngIf=\"list_price.errors.required\">filed is required</div>\n      </div>\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"Offered Price \" name=\"package_offered_price\"  [(ngModel)]=\"package_offered_price\"  #offered_price=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && offered_price.invalid }\" required>\n      <div *ngIf=\"regform.submitted && offered_price.invalid\" class=\"invalid-feedback\">\n        <div *ngIf=\"offered_price.errors.required\">filed is required</div>\n      </div>\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"Gst Rate \" name=\"package_gst_rate\"  [(ngModel)]=\"package_gst_rate\"  #gst_rate=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && gst_rate.invalid }\" required>\n      <div *ngIf=\"regform.submitted && sms_credits.invalid\" class=\"invalid-feedback\">\n        <div *ngIf=\"sms_credits.errors.required\">filed is required</div>\n      </div>\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"Gst Amount \" name=\"package_gst_amount\"  [(ngModel)]=\"free_sms_credits\"  #sms_credits=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && sms_credits.invalid }\" required>\n      <div *ngIf=\"regform.submitted && gst_rate.invalid\" class=\"invalid-feedback\">\n        <div *ngIf=\"gst_rate.errors.required\">filed is required</div>\n      </div>\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package price\t\" name=\"total_package_price\"  [(ngModel)]=\"free_sms_credits\"  #package_price=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && package_price.invalid }\" required>\n      <div *ngIf=\"regform.submitted && package_price.invalid\" class=\"invalid-feedback\">\n        <div *ngIf=\"package_price.errors.required\">filed is required</div>\n      </div>\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package status\" name=\"package_status\"  [(ngModel)]=\"package_status\"  #status=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && status.invalid }\" required>\n      <div *ngIf=\"regform.submitted && status.invalid\" class=\"invalid-feedback\">\n        <div *ngIf=\"status.errors.required\">filed is required</div>\n      </div>\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"Validity\" name=\"package_validity_in_months\"  [(ngModel)]=\"package_validity_in_months\"  #months=ngModel [ngClass]=\"{ 'is-invalid': regform.submitted && months.invalid }\" required>\n      <div *ngIf=\"regform.submitted && months.invalid\" class=\"invalid-feedback\">\n        <div *ngIf=\"months.errors.required\">filed is required</div>\n      </div>\n\n      <textarea class=\"form-control mb-4\" placeholder=\"package Details1\" name=\"package_details1\"  ngModel ></textarea>\n\n      <textarea class=\"form-control mb-4\" placeholder=\"package Details2\" name=\"package_details2\" ngModel></textarea>\n\n      <textarea class=\"form-control mb-4\" placeholder=\"package Details3\" name=\"package_details3\"  ngModel></textarea>\n\n      <button mdbBtn color=\"info\" block=\"true\"  class=\"my-4\" type=\"submit\">Add</button>\n  </div>\n\n</div>\n</div>\n  </form>\n\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/PackageManage/pack-manage/pack-manage.component.html":
 /*!************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/PackageManage/pack-manage/pack-manage.component.html ***!
@@ -151,7 +162,7 @@ module.exports = "<mat-tab-group mat-align-tabs=\"center\">\n  <mat-tab label=\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form    (ngSubmit)=\"updatePackage(regform.form.value)\" #regform=\"ngForm\">\n  <div class=\"medias mymedia text-center border border-light p-5 \" *ngFor=\"let pack of packageDetails\">\n\n\n      <img src=\"assets/img/addsmspack.jpg\" width=\"25%\">\n\n\n        <input type=\"text\"  class=\"form-control mb-4\" placeholder=\"package_name\" name=\"package_name\" [(ngModel)]=\"pack.package_name\">\n        <input type=\"text\"  class=\"form-control mb-4\" placeholder=\"package_route\" name=\"package_route\" [(ngModel)]=\"pack.package_route\" >\n\n          <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_unit_price\" name=\"package_unit_price\" [(ngModel)]=\"pack.package_unit_price\">\n\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_sms_credits \" name=\"package_sms_credits\" [(ngModel)]=\"pack.package_sms_credits\">\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_price\" name=\"package_price\" [(ngModel)]=\"pack.package_price\">\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_details\" name=\"package_details\" [(ngModel)]=\"pack.package_details\">\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_status\" name=\"package_status\" [(ngModel)]=\"pack.package_status\">\n      <input type=\"date\"   class=\"form-control mb-4\" placeholder=\"Validity\" name=\"package_validity_in_months\" [(ngModel)]=\"pack.package_validity_in_months\">\n\n      <!-- Sign up button -->\n      <button mdbBtn color=\"info\" block=\"true\" class=\"my-4\" type=\"submit\">Update</button>\n  </div>\n  </form>\n"
+module.exports = "<form    (ngSubmit)=\"regform.form.valid&&updatePackage(regform.form.value)\" #regform=\"ngForm\">\n  <div class=\"medias mymedia text-center border border-light p-5 \" *ngFor=\"let pack of packageDetails\">\n      <img src=\"assets/img/addsmspack.jpg\" width=\"25%\">\n        <input type=\"text\"  class=\"form-control mb-4\" placeholder=\"package_name\" name=\"package_name\" [(ngModel)]=\"pack.package_name\" >\n        <input type=\"text\"  class=\"form-control mb-4\" placeholder=\"package_route\" name=\"package_route\" [(ngModel)]=\"pack.package_route\" >\n\n          <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_unit_price\" name=\"package_unit_price\" [(ngModel)]=\"pack.package_unit_price\">\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_sms_credits \" name=\"package_sms_credits\" [(ngModel)]=\"pack.package_sms_credits\">\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_price\" name=\"package_price\" [(ngModel)]=\"pack.package_price\">\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_details\" name=\"package_details1\" [(ngModel)]=\"pack.package_details1\">\n\n      <input type=\"text\"   class=\"form-control mb-4\" placeholder=\"package_status\" name=\"package_status\" [(ngModel)]=\"pack.package_status\">\n      <input type=\"date\"   class=\"form-control mb-4\" placeholder=\"Validity\" name=\"package_validity_in_months\" [(ngModel)]=\"pack.package_validity_in_months\">\n\n      <button mdbBtn color=\"info\" block=\"true\" class=\"my-4\" type=\"submit\">Update</button>\n  </div>\n  </form>\n"
 
 /***/ }),
 
@@ -184,7 +195,7 @@ module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center fo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">View Premium Plans</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 search\">\n\n        <input  type=\"text\" [(ngModel)]=\"package_id\" placeholder=\" Search By packageId\"\n        aria-label=\"Search\" (input)=\"search()\" >\n      </div>\n\n      <div class=\"col-md-4 mubutn\">\n        <button mat-stroked-button color=\"primary\" routerLink=\"/packageMange/addPacks\">\n          Add\n          <span class=\"material-icons\">\n          add\n          </span></button>\n\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n        </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\" >\n        <tr style=\"background-color: darkblue;color:white\" >\n          <th class=\"text-center\">\n            PackageID</th>\n          <th class=\"text-center\">\n            PackageName</th>\n          <th class=\"text-center\">Credits</th>\n          <th class=\"text-center\">list Price </th>\n          <th class=\"text-center\">offered Price</th>\n          <th class=\"text-center\">packagePrice</th>\n          <th class=\"text-center\">Validity</th>\n          <th class=\"text-center\">status</th>\n          <th colspan=\"2\" class=\"text-center\">Action</th>\n\n        </tr>\n        <tr *ngFor=\"let person of personList; let id = index\">\n          <td >\n\n       {{person.package_id}}\n          </td>\n          <td >\n         {{person.package_name}}\n             </td>\n\n          <td >\n      {{person.\tfree_sms_credits}}\n          </td>\n          <td >\n       {{person.package_list_price}}\n          </td>\n          <td >\n            {{person.\tpackage_offered_price}}\n               </td>\n          <td name=\"city\">\n            {{person.\ttotal_package_price}}\n          </td>\n          <td name=\"state\">\n       {{person.package_validity_in_months\t}}\n          </td>\n          <td name=\"state\">\n            {{person.package_status}}\n               </td>\n          <td>\n            <span class=\"table-Add\">\n              <button type=\"Submit\" mdbBtn color=\"green\" rounded=\"true\" size=\"sm\" class=\"my-0\" [routerLink]=\"['/packageMange/editpremiumPlan/',person.package_id]\" ><i class=\"fas fa-user-edit\"></i></button>\n            </span>\n          </td>\n          <td>\n            <span class=\"table-remove\">\n              <button type=\"button\" mdbBtn color=\"danger\" rounded=\"true\" size=\"sm\" class=\"my-0\" (click)=\"deletePackage(person.package_id)\"><i class=\"fas fa-trash-alt\"></i></button>\n            </span>\n          </td>\n\n\n        </tr>\n      </table>\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">View Premium Plans</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 search\">\n\n        <input  type=\"text\" [(ngModel)]=\"package_id\" placeholder=\" Search By packageId\"\n        aria-label=\"Search\" (input)=\"search()\" >\n      </div>\n\n      <div class=\"col-md-4 mubutn\">\n        <button mat-stroked-button color=\"primary\" routerLink=\"/packageMange/addPremiumPack\">\n          Add\n          <span class=\"material-icons\">\n          add\n          </span></button>\n\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n        </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\" >\n        <tr style=\"background-color: darkblue;color:white\" >\n          <th class=\"text-center\">\n            PackageID</th>\n          <th class=\"text-center\">\n            PackageName</th>\n          <th class=\"text-center\">Credits</th>\n          <th class=\"text-center\">list Price </th>\n          <th class=\"text-center\">offered Price</th>\n          <th class=\"text-center\">packagePrice</th>\n          <th class=\"text-center\">Validity</th>\n          <th class=\"text-center\">status</th>\n          <th colspan=\"2\" class=\"text-center\">Action</th>\n\n        </tr>\n        <tr *ngFor=\"let person of personList; let id = index\">\n          <td >\n\n       {{person.package_id}}\n          </td>\n          <td >\n         {{person.package_name}}\n             </td>\n\n          <td >\n      {{person.\tfree_sms_credits}}\n          </td>\n          <td >\n       {{person.package_list_price}}\n          </td>\n          <td >\n            {{person.\tpackage_offered_price}}\n               </td>\n          <td name=\"city\">\n            {{person.\ttotal_package_price}}\n          </td>\n          <td name=\"state\">\n       {{person.package_validity_in_months\t}}\n          </td>\n          <td name=\"state\">\n            {{person.package_status}}\n               </td>\n          <td>\n            <span class=\"table-Add\">\n              <button type=\"Submit\" mdbBtn color=\"green\" rounded=\"true\" size=\"sm\" class=\"my-0\" [routerLink]=\"['/packageMange/editpremiumPlan/',person.package_id]\" ><i class=\"fas fa-user-edit\"></i></button>\n            </span>\n          </td>\n          <td>\n            <span class=\"table-remove\">\n              <button type=\"button\" mdbBtn color=\"danger\" rounded=\"true\" size=\"sm\" class=\"my-0\" (click)=\"deletePackage(person.package_id)\"><i class=\"fas fa-trash-alt\"></i></button>\n            </span>\n          </td>\n\n\n        </tr>\n      </table>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -613,7 +624,7 @@ module.exports = "<mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-nav-list>\n    <div class=\"profile-card\">\n        <div class=\"header\">\n        </div>\n        <img src=\"assets/img/person.png\" >\n        <h4>{{name}}</h4>\n        <h6><b>Role: </b>{{role}}</h6>\n    </div>\n\n    <mat-divider></mat-divider>\n\n    <!-- <h2 matSubheader>Pages</h2> -->\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/home\" routerLinkActive=\"active\"><i class=\"fas fa-chart-line\"></i> &nbsp; Dashboard</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/client/viewclient\" routerLinkActive=\"active\" ><i class=\"fas fa-users\" ></i> &nbsp; Client Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/attedance/attendanceReport\" routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-chart-area\" ></i>&nbsp; Users Mangement</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/packagemanagement\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Package Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/campaignManage\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Campaign Management</a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/analytics\"  routerLinkActive=\"active\" *ngIf=\"role =='Partner'||role=='admin'\" > <i class=\"fas fa-chart-pie\"></i>&nbsp; Analytics</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLinkActive=\"active\" routerLink=\"/billing/smspackagelist\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\"></i>&nbsp; Billing</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/helpdesk/viewhelpdesk\" *ngIf=\"role =='admin'\"><i class=\"fas fa-hands-helping\" ></i>&nbsp; HelpDesk</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/templates/viewTemplates\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; Templates</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/card/viewcards\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; cards</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n      android\n      </span> ViewApkList</a>\n\n    <!-- <mat-divider></mat-divider> -->\n\n    <h2 matSubheader *ngIf=\"role =='admin'\">Tools</h2>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>import_contacts</mat-icon>\n        Contacts\n    </a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>contact_phone</mat-icon>\n        Leads\n    </a>\n\n</mat-nav-list>\n"
+module.exports = "<mat-nav-list>\n    <div class=\"profile-card\">\n        <div class=\"header\">\n        </div>\n        <img src=\"assets/img/person.png\" >\n        <h4>{{name}}</h4>\n        <h6><b>Role: </b>{{role}}</h6>\n    </div>\n\n    <mat-divider></mat-divider>\n\n    <!-- <h2 matSubheader>Pages</h2> -->\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/home\" routerLinkActive=\"active\"><i class=\"fas fa-chart-line\"></i> &nbsp; Dashboard</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/client/viewclient\" routerLinkActive=\"active\" ><i class=\"fas fa-users\" ></i> &nbsp; Client Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/attedance/attendanceReport\" routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-chart-area\" ></i>&nbsp; Users Mangement</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/packagemanagement\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'||role=='Partner'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Package Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/campaignManage\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Campaign Management</a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/analytics\"  routerLinkActive=\"active\" *ngIf=\"role =='Partner'||role=='admin'\" > <i class=\"fas fa-chart-pie\"></i>&nbsp; Analytics</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLinkActive=\"active\" routerLink=\"/billing/smspackagelist\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\"></i>&nbsp; Billing</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/helpdesk/viewhelpdesk\" *ngIf=\"role =='admin'\"><i class=\"fas fa-hands-helping\" ></i>&nbsp; HelpDesk</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/templates/viewTemplates\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; Templates</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/card/viewcards\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; cards</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n      android\n      </span> ViewApkList</a>\n\n    <!-- <mat-divider></mat-divider> -->\n\n    <h2 matSubheader *ngIf=\"role =='admin'\">Tools</h2>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>import_contacts</mat-icon>\n        Contacts\n    </a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>contact_phone</mat-icon>\n        Leads\n    </a>\n\n</mat-nav-list>\n"
 
 /***/ }),
 
@@ -1542,6 +1553,68 @@ AddPackageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/PackageManage/add-premium-pack/add-premium-pack.component.scss":
+/*!********************************************************************************!*\
+  !*** ./src/app/PackageManage/add-premium-pack/add-premium-pack.component.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "input#city {\n  margin-top: 0%;\n  margin-bottom: 4%;\n}\n\nbutton.my-4.btn.btn-info.btn-block {\n  margin-left: 0%;\n}\n\n.medias.text-center.border.border-light.p-5 {\n  width: 50%;\n  margin-left: 25%;\n}\n\nimg.pack {\n  margin-left: 35%;\n}\n\n@media screen and (max-width: 1060px) {\n  .medias.mymedia.text-center.border.border-light.p-5 {\n    width: 100%;\n    margin-left: 0%;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFja2FnZU1hbmFnZS9hZGQtcHJlbWl1bS1wYWNrL0Y6XFxnaXQgaHViXFxyZXNlbGxlclxcRnJvbnRlbmQvc3JjXFxhcHBcXFBhY2thZ2VNYW5hZ2VcXGFkZC1wcmVtaXVtLXBhY2tcXGFkZC1wcmVtaXVtLXBhY2suY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL1BhY2thZ2VNYW5hZ2UvYWRkLXByZW1pdW0tcGFjay9hZGQtcHJlbWl1bS1wYWNrLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtFQUNBLGlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0FDQ0Y7O0FERUE7RUFDRSxVQUFBO0VBQ0EsZ0JBQUE7QUNDRjs7QURDQTtFQUNFLGdCQUFBO0FDRUY7O0FEQUE7RUFFRTtJQUNFLFdBQUE7SUFDQSxlQUFBO0VDRUY7QUFDRiIsImZpbGUiOiJzcmMvYXBwL1BhY2thZ2VNYW5hZ2UvYWRkLXByZW1pdW0tcGFjay9hZGQtcHJlbWl1bS1wYWNrLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW5wdXQjY2l0eSB7XHJcbiAgbWFyZ2luLXRvcDogMCU7XHJcbiAgbWFyZ2luLWJvdHRvbTogNCU7XHJcbn1cclxuXHJcbmJ1dHRvbi5teS00LmJ0bi5idG4taW5mby5idG4tYmxvY2sge1xyXG4gIG1hcmdpbi1sZWZ0OiAwJTtcclxufVxyXG5cclxuLm1lZGlhcy50ZXh0LWNlbnRlci5ib3JkZXIuYm9yZGVyLWxpZ2h0LnAtNSB7XHJcbiAgd2lkdGg6IDUwJTtcclxuICBtYXJnaW4tbGVmdDogMjUlO1xyXG59XHJcbmltZy5wYWNrIHtcclxuICBtYXJnaW4tbGVmdDogMzUlO1xyXG59XHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwNjBweCl7XHJcblxyXG4gIC5tZWRpYXMubXltZWRpYS50ZXh0LWNlbnRlci5ib3JkZXIuYm9yZGVyLWxpZ2h0LnAtNSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAwJTtcclxuICB9XHJcbn1cclxuIiwiaW5wdXQjY2l0eSB7XG4gIG1hcmdpbi10b3A6IDAlO1xuICBtYXJnaW4tYm90dG9tOiA0JTtcbn1cblxuYnV0dG9uLm15LTQuYnRuLmJ0bi1pbmZvLmJ0bi1ibG9jayB7XG4gIG1hcmdpbi1sZWZ0OiAwJTtcbn1cblxuLm1lZGlhcy50ZXh0LWNlbnRlci5ib3JkZXIuYm9yZGVyLWxpZ2h0LnAtNSB7XG4gIHdpZHRoOiA1MCU7XG4gIG1hcmdpbi1sZWZ0OiAyNSU7XG59XG5cbmltZy5wYWNrIHtcbiAgbWFyZ2luLWxlZnQ6IDM1JTtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTA2MHB4KSB7XG4gIC5tZWRpYXMubXltZWRpYS50ZXh0LWNlbnRlci5ib3JkZXIuYm9yZGVyLWxpZ2h0LnAtNSB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWFyZ2luLWxlZnQ6IDAlO1xuICB9XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/PackageManage/add-premium-pack/add-premium-pack.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/PackageManage/add-premium-pack/add-premium-pack.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: AddPremiumPackComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddPremiumPackComponent", function() { return AddPremiumPackComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
+
+
+let AddPremiumPackComponent = class AddPremiumPackComponent {
+    constructor(apiCall, router) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.is_sim_allowed = "";
+        this.is_min_bal_req = "";
+    }
+    ngOnInit() {
+    }
+    add(data) {
+        this.apiCall.addPremiumPackage(data).subscribe((res) => {
+            console.log(res);
+            alert('Package added successfully');
+            this.router.navigate(['/packagemanagement']);
+        });
+    }
+};
+AddPremiumPackComponent.ctorParameters = () => [
+    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
+AddPremiumPackComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-add-premium-pack',
+        template: __webpack_require__(/*! raw-loader!./add-premium-pack.component.html */ "./node_modules/raw-loader/index.js!./src/app/PackageManage/add-premium-pack/add-premium-pack.component.html"),
+        styles: [__webpack_require__(/*! ./add-premium-pack.component.scss */ "./src/app/PackageManage/add-premium-pack/add-premium-pack.component.scss")]
+    })
+], AddPremiumPackComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/PackageManage/pack-manage/pack-manage.component.scss":
 /*!**********************************************************************!*\
   !*** ./src/app/PackageManage/pack-manage/pack-manage.component.scss ***!
@@ -1830,6 +1903,7 @@ let ViewPackageComponent = class ViewPackageComponent {
             console.log(res);
             alert('Package Deleted Sucessfully');
             this.remove(id);
+            this.getAllPackages();
         });
     }
     exportAsXLSX() {
@@ -1922,6 +1996,7 @@ let ViewpremiumplansComponent = class ViewpremiumplansComponent {
                 console.log(res);
                 alert('Package Deleted Sucessfully');
                 this.remove(id);
+                this.getAllPackages();
             });
         }
     }
@@ -2377,19 +2452,22 @@ let ApiCallService = class ApiCallService {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/deleteclient', data);
     }
     getAllPackages() {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getAllPackages');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getAllPackages');
     }
     addPackages(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/addPackages', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/addPackages', data);
+    }
+    addPremiumPackage(data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/addPremiumPackage', data);
     }
     getPackageDetails(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getPackageDetails', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getPackageDetails', data);
     }
     updatePackage(data) {
-        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/updatePackage', data);
+        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/updatePackage', data);
     }
     deletePackage(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/deletePackage', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/deletePackage', data);
     }
     getpurchaseData() {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getpurchaseData');
@@ -2507,7 +2585,7 @@ let ApiCallService = class ApiCallService {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getclientsbyfilter', data);
     }
     getsmspackagelist() {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getsmspackagelist');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getsmspackagelist');
     }
     getclientdetails(data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getclientdetails', data);
@@ -2516,7 +2594,7 @@ let ApiCallService = class ApiCallService {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getOrderId', data);
     }
     getpremiumplanlist() {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getpremiumplanlist');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getpremiumplanlist');
     }
     postofficeApi(data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/postofficeApi', data);
@@ -2537,19 +2615,19 @@ let ApiCallService = class ApiCallService {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getTodayregisterdData');
     }
     getAllpremiumplans() {
-        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getAllpremiumplans');
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getAllpremiumplans');
     }
     getpremiumplandetails(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/getpremiumplandetails', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getpremiumplandetails', data);
     }
     fetchProfessions() {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/fetchProfessions');
     }
     updatePremiumPlan(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/updatePremiumPlan', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/updatePremiumPlan', data);
     }
     deletePremiumPack(data) {
-        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/deletePremiumPack', data);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/deletePremiumPack', data);
     }
     resetPassword(data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/ChangePassword', data);
@@ -2925,6 +3003,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _campaign_sendnotification_sendnotification_component__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./campaign/sendnotification/sendnotification.component */ "./src/app/campaign/sendnotification/sendnotification.component.ts");
 /* harmony import */ var _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./changepassword/changepassword.component */ "./src/app/changepassword/changepassword.component.ts");
 /* harmony import */ var _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./downloadapk/downloadapk.component */ "./src/app/downloadapk/downloadapk.component.ts");
+/* harmony import */ var _PackageManage_add_premium_pack_add_premium_pack_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./PackageManage/add-premium-pack/add-premium-pack.component */ "./src/app/PackageManage/add-premium-pack/add-premium-pack.component.ts");
+
 
 
 
@@ -3009,7 +3089,8 @@ const routes = [{
                     { path: 'addPacks', component: _PackageManage_add_package_add_package_component__WEBPACK_IMPORTED_MODULE_20__["AddPackageComponent"] },
                     { path: 'editPacks/:package_id', component: _PackageManage_update_package_update_package_component__WEBPACK_IMPORTED_MODULE_21__["UpdatePackageComponent"] },
                     { path: 'ViewPacks', component: _PackageManage_view_package_view_package_component__WEBPACK_IMPORTED_MODULE_22__["ViewPackageComponent"] },
-                    { path: 'editpremiumPlan/:package_id', component: _PackageManage_updatepremiumplan_updatepremiumplan_component__WEBPACK_IMPORTED_MODULE_50__["UpdatepremiumplanComponent"] }
+                    { path: 'editpremiumPlan/:package_id', component: _PackageManage_updatepremiumplan_updatepremiumplan_component__WEBPACK_IMPORTED_MODULE_50__["UpdatepremiumplanComponent"] },
+                    { path: 'addPremiumPack', component: _PackageManage_add_premium_pack_add_premium_pack_component__WEBPACK_IMPORTED_MODULE_56__["AddPremiumPackComponent"] }
                 ] },
             { path: 'packagemanagement', component: _PackageManage_packtabs_packtabs_component__WEBPACK_IMPORTED_MODULE_49__["PacktabsComponent"] },
             { path: 'analytics', component: _Analytics_analytic_analytic_component__WEBPACK_IMPORTED_MODULE_24__["AnalyticComponent"], children: [
@@ -3199,6 +3280,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./changepassword/changepassword.component */ "./src/app/changepassword/changepassword.component.ts");
 /* harmony import */ var _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./downloadapk/downloadapk.component */ "./src/app/downloadapk/downloadapk.component.ts");
 /* harmony import */ var ng_otp_input__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ng-otp-input */ "./node_modules/ng-otp-input/fesm2015/ng-otp-input.js");
+/* harmony import */ var _PackageManage_add_premium_pack_add_premium_pack_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./PackageManage/add-premium-pack/add-premium-pack.component */ "./src/app/PackageManage/add-premium-pack/add-premium-pack.component.ts");
+
 
 
 
@@ -3332,6 +3415,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _campaign_sendnotification_sendnotification_component__WEBPACK_IMPORTED_MODULE_68__["SendnotificationComponent"],
             _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_69__["ChangepasswordComponent"],
             _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_70__["DownloadapkComponent"],
+            _PackageManage_add_premium_pack_add_premium_pack_component__WEBPACK_IMPORTED_MODULE_72__["AddPremiumPackComponent"],
         ],
         imports: [
             ng_otp_input__WEBPACK_IMPORTED_MODULE_71__["NgOtpInputModule"],
