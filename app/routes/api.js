@@ -67,6 +67,10 @@ const APIRoutes = function (passport) {
   router.get('/partner/:partner_id/getplanexpirynextweek', clientController.getplanexpirynextweek);
   router.get('/partner/:partner_id/getclientscount', clientController.getclientscount);
   router.get('/partner/:partner_id/getuserdataCount', clientController.getuserdataCount);
+  router.get('/partner/:partner_id/getusersfeedbackqueries',clientController.getusersfeedbackqueries);
+
+  
+ 
   // GET Routes.
   router.get('/profile', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, UserController.index));
   router.get('/admin', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, AdminController.index));

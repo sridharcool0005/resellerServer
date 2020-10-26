@@ -518,6 +518,17 @@ module.exports = "<div class=\"container\" >\n  <div class=\"row\">\n    <div cl
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/dwnldapksendsms/dwnldapksendsms.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/dwnldapksendsms/dwnldapksendsms.component.html ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<!-- <form (ngSubmit)=\" share(regform.form.value)\" #regform=\"ngForm\">\n  <input class=\"mobileShow\"\n  type=\"text\" name=\"message\" ngModel>\n<button  type=\"submit\" class=\"mobileShow\">\n  Share to whatsapp\n</button>\n</form> -->\n\n<h3>Send SMS To Whatsapp </h3>\n<div class=\"medias mymedia text-center border border-light p-5 \">\n  <form (ngSubmit)=\"regform.form.valid && share(regform.form.value)\" #regform=\"ngForm\">\n\n    <img src=\"assets/img/whatsaapicon.webp\" width=\"25%\"><br><br>\n\n    <ng-container>\n\n      <div>\n        <textarea class=\"form-control mb-4\" [(ngModel)]=\"message\" #text=ngModel name=\"message\" placeholder=\"message\"\n          [ngClass]=\"{ 'is-invalid': regform.submitted && text.invalid }\" required></textarea>\n        <div *ngIf=\"regform.submitted && text.invalid\" class=\"invalid-feedback\">\n          <div *ngIf=\"text.errors.required\">Message is required</div>\n        </div>\n      </div>\n    </ng-container>\n\n    <button mdbBtn color=\"info\" block=\"true\" class=\"my-4\" type=\"submit\">SendSMS</button>\n  </form>\n</div>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/helpdesk/helpdesk/helpdesk.component.html":
 /*!*************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/helpdesk/helpdesk/helpdesk.component.html ***!
@@ -595,6 +606,17 @@ module.exports = "<table *ngIf=\"userDetails\" class=\"table-fill\">\n  <thead>\
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/sendsmstouserquery/sendsmstouserquery.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/sendsmstouserquery/sendsmstouserquery.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<!-- <form (ngSubmit)=\" share(regform.form.value)\" #regform=\"ngForm\">\n  <input class=\"mobileShow\"\n  type=\"text\" name=\"message\" ngModel>\n<button  type=\"submit\" class=\"mobileShow\">\n  Share to whatsapp\n</button>\n</form> -->\n\n<h3>Send SMS To Whatsapp </h3>\n<div class=\"medias mymedia text-center border border-light p-5 \">\n  <form (ngSubmit)=\"regform.form.valid && share(regform.form.value)\" #regform=\"ngForm\">\n\n    <img src=\"assets/img/whatsaapicon.webp\" width=\"25%\"><br><br>\n\n    <ng-container>\n\n      <div>\n        <textarea class=\"form-control mb-4\" [(ngModel)]=\"message\" #text=ngModel name=\"message\" placeholder=\"message\"\n          [ngClass]=\"{ 'is-invalid': regform.submitted && text.invalid }\" required></textarea>\n        <div *ngIf=\"regform.submitted && text.invalid\" class=\"invalid-feedback\">\n          <div *ngIf=\"text.errors.required\">Message is required</div>\n        </div>\n      </div>\n    </ng-container>\n\n    <button mdbBtn color=\"info\" block=\"true\" class=\"my-4\" type=\"submit\">SendSMS</button>\n  </form>\n</div>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/shared/components/footer/footer.component.html":
 /*!******************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/shared/components/footer/footer.component.html ***!
@@ -624,7 +646,7 @@ module.exports = "<mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-nav-list>\n    <div class=\"profile-card\">\n        <div class=\"header\">\n        </div>\n        <img src=\"assets/img/person.png\" >\n        <h4>{{name}}</h4>\n        <h6><b>Role: </b>{{role}}</h6>\n    </div>\n\n    <mat-divider></mat-divider>\n\n    <!-- <h2 matSubheader>Pages</h2> -->\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/home\" routerLinkActive=\"active\"><i class=\"fas fa-chart-line\"></i> &nbsp; Dashboard</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/client/viewclient\" routerLinkActive=\"active\" ><i class=\"fas fa-users\" ></i> &nbsp; Client Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/attedance/attendanceReport\" routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-chart-area\" ></i>&nbsp; Users Mangement</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/packagemanagement\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'||role=='Partner'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Package Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/campaignManage\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Campaign Management</a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/analytics\"  routerLinkActive=\"active\" *ngIf=\"role =='Partner'||role=='admin'\" > <i class=\"fas fa-chart-pie\"></i>&nbsp; Analytics</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLinkActive=\"active\" routerLink=\"/billing/smspackagelist\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\"></i>&nbsp; Billing</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/helpdesk/viewhelpdesk\" *ngIf=\"role =='admin'\"><i class=\"fas fa-hands-helping\" ></i>&nbsp; HelpDesk</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/templates/viewTemplates\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; Templates</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/card/viewcards\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; cards</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n      android\n      </span> ViewApkList</a>\n\n    <!-- <mat-divider></mat-divider> -->\n\n    <h2 matSubheader *ngIf=\"role =='admin'\">Tools</h2>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>import_contacts</mat-icon>\n        Contacts\n    </a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>contact_phone</mat-icon>\n        Leads\n    </a>\n\n</mat-nav-list>\n"
+module.exports = "<mat-nav-list>\n    <div class=\"profile-card\">\n        <div class=\"header\">\n        </div>\n        <img src=\"assets/img/person.png\" >\n        <h4>{{name}}</h4>\n        <h6><b>Role: </b>{{role}}</h6>\n    </div>\n\n    <mat-divider></mat-divider>\n\n    <!-- <h2 matSubheader>Pages</h2> -->\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/home\" routerLinkActive=\"active\"><i class=\"fas fa-chart-line\"></i> &nbsp; Dashboard</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/client/viewclient\" routerLinkActive=\"active\" ><i class=\"fas fa-users\" ></i> &nbsp; Client Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/attedance/attendanceReport\" routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-chart-area\" ></i>&nbsp; Users Mangement</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/packagemanagement\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'||role=='Partner'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Package Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/campaignManage\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Campaign Management</a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/analytics\"  routerLinkActive=\"active\" *ngIf=\"role =='Partner'||role=='admin'\" > <i class=\"fas fa-chart-pie\"></i>&nbsp; Analytics</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLinkActive=\"active\" routerLink=\"/billing/smspackagelist\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\"></i>&nbsp; Billing</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/helpdesk/viewhelpdesk\" *ngIf=\"role =='admin'\"><i class=\"fas fa-hands-helping\" ></i>&nbsp; HelpDesk</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/templates/viewTemplates\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; Templates</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/card/viewcards\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; cards</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n      android\n      </span> ViewApkList</a>\n      <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewdownloadapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n        android\n        </span> viewdownloadapklist</a>\n        <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewusersfeedback\" *ngIf=\"role =='Partner'||role =='admin'\"><i class=\"fas fa-comment-alt\"></i> ViewUsersFeedbackQueries</a>\n    <!-- <mat-divider></mat-divider> -->\n\n    <h2 matSubheader *ngIf=\"role =='admin'\">Tools</h2>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>import_contacts</mat-icon>\n        Contacts\n    </a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>contact_phone</mat-icon>\n        Leads\n    </a>\n\n</mat-nav-list>\n"
 
 /***/ }),
 
@@ -735,6 +757,28 @@ module.exports = "<router-outlet></router-outlet>\n"
 /***/ (function(module, exports) {
 
 module.exports = "<p>viewusers works!</p>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/viewapkdownload/viewapkdownload.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/viewapkdownload/viewapkdownload.component.html ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">\n    View Download Apk</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <!-- <div class=\"col-md-6\">\n        <form (ngSubmit)=\"regform.form.valid&&getplanexpirycontacts(regform.form.value)\" #regform=\"ngForm\">\n\n          <input type=\"date\"  name=\"fromDate\" placeholder=\"FromDate\" ngModel>&nbsp;\n          <input type=\"date\" name=\"toDate\" placeholder=\"ToDate\" ngModel>&nbsp;\n\n          <input type=\"submit\">\n        </form>\n      </div> -->\n      <div class=\"col-md-6 mubutn\" >\n\n        <!-- <select class=\"browser-default custom-select filter\" (change)=\"getclientsbyfilter($event.target.value)\">\n          <option selected value=\"\">select</option>\n          <option  value=\"All\">ALL</option>\n          <option value=\"Demo\" >Demo</option>\n          <option value=\"Business\">Business </option>\n          <option value=\"Express\">Express</option>\n          <option value=\"Business Plus\">Business Plus</option>\n          <option value=\"Business Express\">Business Express</option>\n\n        </select> -->\n\n\n\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n        <tr style=\"background-color: darkblue;color:white\">\n          <th class=\"text-center\">\n            Query Id</th>\n          <th class=\"text-center\">\n            FullName</th>\n            <th class=\"text-center\">\n              MobileNumber</th>\n          <th class=\"text-center\">message</th>\n          <th class=\"text-center\">created_on</th>\n          <th class=\"text-center whatsapicon\">Action</th>\n\n\n        </tr>\n        <tr *ngFor=\"let person of personList; let id = index\">\n\n          <td>\n            {{person.query_id}}\n          </td>\n          <td>\n            {{person.name}}\n          </td>\n          <td>\n            {{person.mobilenumber}}\n          </td>\n          <td>\n             {{person.message}}\n          </td>\n          <td>\n            {{person.created_on| date: 'dd/MM/yyyy'}}\n         </td>\n         <td >\n          <img class=\"pointer\" src=\"assets/img/whatsaapicon.webp\" width=\"75%\" [routerLink]=\"['/downloadapksendsms',person.mobilenumber]\">\n        </td>\n       <!-- <td>\n\n        <span class=\"material-icons\">\n          sms\n          </span>\n      </td> -->\n        </tr>\n      </table>\n    </div>\n  </div>\n</div>\n\n\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/viewusersfeedback/viewusersfeedback.component.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/viewusersfeedback/viewusersfeedback.component.html ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">\n    View Users Feedback</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n       <div class=\"col-md-6 mubutn\" >\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n        <tr style=\"background-color: darkblue;color:white\">\n          <th class=\"text-center\">\n            Query Id</th>\n            <th class=\"text-center\">\n              ClientId </th>\n          <th class=\"text-center\">\n            FullName</th>\n            <th class=\"text-center\">\n              MobileNumber</th>\n          <th class=\"text-center\">message</th>\n          <th class=\"text-center\">Subject</th>\n          <th class=\"text-center\">created_on</th>\n          <th class=\"text-center whatsapicon\">Action</th>\n\n\n        </tr>\n        <tr *ngFor=\"let person of personList; let id = index\">\n          <td>\n            {{person.query_id}}\n          </td>\n          <td>\n            {{person.client_id}}\n          </td>\n          <td>\n            {{person.name}}\n          </td>\n          <td>\n            {{person.mobilenumber}}\n          </td>\n          <td>\n             {{person.message}}\n          </td>\n          <td>\n            {{person.subject}}\n         </td>\n          <td>\n            {{person.created_on| date: 'dd/MM/yyyy'}}\n         </td>\n         <td >\n          <img class=\"pointer\" src=\"assets/img/whatsaapicon.webp\" width=\"75%\" [routerLink]=\"['/sendwhatsaapsms',person.mobilenumber]\">\n        </td>\n       <!-- <td>\n\n        <span class=\"material-icons\">\n          sms\n          </span>\n      </td> -->\n        </tr>\n      </table>\n    </div>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -2715,6 +2759,15 @@ var ApiCallService = /** @class */ (function () {
     ApiCallService.prototype.getclientscount = function () {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getclientscount');
     };
+    ApiCallService.prototype.getallapkDownloadlist = function () {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getallapkDownloadlist');
+    };
+    ApiCallService.prototype.getadminmobilenumber = function () {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getadminmobilenumber');
+    };
+    ApiCallService.prototype.getusersfeedbackqueries = function () {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getusersfeedbackqueries');
+    };
     // Helper Methods
     ApiCallService.prototype.setToken = function (token) {
         localStorage.setItem('token', token);
@@ -3075,6 +3128,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./changepassword/changepassword.component */ "./src/app/changepassword/changepassword.component.ts");
 /* harmony import */ var _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./downloadapk/downloadapk.component */ "./src/app/downloadapk/downloadapk.component.ts");
 /* harmony import */ var _PackageManage_add_premium_pack_add_premium_pack_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./PackageManage/add-premium-pack/add-premium-pack.component */ "./src/app/PackageManage/add-premium-pack/add-premium-pack.component.ts");
+/* harmony import */ var _viewapkdownload_viewapkdownload_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./viewapkdownload/viewapkdownload.component */ "./src/app/viewapkdownload/viewapkdownload.component.ts");
+/* harmony import */ var _dwnldapksendsms_dwnldapksendsms_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./dwnldapksendsms/dwnldapksendsms.component */ "./src/app/dwnldapksendsms/dwnldapksendsms.component.ts");
+/* harmony import */ var _viewusersfeedback_viewusersfeedback_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./viewusersfeedback/viewusersfeedback.component */ "./src/app/viewusersfeedback/viewusersfeedback.component.ts");
+/* harmony import */ var _sendsmstouserquery_sendsmstouserquery_component__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./sendsmstouserquery/sendsmstouserquery.component */ "./src/app/sendsmstouserquery/sendsmstouserquery.component.ts");
+
+
+
+
 
 
 
@@ -3164,6 +3225,10 @@ var routes = [{
                     { path: 'addPremiumPack', component: _PackageManage_add_premium_pack_add_premium_pack_component__WEBPACK_IMPORTED_MODULE_56__["AddPremiumPackComponent"] }
                 ] },
             { path: 'packagemanagement', component: _PackageManage_packtabs_packtabs_component__WEBPACK_IMPORTED_MODULE_49__["PacktabsComponent"] },
+            { path: 'viewdownloadapklist', component: _viewapkdownload_viewapkdownload_component__WEBPACK_IMPORTED_MODULE_57__["ViewapkdownloadComponent"] },
+            { path: 'downloadapksendsms/:mobilenumber', component: _dwnldapksendsms_dwnldapksendsms_component__WEBPACK_IMPORTED_MODULE_58__["DwnldapksendsmsComponent"] },
+            { path: 'viewusersfeedback', component: _viewusersfeedback_viewusersfeedback_component__WEBPACK_IMPORTED_MODULE_59__["ViewusersfeedbackComponent"] },
+            { path: 'sendwhatsaapsms/:mobilenumber', component: _sendsmstouserquery_sendsmstouserquery_component__WEBPACK_IMPORTED_MODULE_60__["SendsmstouserqueryComponent"] },
             { path: 'analytics', component: _Analytics_analytic_analytic_component__WEBPACK_IMPORTED_MODULE_24__["AnalyticComponent"], children: [
                     { path: 'purchaseAnalysis', component: _Analytics_purchase_analysis_purchase_analysis_component__WEBPACK_IMPORTED_MODULE_25__["PurchaseAnalysisComponent"] },
                     { path: 'salesAnalysis', component: _Analytics_sales_analysis_sales_analysis_component__WEBPACK_IMPORTED_MODULE_26__["SalesAnalysisComponent"] },
@@ -3356,6 +3421,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./downloadapk/downloadapk.component */ "./src/app/downloadapk/downloadapk.component.ts");
 /* harmony import */ var ng_otp_input__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ng-otp-input */ "./node_modules/ng-otp-input/fesm5/ng-otp-input.js");
 /* harmony import */ var _PackageManage_add_premium_pack_add_premium_pack_component__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./PackageManage/add-premium-pack/add-premium-pack.component */ "./src/app/PackageManage/add-premium-pack/add-premium-pack.component.ts");
+/* harmony import */ var _viewapkdownload_viewapkdownload_component__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./viewapkdownload/viewapkdownload.component */ "./src/app/viewapkdownload/viewapkdownload.component.ts");
+/* harmony import */ var _dwnldapksendsms_dwnldapksendsms_component__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./dwnldapksendsms/dwnldapksendsms.component */ "./src/app/dwnldapksendsms/dwnldapksendsms.component.ts");
+/* harmony import */ var _viewusersfeedback_viewusersfeedback_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./viewusersfeedback/viewusersfeedback.component */ "./src/app/viewusersfeedback/viewusersfeedback.component.ts");
+/* harmony import */ var _sendsmstouserquery_sendsmstouserquery_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./sendsmstouserquery/sendsmstouserquery.component */ "./src/app/sendsmstouserquery/sendsmstouserquery.component.ts");
+
+
+
+
 
 
 
@@ -3492,6 +3565,10 @@ var AppModule = /** @class */ (function () {
                 _changepassword_changepassword_component__WEBPACK_IMPORTED_MODULE_69__["ChangepasswordComponent"],
                 _downloadapk_downloadapk_component__WEBPACK_IMPORTED_MODULE_70__["DownloadapkComponent"],
                 _PackageManage_add_premium_pack_add_premium_pack_component__WEBPACK_IMPORTED_MODULE_72__["AddPremiumPackComponent"],
+                _viewapkdownload_viewapkdownload_component__WEBPACK_IMPORTED_MODULE_73__["ViewapkdownloadComponent"],
+                _dwnldapksendsms_dwnldapksendsms_component__WEBPACK_IMPORTED_MODULE_74__["DwnldapksendsmsComponent"],
+                _viewusersfeedback_viewusersfeedback_component__WEBPACK_IMPORTED_MODULE_75__["ViewusersfeedbackComponent"],
+                _sendsmstouserquery_sendsmstouserquery_component__WEBPACK_IMPORTED_MODULE_76__["SendsmstouserqueryComponent"],
             ],
             imports: [
                 ng_otp_input__WEBPACK_IMPORTED_MODULE_71__["NgOtpInputModule"],
@@ -5440,6 +5517,69 @@ var DownloadapkComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/dwnldapksendsms/dwnldapksendsms.component.scss":
+/*!****************************************************************!*\
+  !*** ./src/app/dwnldapksendsms/dwnldapksendsms.component.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "input#city {\n  margin-top: 0%;\n  margin-bottom: 4%;\n}\n\nbutton.my-4.btn.btn-info.btn-block {\n  margin-left: 0%;\n}\n\n.medias.text-center.border.border-light.p-5 {\n  width: 50%;\n  margin-left: 25%;\n  margin-top: 2%;\n}\n\nh3 {\n  background-color: #0000FF;\n  color: white;\n  font-size: x-large;\n  text-align: center;\n}\n\n@media screen and (max-width: 1060px) {\n  .medias.mymedia.text-center.border.border-light.p-5 {\n    width: 100%;\n    margin-left: 0%;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZHdubGRhcGtzZW5kc21zL0Y6XFxnaXQgaHViXFxyZXNlbGxlclxcRnJvbnRlbmQvc3JjXFxhcHBcXGR3bmxkYXBrc2VuZHNtc1xcZHdubGRhcGtzZW5kc21zLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9kd25sZGFwa3NlbmRzbXMvZHdubGRhcGtzZW5kc21zLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtFQUNBLGlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0FDQ0Y7O0FERUE7RUFDRSxVQUFBO0VBQ0EsZ0JBQUE7RUFDQSxjQUFBO0FDQ0Y7O0FERUE7RUFFRSx5QkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0FDQUY7O0FERUE7RUFFRTtJQUNFLFdBQUE7SUFDQSxlQUFBO0VDQUY7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2R3bmxkYXBrc2VuZHNtcy9kd25sZGFwa3NlbmRzbXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dCNjaXR5IHtcclxuICBtYXJnaW4tdG9wOiAwJTtcclxuICBtYXJnaW4tYm90dG9tOiA0JTtcclxufVxyXG5cclxuYnV0dG9uLm15LTQuYnRuLmJ0bi1pbmZvLmJ0bi1ibG9jayB7XHJcbiAgbWFyZ2luLWxlZnQ6IDAlO1xyXG59XHJcblxyXG4ubWVkaWFzLnRleHQtY2VudGVyLmJvcmRlci5ib3JkZXItbGlnaHQucC01IHtcclxuICB3aWR0aDogNTAlO1xyXG4gIG1hcmdpbi1sZWZ0OiAyNSU7XHJcbiAgbWFyZ2luLXRvcDoyJVxyXG59XHJcblxyXG5oMyB7XHJcblxyXG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDAwRkY7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGZvbnQtc2l6ZTogeC1sYXJnZTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTA2MHB4KXtcclxuXHJcbiAgLm1lZGlhcy5teW1lZGlhLnRleHQtY2VudGVyLmJvcmRlci5ib3JkZXItbGlnaHQucC01IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDAlO1xyXG4gIH1cclxufVxyXG4iLCJpbnB1dCNjaXR5IHtcbiAgbWFyZ2luLXRvcDogMCU7XG4gIG1hcmdpbi1ib3R0b206IDQlO1xufVxuXG5idXR0b24ubXktNC5idG4uYnRuLWluZm8uYnRuLWJsb2NrIHtcbiAgbWFyZ2luLWxlZnQ6IDAlO1xufVxuXG4ubWVkaWFzLnRleHQtY2VudGVyLmJvcmRlci5ib3JkZXItbGlnaHQucC01IHtcbiAgd2lkdGg6IDUwJTtcbiAgbWFyZ2luLWxlZnQ6IDI1JTtcbiAgbWFyZ2luLXRvcDogMiU7XG59XG5cbmgzIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDBGRjtcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IHgtbGFyZ2U7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTA2MHB4KSB7XG4gIC5tZWRpYXMubXltZWRpYS50ZXh0LWNlbnRlci5ib3JkZXIuYm9yZGVyLWxpZ2h0LnAtNSB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWFyZ2luLWxlZnQ6IDAlO1xuICB9XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/dwnldapksendsms/dwnldapksendsms.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/dwnldapksendsms/dwnldapksendsms.component.ts ***!
+  \**************************************************************/
+/*! exports provided: DwnldapksendsmsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DwnldapksendsmsComponent", function() { return DwnldapksendsmsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
+
+
+var DwnldapksendsmsComponent = /** @class */ (function () {
+    function DwnldapksendsmsComponent(apiCall, router, route) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.route = route;
+    }
+    DwnldapksendsmsComponent.prototype.ngOnInit = function () {
+        this.mobilenumber = this.route.snapshot.paramMap.get('mobilenumber');
+    };
+    DwnldapksendsmsComponent.prototype.share = function (data) {
+        console.log(data);
+        var message = data.message;
+        // Opening URL
+        window.open('https://api.whatsapp.com/send?text=' + message + '&phone=' + '+91' + this.mobilenumber);
+    };
+    DwnldapksendsmsComponent.ctorParameters = function () { return [
+        { type: _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+    ]; };
+    DwnldapksendsmsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-dwnldapksendsms',
+            template: __webpack_require__(/*! raw-loader!./dwnldapksendsms.component.html */ "./node_modules/raw-loader/index.js!./src/app/dwnldapksendsms/dwnldapksendsms.component.html"),
+            styles: [__webpack_require__(/*! ./dwnldapksendsms.component.scss */ "./src/app/dwnldapksendsms/dwnldapksendsms.component.scss")]
+        })
+    ], DwnldapksendsmsComponent);
+    return DwnldapksendsmsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/helpdesk/helpdesk/helpdesk.component.scss":
 /*!***********************************************************!*\
   !*** ./src/app/helpdesk/helpdesk/helpdesk.component.scss ***!
@@ -6185,6 +6325,69 @@ var ProfileComponent = /** @class */ (function () {
         })
     ], ProfileComponent);
     return ProfileComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/sendsmstouserquery/sendsmstouserquery.component.scss":
+/*!**********************************************************************!*\
+  !*** ./src/app/sendsmstouserquery/sendsmstouserquery.component.scss ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "input#city {\n  margin-top: 0%;\n  margin-bottom: 4%;\n}\n\nbutton.my-4.btn.btn-info.btn-block {\n  margin-left: 0%;\n}\n\n.medias.text-center.border.border-light.p-5 {\n  width: 50%;\n  margin-left: 25%;\n  margin-top: 2%;\n}\n\nh3 {\n  background-color: #0000FF;\n  color: white;\n  font-size: x-large;\n  text-align: center;\n}\n\n@media screen and (max-width: 1060px) {\n  .medias.mymedia.text-center.border.border-light.p-5 {\n    width: 100%;\n    margin-left: 0%;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2VuZHNtc3RvdXNlcnF1ZXJ5L0Y6XFxnaXQgaHViXFxyZXNlbGxlclxcRnJvbnRlbmQvc3JjXFxhcHBcXHNlbmRzbXN0b3VzZXJxdWVyeVxcc2VuZHNtc3RvdXNlcnF1ZXJ5LmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zZW5kc21zdG91c2VycXVlcnkvc2VuZHNtc3RvdXNlcnF1ZXJ5LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtFQUNBLGlCQUFBO0FDQ0Y7O0FERUE7RUFDRSxlQUFBO0FDQ0Y7O0FERUE7RUFDRSxVQUFBO0VBQ0EsZ0JBQUE7RUFDQSxjQUFBO0FDQ0Y7O0FERUE7RUFFRSx5QkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0FDQUY7O0FERUE7RUFFRTtJQUNFLFdBQUE7SUFDQSxlQUFBO0VDQUY7QUFDRiIsImZpbGUiOiJzcmMvYXBwL3NlbmRzbXN0b3VzZXJxdWVyeS9zZW5kc21zdG91c2VycXVlcnkuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dCNjaXR5IHtcclxuICBtYXJnaW4tdG9wOiAwJTtcclxuICBtYXJnaW4tYm90dG9tOiA0JTtcclxufVxyXG5cclxuYnV0dG9uLm15LTQuYnRuLmJ0bi1pbmZvLmJ0bi1ibG9jayB7XHJcbiAgbWFyZ2luLWxlZnQ6IDAlO1xyXG59XHJcblxyXG4ubWVkaWFzLnRleHQtY2VudGVyLmJvcmRlci5ib3JkZXItbGlnaHQucC01IHtcclxuICB3aWR0aDogNTAlO1xyXG4gIG1hcmdpbi1sZWZ0OiAyNSU7XHJcbiAgbWFyZ2luLXRvcDoyJVxyXG59XHJcblxyXG5oMyB7XHJcblxyXG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDAwRkY7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGZvbnQtc2l6ZTogeC1sYXJnZTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTA2MHB4KXtcclxuXHJcbiAgLm1lZGlhcy5teW1lZGlhLnRleHQtY2VudGVyLmJvcmRlci5ib3JkZXItbGlnaHQucC01IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDAlO1xyXG4gIH1cclxufVxyXG4iLCJpbnB1dCNjaXR5IHtcbiAgbWFyZ2luLXRvcDogMCU7XG4gIG1hcmdpbi1ib3R0b206IDQlO1xufVxuXG5idXR0b24ubXktNC5idG4uYnRuLWluZm8uYnRuLWJsb2NrIHtcbiAgbWFyZ2luLWxlZnQ6IDAlO1xufVxuXG4ubWVkaWFzLnRleHQtY2VudGVyLmJvcmRlci5ib3JkZXItbGlnaHQucC01IHtcbiAgd2lkdGg6IDUwJTtcbiAgbWFyZ2luLWxlZnQ6IDI1JTtcbiAgbWFyZ2luLXRvcDogMiU7XG59XG5cbmgzIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDBGRjtcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXNpemU6IHgtbGFyZ2U7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTA2MHB4KSB7XG4gIC5tZWRpYXMubXltZWRpYS50ZXh0LWNlbnRlci5ib3JkZXIuYm9yZGVyLWxpZ2h0LnAtNSB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgbWFyZ2luLWxlZnQ6IDAlO1xuICB9XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/sendsmstouserquery/sendsmstouserquery.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/sendsmstouserquery/sendsmstouserquery.component.ts ***!
+  \********************************************************************/
+/*! exports provided: SendsmstouserqueryComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendsmstouserqueryComponent", function() { return SendsmstouserqueryComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
+
+
+var SendsmstouserqueryComponent = /** @class */ (function () {
+    function SendsmstouserqueryComponent(apiCall, router, route) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.route = route;
+    }
+    SendsmstouserqueryComponent.prototype.ngOnInit = function () {
+        this.mobilenumber = this.route.snapshot.paramMap.get('mobilenumber');
+    };
+    SendsmstouserqueryComponent.prototype.share = function (data) {
+        console.log(data);
+        var message = data.message;
+        // Opening URL
+        window.open('https://api.whatsapp.com/send?text=' + message + '&phone=' + '+91' + this.mobilenumber);
+    };
+    SendsmstouserqueryComponent.ctorParameters = function () { return [
+        { type: _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+    ]; };
+    SendsmstouserqueryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-sendsmstouserquery',
+            template: __webpack_require__(/*! raw-loader!./sendsmstouserquery.component.html */ "./node_modules/raw-loader/index.js!./src/app/sendsmstouserquery/sendsmstouserquery.component.html"),
+            styles: [__webpack_require__(/*! ./sendsmstouserquery.component.scss */ "./src/app/sendsmstouserquery/sendsmstouserquery.component.scss")]
+        })
+    ], SendsmstouserqueryComponent);
+    return SendsmstouserqueryComponent;
 }());
 
 
@@ -7108,6 +7311,144 @@ var ViewusersComponent = /** @class */ (function () {
         })
     ], ViewusersComponent);
     return ViewusersComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/viewapkdownload/viewapkdownload.component.scss":
+/*!****************************************************************!*\
+  !*** ./src/app/viewapkdownload/viewapkdownload.component.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "th.text-center.whatsapicon {\n  width: 10%;\n}\n\n.pointer {\n  cursor: pointer;\n}\n\nimg.xlicon {\n  width: 30%;\n  margin-left: 174%;\n  margin-top: 0;\n  margin-bottom: -4%;\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld2Fwa2Rvd25sb2FkL0Y6XFxnaXQgaHViXFxyZXNlbGxlclxcRnJvbnRlbmQvc3JjXFxhcHBcXHZpZXdhcGtkb3dubG9hZFxcdmlld2Fwa2Rvd25sb2FkLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC92aWV3YXBrZG93bmxvYWQvdmlld2Fwa2Rvd25sb2FkLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsVUFBQTtBQ0NGOztBRENBO0VBQVUsZUFBQTtBQ0dWOztBREZBO0VBQ0UsVUFBQTtFQUNBLGlCQUFBO0VBQ0EsYUFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtBQ0tGIiwiZmlsZSI6InNyYy9hcHAvdmlld2Fwa2Rvd25sb2FkL3ZpZXdhcGtkb3dubG9hZC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInRoLnRleHQtY2VudGVyLndoYXRzYXBpY29uIHtcclxuICB3aWR0aDogMTAlO1xyXG59XHJcbi5wb2ludGVyIHtjdXJzb3I6IHBvaW50ZXI7fVxyXG5pbWcueGxpY29uIHtcclxuICB3aWR0aDogMzAlO1xyXG4gIG1hcmdpbi1sZWZ0OiAxNzQlO1xyXG4gIG1hcmdpbi10b3A6IDA7XHJcbiAgbWFyZ2luLWJvdHRvbTogLTQlO1xyXG4gIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG4iLCJ0aC50ZXh0LWNlbnRlci53aGF0c2FwaWNvbiB7XG4gIHdpZHRoOiAxMCU7XG59XG5cbi5wb2ludGVyIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG5pbWcueGxpY29uIHtcbiAgd2lkdGg6IDMwJTtcbiAgbWFyZ2luLWxlZnQ6IDE3NCU7XG4gIG1hcmdpbi10b3A6IDA7XG4gIG1hcmdpbi1ib3R0b206IC00JTtcbiAgY3Vyc29yOiBwb2ludGVyO1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/viewapkdownload/viewapkdownload.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/viewapkdownload/viewapkdownload.component.ts ***!
+  \**************************************************************/
+/*! exports provided: ViewapkdownloadComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewapkdownloadComponent", function() { return ViewapkdownloadComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+/* harmony import */ var src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/apiCalls/excel.service */ "./src/app/apiCalls/excel.service.ts");
+
+
+
+
+
+var ViewapkdownloadComponent = /** @class */ (function () {
+    function ViewapkdownloadComponent(apiCall, router, excelservice) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.excelservice = excelservice;
+    }
+    ViewapkdownloadComponent.prototype.ngOnInit = function () {
+        this.getallapkDownloadlist();
+    };
+    ViewapkdownloadComponent.prototype.getallapkDownloadlist = function () {
+        var _this = this;
+        this.apiCall.getallapkDownloadlist().subscribe(function (res) {
+            console.log(res);
+            _this.personList = res.result;
+        });
+    };
+    ViewapkdownloadComponent.prototype.exportAsXLSX = function () {
+        this.excelservice.exportAsExcelFile(this.personList, 'sample');
+    };
+    ViewapkdownloadComponent.ctorParameters = function () { return [
+        { type: _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__["ExcelService"] }
+    ]; };
+    ViewapkdownloadComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-viewapkdownload',
+            template: __webpack_require__(/*! raw-loader!./viewapkdownload.component.html */ "./node_modules/raw-loader/index.js!./src/app/viewapkdownload/viewapkdownload.component.html"),
+            styles: [__webpack_require__(/*! ./viewapkdownload.component.scss */ "./src/app/viewapkdownload/viewapkdownload.component.scss")]
+        })
+    ], ViewapkdownloadComponent);
+    return ViewapkdownloadComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/viewusersfeedback/viewusersfeedback.component.scss":
+/*!********************************************************************!*\
+  !*** ./src/app/viewusersfeedback/viewusersfeedback.component.scss ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "th.text-center.whatsapicon {\n  width: 10%;\n}\n\n.pointer {\n  cursor: pointer;\n}\n\nimg.xlicon {\n  width: 30%;\n  margin-left: 174%;\n  margin-top: 0;\n  margin-bottom: -4%;\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3VzZXJzZmVlZGJhY2svRjpcXGdpdCBodWJcXHJlc2VsbGVyXFxGcm9udGVuZC9zcmNcXGFwcFxcdmlld3VzZXJzZmVlZGJhY2tcXHZpZXd1c2Vyc2ZlZWRiYWNrLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC92aWV3dXNlcnNmZWVkYmFjay92aWV3dXNlcnNmZWVkYmFjay5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQUE7QUNDRjs7QURDQTtFQUFVLGVBQUE7QUNHVjs7QURGQTtFQUNFLFVBQUE7RUFDRCxpQkFBQTtFQUNDLGFBQUE7RUFDQSxrQkFBQTtFQUNBLGVBQUE7QUNLRiIsImZpbGUiOiJzcmMvYXBwL3ZpZXd1c2Vyc2ZlZWRiYWNrL3ZpZXd1c2Vyc2ZlZWRiYWNrLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidGgudGV4dC1jZW50ZXIud2hhdHNhcGljb24ge1xyXG4gIHdpZHRoOiAxMCU7XHJcbn1cclxuLnBvaW50ZXIge2N1cnNvcjogcG9pbnRlcjt9XHJcbmltZy54bGljb24ge1xyXG4gIHdpZHRoOiAzMCU7XHJcbiBtYXJnaW4tbGVmdDogMTc0JTtcclxuICBtYXJnaW4tdG9wOiAwO1xyXG4gIG1hcmdpbi1ib3R0b206IC00JTtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuIiwidGgudGV4dC1jZW50ZXIud2hhdHNhcGljb24ge1xuICB3aWR0aDogMTAlO1xufVxuXG4ucG9pbnRlciB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuaW1nLnhsaWNvbiB7XG4gIHdpZHRoOiAzMCU7XG4gIG1hcmdpbi1sZWZ0OiAxNzQlO1xuICBtYXJnaW4tdG9wOiAwO1xuICBtYXJnaW4tYm90dG9tOiAtNCU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/viewusersfeedback/viewusersfeedback.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/viewusersfeedback/viewusersfeedback.component.ts ***!
+  \******************************************************************/
+/*! exports provided: ViewusersfeedbackComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewusersfeedbackComponent", function() { return ViewusersfeedbackComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+/* harmony import */ var _apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../apiCalls/excel.service */ "./src/app/apiCalls/excel.service.ts");
+
+
+
+
+
+var ViewusersfeedbackComponent = /** @class */ (function () {
+    function ViewusersfeedbackComponent(apiCall, router, excelservice) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.excelservice = excelservice;
+    }
+    ViewusersfeedbackComponent.prototype.ngOnInit = function () {
+        this.getusersfeedbackqueries();
+    };
+    ViewusersfeedbackComponent.prototype.getusersfeedbackqueries = function () {
+        var _this = this;
+        this.apiCall.getusersfeedbackqueries().subscribe(function (res) {
+            console.log(res);
+            _this.personList = res.result;
+        });
+    };
+    ViewusersfeedbackComponent.prototype.exportAsXLSX = function () {
+        this.excelservice.exportAsExcelFile(this.personList, 'sample');
+    };
+    ViewusersfeedbackComponent.ctorParameters = function () { return [
+        { type: _apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__["ExcelService"] }
+    ]; };
+    ViewusersfeedbackComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-viewusersfeedback',
+            template: __webpack_require__(/*! raw-loader!./viewusersfeedback.component.html */ "./node_modules/raw-loader/index.js!./src/app/viewusersfeedback/viewusersfeedback.component.html"),
+            styles: [__webpack_require__(/*! ./viewusersfeedback.component.scss */ "./src/app/viewusersfeedback/viewusersfeedback.component.scss")]
+        })
+    ], ViewusersfeedbackComponent);
+    return ViewusersfeedbackComponent;
 }());
 
 
