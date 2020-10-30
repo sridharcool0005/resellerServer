@@ -5,8 +5,6 @@ var http = require('http');
 const crypto = require("crypto");
 const request = require('request');
 
-const bcrypt = require('bcryptjs')
-const saltRounds = 10;
 
 var db = mysql.createConnection({
 
@@ -33,6 +31,7 @@ module.exports.getclients = async function (req, res) {
   });
 
 }
+
 
 
 module.exports.getclientsbyfilter = async function (req, res) {
@@ -74,6 +73,7 @@ module.exports.getclientsDetailed = async function (req, res) {
 
 }
 
+
 module.exports.getuserdata = async function (req, res) {
   const partner_id=req.params.partner_id;
   query = "SELECT * FROM portal_users WHERE partner_id =?"
@@ -86,6 +86,7 @@ module.exports.getuserdata = async function (req, res) {
     });
   });
 }
+
 
 
 module.exports.updateclientData = async function (req, res) {
@@ -120,6 +121,8 @@ module.exports.updateclientData = async function (req, res) {
 }
 
 
+
+
 module.exports.deleteclient = (req, res) => {
   const partner_id=req.params.partner_id;
   const client_id = req.body.client_id;
@@ -133,10 +136,11 @@ module.exports.deleteclient = (req, res) => {
     });
 };
 
+
 module.exports.getuserDetails = async function (req, res) {
   const partner_id=req.params.partner_id;
   const client_id = req.body.client_id;
-  query = "select a.client_id,a.plan_activation_date, a.user_smsgateway_sender_id, a.smspackage_act_date, a.smspackage_exp_date,a.user_smsgateway_pid,a.is_sim_allowed,a.is_min_bal_req,a.account_plan_id,a.plan_expiry_date,a.user_smsgateway_id,a.user_smsgateway_sender_id1,a.user_smsgateway_sender_id2,a.user_smsgateway_sender_id,a.user_smsgateway_regn_status,a.user_smsgateway_authkey,a.user_smsgateway_route,a.user_smsgateway_unicode,a.user_cross_regn_status, a.user_mobile_number, a.user_email, a.user_regn_channel, a.account_type, a.account_status, b.client_firstname, b.client_lastname, b.client_whatsapp_number, b.client_telegram_number, b.client_company_name, b.client_address1, b.client_address2, b.client_city, b.client_district, b.client_postoffice, b.client_pincode, b.client_state, b.client_industry,b.client_gst_number, b.client_expiry from portal_users a, portal_clients_master b where a.client_id =? and b.client_id =? and a.partner_id =?"
+  query = "select a.client_id,a.plan_activation_date, a.user_smsgateway_sender_id, a.smspackage_act_date, a.smspackage_exp_date,a.user_smsgateway_pid,a.is_sim_allowed,a.is_min_bal_req,a.account_plan_id,a.plan_expiry_date,a.user_smsgateway_id,a.user_smsgateway_sender_id1,a.user_smsgateway_sender_id2,a.user_smsgateway_sender_id,a.user_smsgateway_regn_status,a.user_smsgateway_authkey,a.user_smsgateway_route,a.user_smsgateway_unicode,a.user_cross_regn_status, a.user_mobile_number, a.user_email, a.user_regn_channel, a.account_type, a.account_status, b.client_firstname, b.client_lastname, b.client_whatsapp_number, b.client_telegram_number, b.client_company_name, b.client_address1, b.client_address2, b.client_city, b.client_district, b.client_postoffice, b.client_pincode, b.client_state, b.client_industry,b.client_gst_number, b.client_expiry from portal_users a, portal_clients_master b where a.client_id =? and b.client_id =? "
   await db.query(query, [client_id, client_id,partner_id], function (err, result, fields) {
     if (err) throw err;
     res.send({
@@ -149,7 +153,14 @@ module.exports.getuserDetails = async function (req, res) {
 
 module.exports.sendSMS = async (req, response) => {
 
+  const partner_id=req.params.partner_id;
   const { mobile, message } = req.body;
+  var sql = "select reseller_authkey, reseller_sender_id from portal_counterV2 where partner_id =?"
+  db.query(sql, [partner_id], function (error, results, fields) {
+    console.log(results)
+    const reseller_authkey=results[0].reseller_authkey;
+    const reseller_sender_id=results[0].reseller_sender_id;
+      if (error) throw error;
 
   var options = {
     "method": "POST",
@@ -157,7 +168,7 @@ module.exports.sendSMS = async (req, response) => {
     "port": null,
     "path": "/api/v2/sendsms",
     "headers": {
-      "authkey": '316115AorUQYTq5e351ea1P1',
+      "authkey": reseller_authkey,
       "content-type": "application/json"
     }
   };
@@ -178,15 +189,16 @@ module.exports.sendSMS = async (req, response) => {
   });
 
   req.write(JSON.stringify({
-    sender: 'NUTANS',
+    sender: reseller_sender_id,
     route: '4',
     country: '+91',
     sms:
-      [{ message: message, to: [mobile] }
+      [{ message: message, to:[mobile] }
 
       ]
   }));
   req.end();
+});
 }
 
 module.exports.activationEmail = async (req, res) => {
@@ -204,6 +216,7 @@ module.exports.activationEmail = async (req, res) => {
 
 module.exports.addnewClient = async (req, res) => {
   const partner_id=req.params.partner_id;
+
   const api = 'https://www.portalapi.nutansms.in/addNewClient.php?sales_channel=smsportal';
   let client_id = crypto.randomBytes(6).toString("hex");
   let authkey = crypto.randomBytes(8).toString("hex");
@@ -235,9 +248,9 @@ module.exports.addnewClient = async (req, res) => {
       client_linkedin: " ",
       client_gst_number: " ",
       client_smsgateway: "pending",
+
       client_role:req.body.profession_id,
       partner_id:partner_id
-
 
     },
     headers: {
@@ -261,133 +274,13 @@ module.exports.addnewClient = async (req, res) => {
 
 
 
-// module.exports.updateclientStatus = async function (req, res) {
-
-//   const { client_id, account_status, user_regn_channel } = req.body
-
-//   const today_date = new Date()
-
-//   const curDate = new Date();
-
-//   console.log(curDate, 'curdate')
-
-//   const campaign_status = "SELECT * FROM portal_live_campaign WHERE status='active' and (valid_from_date <= ? and valid_to_date >= ?)"
-
-//   await db.query(campaign_status, [today_date, today_date], function (err, result, fields) {
-//     if (err) throw err;
-
-//     if (!result.length) {
-//        res.status(201).send({ status: 'false', message: ' No live campaign is running' });
-//     } else {
-//       console.log(result)
-//       const duration = result[0].duration_in_days
-//       var expiry_date = new Date();
-//       expiry_date.setDate(expiry_date.getDate() + duration);
-//       const campaign_code = result[0].campaign_code
-//       const act_date = today_date;
-//       const exp_date = expiry_date
-
-//       const verifyCredits = "SELECT package_id,package_sms_credits from portal_smspackage_master where package_id LIKE" + db.escape('%' + campaign_code + '%')
-//       db.query(verifyCredits, function (err, result, fields) {
-
-//         if (!result.length) {
-
-//           var sql = "UPDATE portal_users SET  account_status =?,account_plan_id =?,plan_activation_date =?,plan_expiry_date =? WHERE client_id =?";
-
-//           db.query(sql, [account_status, campaign_code, act_date, exp_date, client_id], function (err, result, fields) {
-
-//             res.status(201).send({ status: 'true', message: 'Data is updated' });
-
-
-//           })
-
-//         } else {
-
-//           const sql = "SELECT package_id, package_sms_credits  from portal_smspackage_master where package_status = 'active' and package_id LIKE " + db.escape('%' + campaign_code + '%');
-
-//           const fetchdata = "select is_sim_allowed, is_min_bal_req from portal_premiumplans_master where package_id =?"
-//           db.query(sql, function (err, result, fields) {
-//             if (err) throw err;
-//             console.log(result, 'verify packid')
-//           })
-//           db.query(fetchdata, [campaign_code], function (err, result, fields) {
-//             if (err) throw err;
-//             const is_sim_allowed = result[0].is_sim_allowed;
-//             const is_min_bal_req = result[0].is_min_bal_req;
-//             console.log(is_sim_allowed, is_min_bal_req)
-
-//             const updateifsmspackexits = "UPDATE portal_users SET  account_status =?, account_plan_id =?, plan_activation_date =?, plan_expiry_date =?, smspackage_act_date =?, smspackage_exp_date =?,is_sim_allowed =?, is_min_bal_req  =? WHERE client_id =?";
-//             const smspackage_act_date = act_date;
-//             const smspackage_exp_date = exp_date;
-
-//             db.query(updateifsmspackexits, [account_status, campaign_code, act_date, exp_date, smspackage_act_date, smspackage_exp_date, is_sim_allowed, is_min_bal_req, client_id], function (err, result, fields) {
-//               if (err) throw err;
-
-//               console.log(result, 'updateifsmspackexits')
-//             })
-//           })
-
-//           const postvalues = {
-//             client_id: client_id,
-//             package_id: result[0].package_id,
-//             order_id: 'SIGNUP',
-//             package_price: 0,
-//             coupon_id: 0,
-//             coupon_amount: 0,
-//             gst_amount: 0,
-//             total_amount_paid: 0,
-//             payment_mode: 'SIGNUP',
-//             payment_gateway_txn_id: 'NIL',
-//             payment_gateway_txn_ref: 'NIL',
-//             payment_status_code: 'success',
-//             payment_sync_status: 1,
-//             notes: 'Signup credits',
-//             sales_channel: user_regn_channel,
-//             txn_date: act_date
-//           }
-
-//           const insertintoPaymentHistory = "INSERT INTO portal_clients_payments_history SET ?";
-//           db.query(insertintoPaymentHistory, postvalues, function (err, result, fields) {
-//             if (err) throw err;
-//             console.log(result, 'insertintoPaymentHistory')
-
-//           })
-
-
-//           const credits_history_values = {
-//             client_id: client_id,
-//             package_id: result[0].package_id,
-//             order_id: 'SIGNUP',
-//             package_activation_date: act_date,
-//             package_expiry_date: smspackage_exp_date,
-//             sms_credits_quantity: result[0].package_sms_credits,
-//             sms_package_status: 'active'
-//           }
-
-
-//           const insertintoSms_credits_history = "INSERT INTO portal_clients_sms_credits_history SET ?";
-//           db.query(insertintoSms_credits_history, credits_history_values, function (err, result, fields) {
-//             if (err) throw err;
-//             console.log(result, 'insertintoSms_credits_history')
-//             res.status(201).send({ status: 'true', message: 'Data is updated sucessfully' });
-//           })
-//         }
-//       })
-
-//     }
-
-//   })
-
-
-// }
-
 
 module.exports.updateclientStatus = async function (req, res) {
 
   const { client_id, account_status, user_regn_channel } = req.body
   const today_date = new Date()
   const curDate = new Date();
-  console.log(curDate, 'curdate')
+  console.log(curDate, 'curdate',client_id)
   const campaign_status = "SELECT * FROM portal_live_campaign WHERE status='active' and (valid_from_date <= ? and valid_to_date >= ?)"
   await db.query(campaign_status, [today_date, today_date], function (err, result, fields) {
     if (err) throw err;
@@ -396,12 +289,13 @@ module.exports.updateclientStatus = async function (req, res) {
       const curDate= new Date();
       db.query(query,function (err, result, fields) {
         if (err) throw err;
-        const updatequery="INSERT INTO portal_users SET ?"
+        const updatequery="INSERT INTO portal_users SET ? "
         var newTemplate = {
           account_status :'active',
           account_plan_id :'',
           plan_activation_date : curDate,
-          plan_expiry_date :'99 Months'
+          plan_expiry_date :'99 Months',
+          client_id:client_id
         }
         db.query(updatequery,[newTemplate],function (err, result, fields) {
           if (err) throw err;
@@ -565,138 +459,6 @@ module.exports.fetchProfessions = async (req, res) => {
 }
 
 
-module.exports.ChangePassword = async (req, res) => {
-  const partner_id = req.params.partner_id;
-console.log(req.body.password,partner_id);
-  bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-    var sql = "UPDATE portal_adminusers SET  password =? WHERE  partner_id =?";
-console.log(hash)
-   db.query(sql,[hash,partner_id], function (err, result, fields) {
-    if (err) throw err;
-    res.send({
-      "code": 200,
-   status: 'success',
-      message:"Password changed successfully"
-    });
-  })
-
-  });
-}
-
-
-module.exports.submitcustomerdetails = async (req, res) => {
-  const { name, mobilenumber } = req.body;
-  if (!name && !mobilenumber) {
-    res.status(400).send({ status: 'false', message: 'plz make sure to enter valid data' });
-  }
-
-  try {
-    const sendSMS = await sendOTP(mobilenumber);
-    if (sendSMS) {
-        res.status(200).send({ status: "success", message: 'message sent sucessfully' })
-    }
-  } catch (e) {
-    res.status(400).send({ status: 'error', message: e.message })
-  }
-}
-
-
-const sendOTP = async (mobilenumber) => {
-  console.log('sendOTP')
-  return new Promise((resolve, reject) => {
-    const options = {
-      url: 'https://nutanapp.nutansms.in/sendOTPdownload.php',
-      qs: { mobilenumber: mobilenumber },
-      json: true,
-    }
-     request(options, (err, response, body) => {
-      if (err) {
-        console.log(err)
-        reject(err);
-      } else {
-        console.log(body);
-        resolve(true);
-      }
-    });
-  });
-}
-
-
-module.exports.verifyAndSaveDetails = async (req, res) => {
-  try {
- const verifiedOtp = await verifyOTP(req);
- const savedDetails = await saveDetails(req);
- if (verifiedOtp && savedDetails) {
-  res.send({success: true, message: 'OTP verified. Please click to Download APK.'});
- } else {
-  res.send({success: false, message: 'Unable to verify otp and save details'})
- }
-} catch(error) {
-  res.send({success: false, message: error})
-}
-}
-
-const verifyOTP =async (req) => {
-
-  try {
-    return new Promise((resolve,reject) => {
-
-  const {otp,mobilenumber}=req.body;
-    const options = {
-      url: 'https://nutanapp.nutansms.in/verifyOTPdownload.php',
-      qs: { mobilenumber: mobilenumber, otp: otp },
-      json: true,
-    }
-     request(options, (err, response, body) => {
-      if (err) {
-        reject(err);
-      } else {
-        // console.log(body)
-       if(body.type == "success"){
-         resolve(true)
-        } else {
-          reject(body.message)
-        }
-      }
-  });
-
-});
-} catch(E) {
-  throw e;
-}
-}
-
-const saveDetails = async (req) => {
-  try{
-  console.log('saving user')
-  
-  return new Promise((resolve, reject) => {
- 
-    const query_id = crypto.randomBytes(4).toString("hex");
-    const query = "INSERT INTO portal_users_query_feedback SET ?"
-    var newTemplate = {
-      query_id: query_id,
-      name: req.body.name,
-      mobilenumber: req.body.mobilenumber,
-      message: 'APK Download',
-      subject: ' APK Download',
-      partner_id: req.params.partner_id,
-    };
-     db.query(query, newTemplate, function (err, result, fields) {
-      if (err) {
-        console.log(err)
-        reject(err);
-      } else {
-        resolve(true);
-      }
-    });
- 
-  });
-}catch(error){
-  throw error;
-}
-}
-
 module.exports.getuserdataCount = async function (req, res) {
   const partner_id=req.params.partner_id;
   
@@ -726,6 +488,7 @@ module.exports.getuserdataCountweekly = async function (req, res) {
     });
   });
 }
+
 module.exports.getplanexpirytoday= async function (req, res) {
   const partner_id=req.params.partner_id;
   
@@ -768,6 +531,23 @@ module.exports.getclientscount= async function (req, res) {
   });
 }
 
+module.exports.ChangePassword = async (req, res) => {
+  const partner_id = req.params.partner_id;
+console.log(req.body.password,partner_id);
+  bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+    var sql = "UPDATE portal_adminusers SET  password =? WHERE  partner_id =?";
+console.log(hash)
+   db.query(sql,[hash,partner_id], function (err, result, fields) {
+    if (err) throw err;
+    res.send({
+      "code": 200,
+   status: 'success',
+      message:"Password changed successfully"
+    });
+  })
+
+  });
+}
 
 module.exports.getusersfeedbackqueries= async function (req, res) {
   const partner_id=req.params.partner_id;

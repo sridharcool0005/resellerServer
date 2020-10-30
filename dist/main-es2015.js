@@ -41,7 +41,7 @@ module.exports = "\n<mat-tab-group mat-align-tabs=\"center\">\n\n  <mat-tab labe
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">\n    Plan expiry Tracking</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 \">\n        <form (ngSubmit)=\"regform.form.valid&&getplanexpirycontacts(regform.form.value)\" #regform=\"ngForm\">\n\n          <input type=\"date\"  name=\"fromDate\" placeholder=\"FromDate\" ngModel>&nbsp;\n          <input type=\"date\" name=\"toDate\" placeholder=\"ToDate\" ngModel>&nbsp;\n\n          <input type=\"submit\">\n        </form>\n      </div>\n      <div class=\"col-md-6 mubutn\" >\n        <input type=\"text\" class=\"search\" [(ngModel)]=\"client_firstname\" placeholder=\" Search By Name\" aria-label=\"Search\"\n        (input)=\"search()\">\n&nbsp;\n\n  <button mat-fab color=\"primary\" aria-label=\"Example icon button with a delete icon\" (click)=\"insertnotifications()\" matTooltip=\" Add Push notification\"\n  matTooltipClass=\"example-tooltip-red\" aria-label=\"Button that shows a red tooltip\">\n    <span class=\"material-icons\">\n      add_alert\n      </span>\n  </button>\n\n\n\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n        <tr style=\"background-color: darkblue;color:white\">\n          <th class=\"text-center\">\n            Client ID</th>\n          <th class=\"text-center\">\n            FullName</th>\n            <th class=\"text-center\">\n              MobileNumber</th>\n          <th class=\"text-center\">District</th>\n          <th class=\"text-center\">Account_Type</th>\n          <th class=\"text-center\">Date of Activation</th>\n          <th class=\"text-center\">Date of Expiry</th>\n\n\n\n\n\n          <th  class=\"text-center\">Action\n          </th>\n\n        </tr>\n        <tr *ngFor=\"let person of personList; let id = index\">\n          <td>\n            {{person.client_id}}\n          </td>\n          <td>\n            {{person.client_firstname}} {{person.client_lastname}}\n          </td>\n          <td>\n            {{person.user_mobile_number}}\n          </td>\n          <td>\n            {{person.client_district}}\n          </td>\n          <td>{{person.account_type}}</td>\n          <td>\n             {{person.plan_activation_date| date: 'dd/MM/yyyy'}}\n          </td>\n          <td>\n            {{person.plan_expiry_date| date: 'dd/MM/yyyy'}}\n         </td>\n\n\n\n\n          <td>\n            <a> <span class=\"material-icons\" [routerLink]=\"['/client/viewDetail/',person.client_id]\"   matTooltip=\"View Detailed\"\n                matTooltipClass=\"example-tooltip-red\" aria-label=\"Button that shows a red tooltip\">\n                visibility\n              </span>\n            </a>\n          </td>\n\n\n        </tr>\n      </table>\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">\n    Plan expiry Tracking</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 \">\n        <form (ngSubmit)=\"regform.form.valid&&getplanexpirycontacts(regform.form.value)\" #regform=\"ngForm\">\n\n          <input type=\"date\"  name=\"fromDate\" placeholder=\"FromDate\" ngModel>&nbsp;\n          <input type=\"date\" name=\"toDate\" placeholder=\"ToDate\" ngModel>&nbsp;\n\n          <input type=\"submit\">\n        </form>\n      </div>\n      <div class=\"col-md-6 mubutn\" >\n        <input  type=\"text\" [(ngModel)]=\"searchText\" placeholder=\" Search By Filter\"\n        aria-label=\"Search\" >\n&nbsp;\n\n  <button mat-fab color=\"primary\" aria-label=\"Example icon button with a delete icon\" (click)=\"selectclients()\" matTooltip=\" Add Push notification\"\n  matTooltipClass=\"example-tooltip-red\" aria-label=\"Button that shows a red tooltip\">\n  <span class=\"material-icons\">\n    notifications\n    </span>\n  </button>\n\n\n\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n        <tr style=\"background-color: darkblue;color:white\">\n          <th class=\"text-center\">\n            Client ID</th>\n          <th class=\"text-center\">\n            FullName</th>\n            <th class=\"text-center\">\n              MobileNumber</th>\n          <th class=\"text-center\">District</th>\n          <th class=\"text-center\">Account_Type</th>\n          <th class=\"text-center\">Date of Activation</th>\n          <th class=\"text-center\">Date of Expiry</th>\n          <th  class=\"text-center\">Action\n          </th>\n          <th  class=\"text-center\">\n            Select All<input type=\"checkbox\" name=\"all\" [checked]=\"allToppings\" (change)=\"selectAllToppings($event.target.checked,personList)\"/>\n          </th>\n        </tr>\n        <tr *ngFor=\"let person of personList| filter: {client_id: searchText, client_firstname:searchText,  client_lastname: searchText,user_mobile_number:searchText}; let id=index;\" #loaded>          <td>\n            {{person.client_id}}\n          </td>\n          <td>\n            {{person.client_firstname}} {{person.client_lastname}}\n          </td>\n          <td>\n            {{person.user_mobile_number}}\n          </td>\n          <td>\n            {{person.client_district}}\n          </td>\n          <td>{{person.account_type}}</td>\n          <td>\n             {{person.plan_activation_date| date: 'dd/MM/yyyy'}}\n          </td>\n          <td>\n            {{person.plan_expiry_date| date: 'dd/MM/yyyy'}}\n         </td>\n\n\n\n\n          <!-- <td>\n            <a> <span class=\"material-icons\" [routerLink]=\"['/client/viewDetail/',person.client_id]\"   matTooltip=\"View Detailed\"\n                matTooltipClass=\"example-tooltip-red\" aria-label=\"Button that shows a red tooltip\">\n                visibility\n              </span>\n            </a>\n          </td> -->\n          <td>\n            <img class=\"pointer\" src=\"assets/img/whatsaapicon.webp\" width=\"80%\" [routerLink]=\"['/downloadapksendsms',person.user_mobile_number]\">\n          </td>\n\n          <td>\n            <input type=\"checkbox\" name=\"sizecb[]\" value=\"{{person.id}}\" [checked]=\"allToppings\" (change)=\"selectNewTopping($event.target.checked,person)\"/>\n          </td>\n        </tr>\n      </table>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -86,6 +86,17 @@ module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center fo
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">Sales Analysis</h3>\n<form (ngSubmit)=\"regform.form.valid&&getSalesData(regform.form.value)\" #regform=\"ngForm\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-2\">\n        <label>From Date:</label>\n        <input type=\"date\"  name=\"fromDate\" ngModel>\n      </div>\n&nbsp;&nbsp;&nbsp;&nbsp;\n      <div class=\"col-md-2\">\n        <label>To Date:</label>\n        <input type=\"date\" name=\"toDate\" ngModel>\n      </div>\n      &nbsp;&nbsp;&nbsp;&nbsp;\n      <div class=\"col-md-2 mubutn\">\n        <input type=\"submit\" >\n      </div>\n\n      <div class=\"col-md-4 mubutn\">\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n\n</form>\n\n<div class=\"card-body\">\n  <div id=\"table\" class=\"table-editable\">\n\n    <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n      <tr style=\"background-color: darkblue;color:white\">\n        <th class=\"text-center\">\n          Date</th>\n        <th class=\"text-center\">\n          PackageID</th>\n        <th class=\"text-center\">PackName</th>\n        <th class=\"text-center\">AmountReceived</th>\n        <th class=\"text-center\">Payment Mode</th>\n        <th class=\"text-center\">Status</th>\n\n\n      </tr>\n      <tr *ngFor=\"let person of personList; let id = index\">\n        <td>{{person.txn_date| date: 'dd/MM/yyyy'}}</td>\n\n        <td>\n          {{person.package_id}}\n        </td>\n        <td name=\"name\">\n          {{person.package_name}}\n        </td>\n        <td>{{person.total_amount_paid}}</td>\n        <td name=\"mobile\">\n          {{person.payment_mode}}\n        </td>\n\n        <td>\n          {{person.payment_status_code}}\n        </td>\n\n      </tr>\n    </table>\n\n  </div>\n</div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/Analytics/sendpushnotification/sendpushnotification.component.html":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/Analytics/sendpushnotification/sendpushnotification.component.html ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"row\">\n\n      <form class=\"text-center border border-light p-5\"  (ngSubmit)=\" regform.form.valid&&pushnotify(regform.form.value)\" #regform=\"ngForm\">\n\n        <p class=\"h4 mb-4\">Send Push Notification</p>\n        <div class=\"custom-control custom-checkbox\">\n          <input type=\"checkbox\" class=\"custom-control-input\" id=\"defaultChecked2\" (change)=\"checkbox($event.target.checked)\" unchecked>\n          <label class=\"custom-control-label\" for=\"defaultChecked2\">Push Notification</label>\n        </div>\n        <div class=\"form-group\">\n          <textarea class=\"form-control rounded-0\" id=\"exampleFormControlTextarea2\" rows=\"3\"\n            placeholder=\"Message\" name=\"message\" ngModel></textarea>\n        </div>\n\n          <!-- <button mdbBtn color=\"info\"  type=\"button\" routerLink=\"/viewnotifyTemplates\">Select Template</button> -->\n\n          <button mdbBtn color=\"info\" type=\"submit\">Send</button>\n\n      </form>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -349,7 +360,7 @@ module.exports = "\n\n<div class=\"container\">\n<div class=\"row\">\n  <div cla
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">\n    campaign Management</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        <form (ngSubmit)=\"regform.form.valid&&getplanexpirycontacts(regform.form.value)\" #regform=\"ngForm\">\n\n          <input type=\"date\"  name=\"fromDate\" placeholder=\"FromDate\" ngModel>&nbsp;\n          <input type=\"date\" name=\"toDate\" placeholder=\"ToDate\" ngModel>&nbsp;\n\n          <input type=\"submit\">\n        </form>\n      </div>\n      <div class=\"col-md-6 mubutn\" >\n\n        <select class=\"browser-default custom-select filter\" (change)=\"getclientsbyfilter($event.target.value)\">\n          <option selected value=\"\">select</option>\n          <option  value=\"All\">ALL</option>\n          <option value=\"Demo\" >Demo</option>\n          <option value=\"Business\">Business </option>\n          <option value=\"Express\">Express</option>\n          <option value=\"Business Plus\">Business Plus</option>\n          <option value=\"Business Express\">Business Express</option>\n\n        </select>\n  <button mat-fab color=\"primary\" aria-label=\"Example icon button with a delete icon\" routerLink=\"/addpushnotify\" matTooltip=\" Add Push notification\"\n  matTooltipClass=\"example-tooltip-red\" aria-label=\"Button that shows a red tooltip\">\n    <span class=\"material-icons\">\n      add_alert\n      </span>\n  </button>\n  &nbsp;\n   <button mat-fab color=\"primary\" aria-label=\"Example icon button with a delete icon\" routerLink=\"/pushnotify\" matTooltip=\"Push notification\"\n  matTooltipClass=\"example-tooltip-red\" aria-label=\"Button that shows a red tooltip\">\n  <span class=\"material-icons\">\n    notifications\n    </span>\n  </button>\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n        <tr style=\"background-color: darkblue;color:white\">\n          <th class=\"text-center\">\n            Client ID</th>\n          <th class=\"text-center\">\n            FullName</th>\n            <th class=\"text-center\">\n              MobileNumber</th>\n          <th class=\"text-center\">Account_Type</th>\n          <th class=\"text-center\">Date of Activation</th>\n          <th class=\"text-center\">Date of Expiry</th>\n          <th  class=\"text-center\">\n            Select All<input type=\"checkbox\" name=\"all\" (change)=\"selectAllToppings($event.target.checked)\"/>\n          </th>\n        </tr>\n        <tr *ngFor=\"let person of personList; let id = index\">\n          <td>\n            {{person.client_id}}\n          </td>\n          <td>\n            {{person.client_firstname}} {{person.client_lastname}}\n          </td>\n          <td>\n            {{person.user_mobile_number}}\n          </td>\n          <td>{{person.account_type}}</td>\n          <td>\n             {{person.plan_activation_date| date: 'dd/MM/yyyy'}}\n          </td>\n          <td>\n            {{person.plan_expiry_date| date: 'dd/MM/yyyy'}}\n         </td>\n\n          <td>\n            <input type=\"checkbox\" name=\"sizecb[]\" value=\"{{person.id}}\" [checked]=\"allToppings\" (change)=\"selectNewTopping($event.target.checked,person)\"/>\n          </td>\n        </tr>\n      </table>\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">\n    campaign Management</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        <form (ngSubmit)=\"regform.form.valid&&getplanexpirycontacts(regform.form.value)\" #regform=\"ngForm\">\n\n          <input type=\"date\"  name=\"fromDate\" placeholder=\"FromDate\" ngModel>&nbsp;\n          <input type=\"date\" name=\"toDate\" placeholder=\"ToDate\" ngModel>&nbsp;\n\n          <input type=\"submit\">\n        </form>\n      </div>\n      <div class=\"col-md-6 mubutn\" >\n\n        <input  type=\"text\" [(ngModel)]=\"searchText\" placeholder=\" Search By Filter\"\n        aria-label=\"Search\" >\n  <!-- <button mat-fab color=\"primary\" aria-label=\"Example icon button with a delete icon\" routerLink=\"/addpushnotify\" matTooltip=\" Add Push notification\"\n  matTooltipClass=\"example-tooltip-red\" aria-label=\"Button that shows a red tooltip\">\n    <span class=\"material-icons\">\n      add_alert\n      </span>\n  </button> -->\n  &nbsp;\n   <button mat-fab color=\"primary\" aria-label=\"Example icon button with a delete icon\"  matTooltip=\"Push notification\" (click)=\"selectclients()\"\n  matTooltipClass=\"example-tooltip-red\" aria-label=\"Button that shows a red tooltip\">\n  <span class=\"material-icons\">\n    notifications\n    </span>\n  </button>\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n        <tr style=\"background-color: darkblue;color:white\">\n          <th class=\"text-center\">\n            Client ID</th>\n          <th class=\"text-center\">\n            FullName</th>\n            <th class=\"text-center\">\n              MobileNumber</th>\n          <th class=\"text-center\">Account_Type</th>\n          <th class=\"text-center\">Date of Activation</th>\n          <th class=\"text-center\">Date of Expiry</th>\n          <th class=\"text-center\">Action</th>\n          <th  class=\"text-center\">\n            Select All<input type=\"checkbox\" name=\"all\" [checked]=\"allToppings\" (change)=\"selectAllToppings($event.target.checked,personList)\"/>\n          </th>\n        </tr>\n        <tr *ngFor=\"let person of personList| filter: {client_id: searchText, client_firstname:searchText,  client_lastname: searchText,user_mobile_number:searchText}; let id=index;\" #loaded>          <td>\n            {{person.client_id}}\n          </td>\n          <td>\n            {{person.client_firstname}} {{person.client_lastname}}\n          </td>\n          <td>\n            {{person.user_mobile_number}}\n          </td>\n          <td>{{person.account_type}}</td>\n          <td>\n             {{person.plan_activation_date| date: 'dd/MM/yyyy'}}\n          </td>\n          <td>\n            {{person.plan_expiry_date| date: 'dd/MM/yyyy'}}\n         </td>\n         <td>\n          <img class=\"pointer\" src=\"assets/img/whatsaapicon.webp\" width=\"80%\" [routerLink]=\"['/downloadapksendsms',person.user_mobile_number]\">\n        </td>\n          <td>\n            <input type=\"checkbox\" name=\"sizecb[]\" value=\"{{person.id}}\" [checked]=\"allToppings\" (change)=\"selectNewTopping($event.target.checked,person)\"/>\n          </td>\n        </tr>\n      </table>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -371,7 +382,7 @@ module.exports = "<button mat-raised-button color=\"primary\" routerLink=\"/camp
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <select class=\"browser-default custom-select\">\n        <option selected>Select Package</option>\n        <option value=\"1\">Rate Card-1</option>\n        <option value=\"2\">Rate Card-2</option>\n      </select>\n    </div>\n    <div class=\"col-md-3\">\n      <select class=\"browser-default custom-select\">\n        <option selected>Select Premium Plan</option>\n        <option value=\"1\">Rate Card-1</option>\n        <option value=\"2\">Rate Card-2</option>\n      </select>\n    </div>\n    <div class=\"col-md-3\">\n      <!-- <button mdbBtn color=\"info\" block=\"true\" type=\"button\" routerLink=\"/viewnotifyTemplates\">Templates</button> -->\n    </div>\n    <div class=\"col-md-4\">\n    </div>\n    <div class=\"card-body\">\n      <div id=\"table\" class=\"table-editable\">\n        <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n          <tr style=\"background-color: darkblue;color:white\">\n            <th class=\"text-center\">\n              PackageID</th>\n            <th class=\"text-center\">\n              PackageName</th>\n            <th class=\"text-center\">PackageRoute </th>\n            <th class=\"text-center\">UnitPrice</th>\n            <th class=\"text-center\">Credits </th>\n            <th class=\"text-center\">packagePrice</th>\n            <th class=\"text-center\">Validity</th>\n          </tr>\n          <tr *ngFor=\"let person of personList; let id = index\">\n            <td>\n              {{person.package_id}}\n            </td>\n            <td>\n              {{person.package_name}}\n            </td>\n            <td name=\"name\">\n              {{person.package_route}}\n            </td>\n            <td name=\"mobile\">\n              {{person.\tpackage_unit_price}}\n            </td>\n            <td name=\"address1\">\n              {{person.package_sms_credits}}\n            </td>\n            <td name=\"city\">\n              {{person.\tpackage_price}}\n            </td>\n            <td name=\"state\">\n              {{person.package_validity_in_months\t}}\n            </td>\n          </tr>\n        </table>\n        <button mdbBtn color=\"success\" block=\"true\" type=\"submit\" routerLink=\"/sendnotify\">Proceed</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "\n\n<h3>Select One RateCard</h3>\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-md-3\">\n      <select class=\"browser-default custom-select\" (input)=\"getpacksbyratecard($event.target.value)\">\n        <option selected>Select Package</option>\n        <option value=\"{{item.ratecard_id}}\" *ngFor=\"let item of smspackratecards\">{{item.ratecard_name}}</option>\n\n      </select>\n    </div>\n    <div class=\"col-md-3\">\n      <select class=\"browser-default custom-select\" (input)=\"getPremiumpacksByRateCard($event.target.value)\">\n        <option selected>Select Premium Plan</option>\n        <option value=\"{{item.ratecard_id}}\" *ngFor=\"let item of premiumpackratecards\">{{item.ratecard_name}}</option>\n\n      </select>\n    </div>\n    <div class=\"col-md-3\">\n\n    </div>\n    <div class=\"col-md-4\">\n    </div>\n    <div class=\"card-body\">\n      <div id=\"table\" class=\"table-editable\">\n        <div *ngIf=\"personList\">\n        <table  class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n          <tr style=\"background-color: darkblue;color:white\">\n            <th class=\"text-center\">\n              PackageID</th>\n            <th class=\"text-center\">\n              PackageName</th>\n            <th class=\"text-center\">PackageRoute </th>\n            <th class=\"text-center\">UnitPrice</th>\n            <th class=\"text-center\">Credits </th>\n            <th class=\"text-center\">packagePrice</th>\n            <th class=\"text-center\">Validity</th>\n          </tr>\n          <tr *ngFor=\"let person of personList; let id = index\">\n            <td>\n              {{person.package_id}}\n            </td>\n            <td>\n              {{person.package_name}}\n            </td>\n            <td name=\"name\">\n              {{person.package_route}}\n            </td>\n            <td name=\"mobile\">\n              {{person.\tpackage_unit_price}}\n            </td>\n            <td name=\"address1\">\n              {{person.package_sms_credits}}\n            </td>\n            <td name=\"city\">\n              {{person.\tpackage_price}}\n            </td>\n            <td name=\"state\">\n              {{person.package_validity_in_months\t}}\n            </td>\n          </tr>\n        </table>\n        <button mdbBtn color=\"success\" block=\"true\" type=\"submit\" routerLink=\"/sendnotify\" (click)=\"confirmpackages(personList)\">Proceed</button>\n      </div>\n\n        <div *ngIf=\"premiumpacks\">\n          <table  class=\"table table-bordered table-responsive-md table-striped text-center table-media\" >\n            <tr style=\"background-color: darkblue;color:white\" >\n              <th class=\"text-center\">\n                PackageID</th>\n              <th class=\"text-center\">\n                PackageName</th>\n              <th class=\"text-center\">Credits</th>\n              <th class=\"text-center\">list Price </th>\n              <th class=\"text-center\">offered Price</th>\n              <th class=\"text-center\">packagePrice</th>\n              <th class=\"text-center\">Validity</th>\n              <th class=\"text-center\">status</th>\n\n            </tr>\n            <tr *ngFor=\"let person of premiumpacks; let id = index\" >\n              <td >\n\n           {{person.package_id}}\n              </td>\n              <td >\n             {{person.package_name}}\n                 </td>\n\n              <td >\n          {{person.\tfree_sms_credits}}\n              </td>\n              <td >\n           {{person.package_list_price}}\n              </td>\n              <td >\n                {{person.\tpackage_offered_price}}\n                   </td>\n              <td name=\"city\">\n                {{person.\ttotal_package_price}}\n              </td>\n              <td name=\"state\">\n           {{person.package_validity_in_months\t}}\n              </td>\n              <td name=\"state\">\n                {{person.package_status}}\n                   </td>\n            </tr>\n          </table>\n\n          <button mdbBtn color=\"success\" block=\"true\" type=\"submit\" routerLink=\"/sendnotify\" (click)=\"confirmpackages(premiumpacks)\">Proceed</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -382,7 +393,7 @@ module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div cla
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"row\">\n\n      <form class=\"text-center border border-light p-5\">\n\n        <p class=\"h4 mb-4\">Send Push Notification</p>\n        <div class=\"custom-control custom-checkbox\">\n          <input type=\"checkbox\" class=\"custom-control-input\" id=\"defaultChecked2\" unchecked>\n          <label class=\"custom-control-label\" for=\"defaultChecked2\">Push Notification</label>\n        </div>\n        <div class=\"form-group\">\n          <textarea class=\"form-control rounded-0\" id=\"exampleFormControlTextarea2\" rows=\"3\"\n            placeholder=\"Message\"></textarea>\n        </div>\n\n          <button mdbBtn color=\"info\"  type=\"button\" routerLink=\"/viewnotifyTemplates\">Select Template</button>\n\n          <button mdbBtn color=\"info\" type=\"submit\">Send</button>\n\n      </form>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"row\">\n\n      <form class=\"text-center border border-light p-5\"  (ngSubmit)=\" regform.form.valid&&pushnotify(regform.form.value)\" #regform=\"ngForm\">\n\n        <p class=\"h4 mb-4\">Send Push Notification</p>\n        <div class=\"custom-control custom-checkbox\">\n          <input type=\"checkbox\" class=\"custom-control-input\" id=\"defaultChecked2\" (change)=\"checkbox($event.target.checked)\" unchecked>\n          <label class=\"custom-control-label\" for=\"defaultChecked2\">Push Notification</label>\n        </div>\n        <div class=\"form-group\">\n          <textarea class=\"form-control rounded-0\" id=\"exampleFormControlTextarea2\" rows=\"3\"\n            placeholder=\"Message\" name=\"message\" ngModel></textarea>\n        </div>\n\n          <!-- <button mdbBtn color=\"info\"  type=\"button\" routerLink=\"/viewnotifyTemplates\">Select Template</button> -->\n\n          <button mdbBtn color=\"info\" type=\"submit\">Send</button>\n\n      </form>\n\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -485,6 +496,28 @@ module.exports = "\n<form (ngSubmit)=\"updateclientData(regform.form.value)\" #r
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/clientsManage/sendbulksms/sendbulksms.component.html":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/clientsManage/sendbulksms/sendbulksms.component.html ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"row\">\n\n      <form class=\"text-center border border-light p-5\"  (ngSubmit)=\" regform.form.valid&&sendsms(regform.form.value)\" #regform=\"ngForm\">\n\n        <p class=\"h4 mb-4\">Send SMS To Clients</p>\n        <!-- <div class=\"custom-control custom-checkbox\">\n          <label class=\"custom-control-label\" for=\"defaultChecked2\">Push Notification</label>\n        </div> -->\n        <div class=\"form-group\">\n\n<textarea class=\"form-control\" [(ngModel)]=\"mobilenumbers\" name=\"mobilenumbers\" placeholder=\"MObileNumbers\"></textarea>&nbsp;\n          <textarea class=\"form-control rounded-0\" id=\"exampleFormControlTextarea2\" rows=\"3\"\n            placeholder=\"Message\" name=\"message\" ngModel></textarea>\n        </div>\n\n          <!-- <button mdbBtn color=\"info\"  type=\"button\" routerLink=\"/viewnotifyTemplates\">Select Template</button> -->\n\n          <button mdbBtn color=\"info\" type=\"submit\">Send SMS</button>\n\n      </form>\n\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.html":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.html ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <div class=\"row\">\n\n      <form class=\"text-center border border-light p-5\"  (ngSubmit)=\" regform.form.valid&&sendsms(regform.form.value)\" #regform=\"ngForm\">\n\n        <p class=\"h4 mb-4\">Send SMS To Clients</p>\n        <!-- <div class=\"custom-control custom-checkbox\">\n          <label class=\"custom-control-label\" for=\"defaultChecked2\">Push Notification</label>\n        </div> -->\n        <div class=\"form-group\">\n<h5><b>Send To:</b>&nbsp;{{mobilenumbers}}</h5>\n          <textarea class=\"form-control rounded-0\" id=\"exampleFormControlTextarea2\" rows=\"3\"\n            placeholder=\"Message\" name=\"message\" ngModel></textarea>\n        </div>\n\n          <!-- <button mdbBtn color=\"info\"  type=\"button\" routerLink=\"/viewnotifyTemplates\">Select Template</button> -->\n\n          <button mdbBtn color=\"info\" type=\"submit\">Send SMS</button>\n\n      </form>\n\n  </div>\n</div>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/clientsManage/view-detail/view-detail.component.html":
 /*!************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/clientsManage/view-detail/view-detail.component.html ***!
@@ -503,7 +536,7 @@ module.exports = "<!-- Jumbotron -->\r\n<div class=\"jumbotron p-0\">\r\n  <div 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n\n<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">View Clients</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 search\">\n        <button mat-mini-fab color=\"primary\" aria-label=\"Example icon button with a menu icon\" (click)=\"getClients()\">\n          <mdb-icon fas icon=\"sync-alt\"></mdb-icon>\n        </button>&nbsp;\n          <input  type=\"text\" [(ngModel)]=\"searchText\" placeholder=\" Search By Filter\"\n            aria-label=\"Search\" >\n\n\n          <select class=\"browser-default custom-select filter\" (change)=\"getclientsbyfilter($event.target.value)\">\n            <option selected value=\"\">select</option>\n            <option  value=\"All\">ALL</option>\n            <option value=\"review\" >Review</option>\n            <option value=\"active\">Active</option>\n            <option value=\"pending\">Pending</option>\n            <option value=\"disable\">Disable</option>\n          </select>\n      </div>\n      <div class=\"col-md-6 mubutn\">\n\n\n\n        <button mat-stroked-button color=\"primary\" routerLink=\"/client/addclient\">\n          Add\n          <span class=\"material-icons\">\n            add\n          </span></button>\n          <button mat-stroked-button color=\"primary\" routerLink=\"/client/createprofile\">\n            BulkAccount Create\n              <span class=\"material-icons\">\n                add\n              </span></button>\n\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n        <tr style=\"background-color: darkblue;color:white\">\n          <th class=\"text-center\">\n           Client ID</th>\n          <th class=\"text-center\">\n            FullName</th>\n          <th class=\"text-center\">Mobile</th>\n          <th class=\"text-center\">Status</th>\n          <th colspan=\"4\" class=\"text-center\">Action\n          </th>\n\n        </tr>\n        <tr *ngFor=\"let id=index;let person of personList| filter: {client_id: searchText, client_firstname:searchText,  client_lastname: searchText,user_mobile_number:searchText}\" #loaded>\n          <td>\n            {{person.client_id}}\n          </td>\n          <td>\n            {{person.client_firstname}}{{person.client_lastname}}\n          </td>\n          <td name=\"name\">\n            {{person.user_mobile_number}}\n          </td>\n          <td name=\"mobile\">\n            <select class=\"browser-default custom-select\" [(ngModel)]=\"person.account_status\" name=\"account_status\">\n              <option selected value=\"\">select</option>\n              <option value=\"review\"  [disabled]=\"person.account_status=='active'\">Review</option>\n              <option value=\"active\"  [disabled]=\"person.account_status=='active'\">Active</option>\n              <option value=\"pending\" [disabled]=\"person.account_status=='active'\">Pending</option>\n              <option value=\"disable\" [disabled]=\"person.account_status=='active'\">Disable</option>\n            </select>\n          </td>\n\n          <td>\n            <a>\n              <span class=\"material-icons\" (click)=\"updatestatus(person)\" matTooltip=\"Save\"\n              matTooltipClass=\"example-tooltip-red\"\n              aria-label=\"Button that shows a red tooltip\">\n                save\n                </span>\n                </a>\n              </td>\n          <td>\n           <a> <span class=\"material-icons\" [routerLink]=\"['/client/viewDetail/',person.client_id]\"      matTooltip=\"View Detailed\"\n            matTooltipClass=\"example-tooltip-red\"\n            aria-label=\"Button that shows a red tooltip\">\n              visibility\n              </span>\n              </a>\n          </td>\n\n          <td>\n           <a [routerLink]=\"['/client/editclient/',person.client_id]\"> <span class=\"table-Add\"      matTooltip=\"Edit User\"\n            matTooltipClass=\"example-tooltip-red\"\n            aria-label=\"Button that shows a red tooltip\">\n              <i class=\"fas fa-user-edit\" ></i>\n            </span></a>\n          </td>\n          <td *ngIf=\"role=='admin'||role=='Partner'\">\n            <a (click)=\"deleteclient(person.client_id)\">\n              <span class=\"material-icons\"      matTooltip=\"Delete User\"\n              matTooltipClass=\"example-tooltip-red\"\n              aria-label=\"Button that shows a red tooltip\">\n                delete\n                </span>\n            </a>\n          </td>\n\n\n        </tr>\n      </table>\n\n\n      <h6 class=\"errorMessage\" *ngIf=\"errorMessage\">{{errorMessage}}</h6>\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "\n\n\n\n<div class=\"card\">\n  <h3 class=\"card-header text-center font-weight-bold text-uppercase py-4\">View Clients</h3>\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md-6 search\">\n        <button mat-mini-fab color=\"primary\" aria-label=\"Example icon button with a menu icon\" (click)=\"getClients()\">\n          <mdb-icon fas icon=\"sync-alt\"></mdb-icon>\n        </button>&nbsp;\n          <input  type=\"text\" [(ngModel)]=\"searchText\" placeholder=\" Search By Filter\"\n            aria-label=\"Search\" >\n\n\n          <select class=\"browser-default custom-select filter\" (change)=\"getclientsbyfilter($event.target.value)\">\n            <option selected value=\"\">select</option>\n            <option  value=\"All\">ALL</option>\n            <option value=\"review\" >Review</option>\n            <option value=\"active\">Active</option>\n            <option value=\"pending\">Pending</option>\n            <option value=\"disable\">Disable</option>\n          </select>\n          &nbsp;&nbsp;\n<img src=\"assets/img/bulksmsicon.png\" width=\"12%\" (click)=\"selectclients()\">\n      </div>\n      <div class=\"col-md-6 mubutn\">\n\n\n\n\n        <button mat-stroked-button color=\"primary\" routerLink=\"/client/addclient\">\n          Add\n          <span class=\"material-icons\">\n            add\n          </span></button>\n          <button mat-stroked-button color=\"primary\" routerLink=\"/client/createprofile\" *ngIf=\"role =='admin'||role=='Partner'\">\n            Bulkprofile Create\n              <span class=\"material-icons\">\n                add\n              </span></button>\n\n        <img class=\"xlicon media \" src=\"assets/img/xlicon.png\" (click)=\"exportAsXLSX()\">\n      </div>\n    </div>\n  </div>\n  <div class=\"card-body\">\n    <div id=\"table\" class=\"table-editable\">\n\n      <table class=\"table table-bordered table-responsive-md table-striped text-center table-media\">\n        <tr style=\"background-color: darkblue;color:white\">\n          <th class=\"text-center\">\n           Client ID</th>\n          <th class=\"text-center\">\n            FullName</th>\n          <th class=\"text-center\">Mobile</th>\n          <th class=\"text-center\">Status</th>\n          <th colspan=\"2\" class=\"text-center\">whatsaap/SMS</th>\n          <th colspan=\"4\" class=\"text-center\">Action\n          </th>\n          <th class=\"text-center\">select All <input type=\"checkbox\" name=\"all\" [checked]=\"allToppings\" (change)=\"selectAllToppings($event.target.checked,personList)\"/></th>\n\n        </tr>\n        <tr *ngFor=\"let person of personList| filter: {client_id: searchText, client_firstname:searchText,  client_lastname: searchText,user_mobile_number:searchText}; let id=index;\" #loaded>\n          <td>\n            {{person.client_id}}\n          </td>\n          <td>\n            {{person.client_firstname}}&nbsp;{{person.client_lastname}}\n          </td>\n          <td name=\"name\">\n            {{person.user_mobile_number}}\n          </td>\n          <td name=\"mobile\">\n            <select class=\"browser-default custom-select\" [(ngModel)]=\"person.account_status\" name=\"account_status\">\n              <option selected value=\"\">select</option>\n              <option value=\"review\"  [disabled]=\"person.account_status=='active'\">Review</option>\n              <option value=\"active\"  [disabled]=\"person.account_status=='active'\">Active</option>\n              <option value=\"pending\" [disabled]=\"person.account_status=='active'\">Pending</option>\n              <option value=\"disable\" [disabled]=\"person.account_status=='active'\">Disable</option>\n            </select>\n          </td>\n\n          <td>\n            <img class=\"pointer\" src=\"assets/img/whatsaapicon.webp\" width=\"100%\" [routerLink]=\"['/downloadapksendsms',person.user_mobile_number]\">\n          </td>\n          <td class=\"pointer\">\n           <a [routerLink]=\"['/client/sendsms/',person.user_mobile_number]\"><span class=\"material-icons\">\n              sms\n              </span>\n            </a>\n            </td>\n          <td>\n            <a>\n              <span class=\"material-icons\" (click)=\"updatestatus(person)\" matTooltip=\"Save\"\n              matTooltipClass=\"example-tooltip-red\"\n              aria-label=\"Button that shows a red tooltip\">\n                save\n                </span>\n                </a>\n              </td>\n          <td>\n           <a> <span class=\"material-icons\" [routerLink]=\"['/client/viewDetail/',person.client_id]\"      matTooltip=\"View Detailed\"\n            matTooltipClass=\"example-tooltip-red\"\n            aria-label=\"Button that shows a red tooltip\">\n              visibility\n              </span>\n              </a>\n          </td>\n\n          <td>\n           <a [routerLink]=\"['/client/editclient/',person.client_id]\"> <span class=\"table-Add\"      matTooltip=\"Edit User\"\n            matTooltipClass=\"example-tooltip-red\"\n            aria-label=\"Button that shows a red tooltip\">\n              <i class=\"fas fa-user-edit\" ></i>\n            </span></a>\n          </td>\n          <td *ngIf=\"role=='admin'||role=='Partner'\">\n            <a (click)=\"deleteclient(person.client_id)\">\n              <span class=\"material-icons\"      matTooltip=\"Delete User\"\n              matTooltipClass=\"example-tooltip-red\"\n              aria-label=\"Button that shows a red tooltip\">\n                delete\n                </span>\n            </a>\n          </td>\n          <td>\n            <input type=\"checkbox\" name=\"sizecb[]\" value=\"{{person.id}}\" [checked]=\"allToppings\" (change)=\"selectNewTopping($event.target.checked,person)\"/>\n          </td>\n        </tr>\n      </table>\n\n\n      <h6 class=\"errorMessage\" *ngIf=\"errorMessage\">{{errorMessage}}</h6>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -646,7 +679,7 @@ module.exports = "<mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-nav-list>\n    <div class=\"profile-card\">\n        <div class=\"header\">\n        </div>\n        <img src=\"assets/img/person.png\" >\n        <h4>{{name}}</h4>\n        <h6><b>Role: </b>{{role}}</h6>\n    </div>\n\n    <mat-divider></mat-divider>\n\n    <!-- <h2 matSubheader>Pages</h2> -->\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/home\" routerLinkActive=\"active\"><i class=\"fas fa-chart-line\"></i> &nbsp; Dashboard</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/client/viewclient\" routerLinkActive=\"active\" ><i class=\"fas fa-users\" ></i> &nbsp; Client Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/attedance/attendanceReport\" routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-chart-area\" ></i>&nbsp; Users Mangement</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/packagemanagement\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'||role=='Partner'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Package Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/campaignManage\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Campaign Management</a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/analytics\"  routerLinkActive=\"active\" *ngIf=\"role =='Partner'||role=='admin'\" > <i class=\"fas fa-chart-pie\"></i>&nbsp; Analytics</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLinkActive=\"active\" routerLink=\"/billing/smspackagelist\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\"></i>&nbsp; Billing</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/helpdesk/viewhelpdesk\" *ngIf=\"role =='admin'\"><i class=\"fas fa-hands-helping\" ></i>&nbsp; HelpDesk</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/templates/viewTemplates\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; Templates</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/card/viewcards\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; cards</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n      android\n      </span> ViewApkList</a>\n      <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewdownloadapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n        android\n        </span> viewdownloadapklist</a>\n        <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewusersfeedback\" *ngIf=\"role =='Partner'||role =='admin'\"><i class=\"fas fa-comment-alt\"></i> ViewUsersFeedbackQueries</a>\n    <!-- <mat-divider></mat-divider> -->\n\n    <h2 matSubheader *ngIf=\"role =='admin'\">Tools</h2>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>import_contacts</mat-icon>\n        Contacts\n    </a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>contact_phone</mat-icon>\n        Leads\n    </a>\n\n</mat-nav-list>\n"
+module.exports = "<mat-nav-list>\n    <div class=\"profile-card\">\n        <div class=\"header\">\n        </div>\n        <img src=\"assets/img/person.png\" >\n        <h4>{{name}}</h4>\n        <h6><b>Role: </b>{{role}}</h6>\n    </div>\n\n    <mat-divider></mat-divider>\n\n    <!-- <h2 matSubheader>Pages</h2> -->\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/home\" routerLinkActive=\"active\"><i class=\"fas fa-chart-line\"></i> &nbsp; Dashboard</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/client/viewclient\" routerLinkActive=\"active\" ><i class=\"fas fa-users\" ></i> &nbsp; Client Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/attedance/attendanceReport\" routerLinkActive=\"active\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-chart-area\" ></i>&nbsp; Users Mangement</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/packagemanagement\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'||role=='Partner'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Package Management</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/campaignManage\"  routerLinkActive=\"active\" *ngIf=\"role =='admin'||role=='Partner'\"> <i class=\"fas fa-tasks\" ></i>&nbsp; Campaign Management</a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/analytics\"  routerLinkActive=\"active\" *ngIf=\"role =='Partner'||role=='admin'\" > <i class=\"fas fa-chart-pie\"></i>&nbsp; Analytics</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLinkActive=\"active\" routerLink=\"/billing/smspackagelist\" *ngIf=\"role =='admin'\"> <i class=\"fas fa-tasks\"></i>&nbsp; Billing</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/helpdesk/viewhelpdesk\" *ngIf=\"role =='admin'\"><i class=\"fas fa-hands-helping\" ></i>&nbsp; HelpDesk</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/templates/viewTemplates\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; Templates</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/card/viewcards\" *ngIf=\"role =='admin'\"><i class=\"fas fa-images\"></i>&nbsp; cards</a>\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n      android\n      </span> ViewApkList</a>\n      <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewdownloadapklist\" *ngIf=\"role =='Partner'||role =='admin'\"><span class=\"material-icons\">\n        android\n        </span> viewdownloadapklist</a>\n        <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/viewusersfeedback\" *ngIf=\"role =='Partner'||role =='admin'\"><i class=\"fas fa-comment-alt\"></i> ViewUsersFeedbackQueries</a>\n    <!-- <mat-divider></mat-divider> -->\n\n    <h2 matSubheader *ngIf=\"role =='admin'\">Tools</h2>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>import_contacts</mat-icon>\n        Contacts\n    </a>\n\n    <a mat-list-item routerLinkActive=\"list-item-active\" routerLink=\"/contacts\" *ngIf=\"role =='admin'\">\n        <mat-icon>contact_phone</mat-icon>\n        Leads\n    </a>\n\n</mat-nav-list>\n"
 
 /***/ }),
 
@@ -839,7 +872,7 @@ AnalyticComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\n  width: 100%;\n}\n\n.mat-form-field {\n  font-size: 14px;\n  width: 100%;\n}\n\ntd, th {\n  width: 25%;\n}\n\nimg.xlicon {\n  width: 25%;\n  margin-left: 76%;\n  margin-top: -10%;\n  margin-bottom: -4%;\n  cursor: pointer;\n}\n\ninput {\n  margin-top: 5%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQW5hbHl0aWNzL3BsYW5leHBpcnl0cmFja2luZy9GOlxcZ2l0IGh1YlxccmVzZWxsZXJcXEZyb250ZW5kL3NyY1xcYXBwXFxBbmFseXRpY3NcXHBsYW5leHBpcnl0cmFja2luZ1xccGxhbmV4cGlyeXRyYWNraW5nLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9BbmFseXRpY3MvcGxhbmV4cGlyeXRyYWNraW5nL3BsYW5leHBpcnl0cmFja2luZy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7QUNDRjs7QURFQTtFQUNFLGVBQUE7RUFDQSxXQUFBO0FDQ0Y7O0FERUE7RUFDRSxVQUFBO0FDQ0Y7O0FEQ0E7RUFFRSxVQUFBO0VBQ0UsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtBQ0NKOztBREdBO0VBQ0UsY0FBQTtBQ0FGIiwiZmlsZSI6InNyYy9hcHAvQW5hbHl0aWNzL3BsYW5leHBpcnl0cmFja2luZy9wbGFuZXhwaXJ5dHJhY2tpbmcuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5tYXQtZm9ybS1maWVsZCB7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG50ZCwgdGgge1xyXG4gIHdpZHRoOiAyNSU7XHJcbn1cclxuaW1nLnhsaWNvbiB7XHJcblxyXG4gIHdpZHRoOiAyNSU7XHJcbiAgICBtYXJnaW4tbGVmdDogNzYlO1xyXG4gICAgbWFyZ2luLXRvcDogLTEwJTtcclxuICAgIG1hcmdpbi1ib3R0b206IC00JTtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuXHJcbmlucHV0IHtcclxuICBtYXJnaW4tdG9wOiA1JTtcclxufVxyXG5pbnB1dC5zZWFyY2gge1xyXG4gIC8vIG1hcmdpbi1sZWZ0OiAzMiU7XHJcbn1cclxuIiwidGFibGUge1xuICB3aWR0aDogMTAwJTtcbn1cblxuLm1hdC1mb3JtLWZpZWxkIHtcbiAgZm9udC1zaXplOiAxNHB4O1xuICB3aWR0aDogMTAwJTtcbn1cblxudGQsIHRoIHtcbiAgd2lkdGg6IDI1JTtcbn1cblxuaW1nLnhsaWNvbiB7XG4gIHdpZHRoOiAyNSU7XG4gIG1hcmdpbi1sZWZ0OiA3NiU7XG4gIG1hcmdpbi10b3A6IC0xMCU7XG4gIG1hcmdpbi1ib3R0b206IC00JTtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG5pbnB1dCB7XG4gIG1hcmdpbi10b3A6IDUlO1xufSJdfQ== */"
+module.exports = "table {\n  width: 100%;\n}\n\n.mat-form-field {\n  font-size: 14px;\n  width: 100%;\n}\n\n.pointer {\n  cursor: pointer;\n}\n\ntd, th {\n  width: 25%;\n}\n\nimg.xlicon {\n  width: 25%;\n  margin-left: 76%;\n  margin-top: -10%;\n  margin-bottom: -4%;\n  cursor: pointer;\n}\n\ninput {\n  margin-top: 5%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQW5hbHl0aWNzL3BsYW5leHBpcnl0cmFja2luZy9GOlxcZ2l0IGh1YlxccmVzZWxsZXJcXEZyb250ZW5kL3NyY1xcYXBwXFxBbmFseXRpY3NcXHBsYW5leHBpcnl0cmFja2luZ1xccGxhbmV4cGlyeXRyYWNraW5nLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9BbmFseXRpY3MvcGxhbmV4cGlyeXRyYWNraW5nL3BsYW5leHBpcnl0cmFja2luZy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7QUNDRjs7QURFQTtFQUNFLGVBQUE7RUFDQSxXQUFBO0FDQ0Y7O0FEQ0E7RUFBVSxlQUFBO0FDR1Y7O0FERkE7RUFDRSxVQUFBO0FDS0Y7O0FESEE7RUFFRSxVQUFBO0VBQ0UsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtBQ0tKOztBRERBO0VBQ0UsY0FBQTtBQ0lGIiwiZmlsZSI6InNyYy9hcHAvQW5hbHl0aWNzL3BsYW5leHBpcnl0cmFja2luZy9wbGFuZXhwaXJ5dHJhY2tpbmcuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5tYXQtZm9ybS1maWVsZCB7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcbi5wb2ludGVyIHtjdXJzb3I6IHBvaW50ZXI7fVxyXG50ZCwgdGgge1xyXG4gIHdpZHRoOiAyNSU7XHJcbn1cclxuaW1nLnhsaWNvbiB7XHJcblxyXG4gIHdpZHRoOiAyNSU7XHJcbiAgICBtYXJnaW4tbGVmdDogNzYlO1xyXG4gICAgbWFyZ2luLXRvcDogLTEwJTtcclxuICAgIG1hcmdpbi1ib3R0b206IC00JTtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuXHJcbmlucHV0IHtcclxuICBtYXJnaW4tdG9wOiA1JTtcclxufVxyXG5pbnB1dC5zZWFyY2gge1xyXG4gIC8vIG1hcmdpbi1sZWZ0OiAzMiU7XHJcbn1cclxuIiwidGFibGUge1xuICB3aWR0aDogMTAwJTtcbn1cblxuLm1hdC1mb3JtLWZpZWxkIHtcbiAgZm9udC1zaXplOiAxNHB4O1xuICB3aWR0aDogMTAwJTtcbn1cblxuLnBvaW50ZXIge1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbnRkLCB0aCB7XG4gIHdpZHRoOiAyNSU7XG59XG5cbmltZy54bGljb24ge1xuICB3aWR0aDogMjUlO1xuICBtYXJnaW4tbGVmdDogNzYlO1xuICBtYXJnaW4tdG9wOiAtMTAlO1xuICBtYXJnaW4tYm90dG9tOiAtNCU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuaW5wdXQge1xuICBtYXJnaW4tdG9wOiA1JTtcbn0iXX0= */"
 
 /***/ }),
 
@@ -855,17 +888,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlanexpirytrackingComponent", function() { return PlanexpirytrackingComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
-/* harmony import */ var src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/excel.service */ "./src/app/apiCalls/excel.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+/* harmony import */ var src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/apiCalls/excel.service */ "./src/app/apiCalls/excel.service.ts");
+
 
 
 
 
 let PlanexpirytrackingComponent = class PlanexpirytrackingComponent {
-    constructor(apiCall, excelservice) {
+    constructor(apiCall, excelservice, router) {
         this.apiCall = apiCall;
         this.excelservice = excelservice;
+        this.router = router;
         this.awaitingPersonList = [];
+        this.selectedToppings = [];
+        this.allToppings = false;
+        this.curDate = new Date();
     }
     ngOnInit() {
         this.getClients();
@@ -920,7 +959,7 @@ let PlanexpirytrackingComponent = class PlanexpirytrackingComponent {
         });
     }
     insertnotifications() {
-        const agree = confirm("Are sure to add push notifications ?");
+        const agree = confirm('Are sure to add push notifications ?');
         if (agree) {
             const data = this.personList.map(person => person.client_id);
             const userData = { client_ids: data };
@@ -929,10 +968,53 @@ let PlanexpirytrackingComponent = class PlanexpirytrackingComponent {
             });
         }
     }
+    getclientsbyfilter(value) {
+        console.log(value);
+        const data = { account_status: value };
+        this.apiCall.getclientsbyfilter(data).subscribe((res) => {
+            this.personList = res.data;
+            if (res.status == 'false') {
+                this.errorMessage = res.message;
+            }
+            if (value === 'All') {
+                this.ngOnInit();
+            }
+        });
+    }
+    selectAllToppings(checked, toppings) {
+        this.selectedToppings = toppings;
+        if (checked) {
+            this.allToppings = true;
+            this.selectedclients = this.selectedToppings;
+            console.log(this.selectedclients);
+        }
+        else {
+            console.log(this.selectedToppings);
+            this.allToppings = false;
+        }
+    }
+    selectNewTopping(checked, topping) {
+        if (checked) {
+            this.selectedToppings.push(topping);
+            this.selectedclients = this.selectedToppings;
+            console.log(this.selectedclients);
+        }
+        else {
+            this.selectedToppings = this.selectedToppings.filter(top => top.client_id !== topping.client_id);
+        }
+    }
+    selectclients() {
+        const notify = confirm("Are you sure you want to send notification");
+        if (notify) {
+            this.apiCall.getclientids(this.selectedclients);
+            this.router.navigate(['/sendpushnotification']);
+        }
+    }
 };
 PlanexpirytrackingComponent.ctorParameters = () => [
-    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_2__["ApiCallService"] },
-    { type: src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_3__["ExcelService"] }
+    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+    { type: src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__["ExcelService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
 ];
 PlanexpirytrackingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1328,6 +1410,95 @@ SalesAnalysisComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./sales-analysis.component.scss */ "./src/app/Analytics/sales-analysis/sales-analysis.component.scss")]
     })
 ], SalesAnalysisComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/Analytics/sendpushnotification/sendpushnotification.component.scss":
+/*!************************************************************************************!*\
+  !*** ./src/app/Analytics/sendpushnotification/sendpushnotification.component.scss ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "form {\n  margin-left: 25%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQW5hbHl0aWNzL3NlbmRwdXNobm90aWZpY2F0aW9uL0Y6XFxnaXQgaHViXFxyZXNlbGxlclxcRnJvbnRlbmQvc3JjXFxhcHBcXEFuYWx5dGljc1xcc2VuZHB1c2hub3RpZmljYXRpb25cXHNlbmRwdXNobm90aWZpY2F0aW9uLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9BbmFseXRpY3Mvc2VuZHB1c2hub3RpZmljYXRpb24vc2VuZHB1c2hub3RpZmljYXRpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvQW5hbHl0aWNzL3NlbmRwdXNobm90aWZpY2F0aW9uL3NlbmRwdXNobm90aWZpY2F0aW9uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZm9ybXtcclxuICBtYXJnaW4tbGVmdDogMjUlO1xyXG59XHJcbiIsImZvcm0ge1xuICBtYXJnaW4tbGVmdDogMjUlO1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/Analytics/sendpushnotification/sendpushnotification.component.ts":
+/*!**********************************************************************************!*\
+  !*** ./src/app/Analytics/sendpushnotification/sendpushnotification.component.ts ***!
+  \**********************************************************************************/
+/*! exports provided: SendpushnotificationComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendpushnotificationComponent", function() { return SendpushnotificationComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
+
+
+let SendpushnotificationComponent = class SendpushnotificationComponent {
+    constructor(apiCall, router) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.boolean = false;
+    }
+    ngOnInit() {
+        this.getMyContacts();
+    }
+    getMyContacts() {
+        this.apiCall.client_idArray.subscribe((res = []) => {
+            this.client_ids = res.map(el => el.client_id);
+            this.mobilenumbers = res.map(el => el.user_mobile_number);
+        });
+    }
+    pushnotify(data) {
+        data.client_ids = this.client_ids;
+        data.mobilenumbers = this.mobilenumbers;
+        console.log(data);
+        if (this.boolean) {
+            this.apiCall.insertnotifications(data).subscribe((res) => {
+                console.log(res);
+                if (res.status == 'success') {
+                    alert(res.message);
+                    this.router.navigate(['/home']);
+                }
+                else {
+                    alert(res.message);
+                }
+            });
+        }
+        this.apiCall.sendPushnotifySMS(data).subscribe((res) => {
+            console.log(res);
+            if (res.type == 'success') {
+                alert('sms sent successfully');
+                this.router.navigate(['/home']);
+            }
+        });
+    }
+    checkbox(event) {
+        console.log(event);
+        this.boolean = event;
+    }
+};
+SendpushnotificationComponent.ctorParameters = () => [
+    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
+SendpushnotificationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-sendpushnotification',
+        template: __webpack_require__(/*! raw-loader!./sendpushnotification.component.html */ "./node_modules/raw-loader/index.js!./src/app/Analytics/sendpushnotification/sendpushnotification.component.html"),
+        styles: [__webpack_require__(/*! ./sendpushnotification.component.scss */ "./src/app/Analytics/sendpushnotification/sendpushnotification.component.scss")]
+    })
+], SendpushnotificationComponent);
 
 
 
@@ -2455,6 +2626,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+
 
 
 
@@ -2468,9 +2641,19 @@ let ApiCallService = class ApiCallService {
             password: '',
             user_name: ''
         };
+        this.clientSource = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](null);
+        this.client_idArray = this.clientSource.asObservable();
+        this.packSource = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](null);
+        this.packArray = this.packSource.asObservable();
         this.noAuthHeader = { headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ NoAuth: 'True' }) };
     }
     // HttpMethods
+    getclientids(client_idArray) {
+        this.clientSource.next(client_idArray);
+    }
+    confirmpackage(packData) {
+        this.packSource.next(packData);
+    }
     postUser(user) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/signup', user, this.noAuthHeader);
     }
@@ -2676,6 +2859,18 @@ let ApiCallService = class ApiCallService {
     resetPassword(data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/ChangePassword', data);
     }
+    getrateCards() {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getrateCards');
+    }
+    getpacksbyratecard(data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getpacksbyratecard', data);
+    }
+    getPremiumRatecards() {
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getPremiumRatecards');
+    }
+    getPremiumpacksByRateCard(data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getPremiumpacksByRateCard', data);
+    }
     submitcustomerdetails(data) {
         return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/submitcustomerdetails', data);
     }
@@ -2705,6 +2900,15 @@ let ApiCallService = class ApiCallService {
     }
     getusersfeedbackqueries() {
         return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/getusersfeedbackqueries');
+    }
+    sendpushnotification(data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/sendpushnotification', data);
+    }
+    sendPushnotifySMS(data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/sendPushnotifySMS', data);
+    }
+    sendSingleSMS(data) {
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiBaseUrl + '/partner/' + this.getPartner_id() + '/sendSingleSMS', data);
     }
     // Helper Methods
     setToken(token) {
@@ -3061,6 +3265,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dwnldapksendsms_dwnldapksendsms_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./dwnldapksendsms/dwnldapksendsms.component */ "./src/app/dwnldapksendsms/dwnldapksendsms.component.ts");
 /* harmony import */ var _viewusersfeedback_viewusersfeedback_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./viewusersfeedback/viewusersfeedback.component */ "./src/app/viewusersfeedback/viewusersfeedback.component.ts");
 /* harmony import */ var _sendsmstouserquery_sendsmstouserquery_component__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./sendsmstouserquery/sendsmstouserquery.component */ "./src/app/sendsmstouserquery/sendsmstouserquery.component.ts");
+/* harmony import */ var _clientsManage_sendbulksms_sendbulksms_component__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./clientsManage/sendbulksms/sendbulksms.component */ "./src/app/clientsManage/sendbulksms/sendbulksms.component.ts");
+/* harmony import */ var _clientsManage_sendsmstoclients_sendsmstoclients_component__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./clientsManage/sendsmstoclients/sendsmstoclients.component */ "./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.ts");
+/* harmony import */ var _Analytics_sendpushnotification_sendpushnotification_component__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./Analytics/sendpushnotification/sendpushnotification.component */ "./src/app/Analytics/sendpushnotification/sendpushnotification.component.ts");
+
+
+
 
 
 
@@ -3139,7 +3349,9 @@ const routes = [{
                     { path: 'editclient/:client_id', component: _clientsManage_edit_clients_edit_clients_component__WEBPACK_IMPORTED_MODULE_13__["EditClientsComponent"] },
                     { path: 'viewclient', component: _clientsManage_viewclients_viewclients_component__WEBPACK_IMPORTED_MODULE_14__["ViewclientsComponent"] },
                     { path: 'viewDetail/:client_id', component: _clientsManage_view_detail_view_detail_component__WEBPACK_IMPORTED_MODULE_23__["ViewDetailComponent"] },
-                    { path: 'createprofile', component: _clientsManage_bulkprofile_create_bulkprofile_create_component__WEBPACK_IMPORTED_MODULE_41__["BulkprofileCreateComponent"] }
+                    { path: 'createprofile', component: _clientsManage_bulkprofile_create_bulkprofile_create_component__WEBPACK_IMPORTED_MODULE_41__["BulkprofileCreateComponent"] },
+                    { path: 'sendsms/:mobilenumber', component: _clientsManage_sendsmstoclients_sendsmstoclients_component__WEBPACK_IMPORTED_MODULE_62__["SendsmstoclientsComponent"] },
+                    { path: 'sendbulksms', component: _clientsManage_sendbulksms_sendbulksms_component__WEBPACK_IMPORTED_MODULE_61__["SendbulksmsComponent"] }
                 ] },
             { path: 'user', component: _userManage_user_manage_user_manage_component__WEBPACK_IMPORTED_MODULE_15__["UserManageComponent"], children: [
                     { path: 'adduser', component: _userManage_add_users_add_users_component__WEBPACK_IMPORTED_MODULE_16__["AddUsersComponent"] },
@@ -3158,6 +3370,7 @@ const routes = [{
             { path: 'downloadapksendsms/:mobilenumber', component: _dwnldapksendsms_dwnldapksendsms_component__WEBPACK_IMPORTED_MODULE_58__["DwnldapksendsmsComponent"] },
             { path: 'viewusersfeedback', component: _viewusersfeedback_viewusersfeedback_component__WEBPACK_IMPORTED_MODULE_59__["ViewusersfeedbackComponent"] },
             { path: 'sendwhatsaapsms/:mobilenumber', component: _sendsmstouserquery_sendsmstouserquery_component__WEBPACK_IMPORTED_MODULE_60__["SendsmstouserqueryComponent"] },
+            { path: 'sendpushnotification', component: _Analytics_sendpushnotification_sendpushnotification_component__WEBPACK_IMPORTED_MODULE_63__["SendpushnotificationComponent"] },
             { path: 'analytics', component: _Analytics_analytic_analytic_component__WEBPACK_IMPORTED_MODULE_24__["AnalyticComponent"], children: [
                     { path: 'purchaseAnalysis', component: _Analytics_purchase_analysis_purchase_analysis_component__WEBPACK_IMPORTED_MODULE_25__["PurchaseAnalysisComponent"] },
                     { path: 'salesAnalysis', component: _Analytics_sales_analysis_sales_analysis_component__WEBPACK_IMPORTED_MODULE_26__["SalesAnalysisComponent"] },
@@ -3350,6 +3563,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dwnldapksendsms_dwnldapksendsms_component__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./dwnldapksendsms/dwnldapksendsms.component */ "./src/app/dwnldapksendsms/dwnldapksendsms.component.ts");
 /* harmony import */ var _viewusersfeedback_viewusersfeedback_component__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./viewusersfeedback/viewusersfeedback.component */ "./src/app/viewusersfeedback/viewusersfeedback.component.ts");
 /* harmony import */ var _sendsmstouserquery_sendsmstouserquery_component__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./sendsmstouserquery/sendsmstouserquery.component */ "./src/app/sendsmstouserquery/sendsmstouserquery.component.ts");
+/* harmony import */ var _clientsManage_sendsmstoclients_sendsmstoclients_component__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./clientsManage/sendsmstoclients/sendsmstoclients.component */ "./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.ts");
+/* harmony import */ var _clientsManage_sendbulksms_sendbulksms_component__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./clientsManage/sendbulksms/sendbulksms.component */ "./src/app/clientsManage/sendbulksms/sendbulksms.component.ts");
+/* harmony import */ var _Analytics_sendpushnotification_sendpushnotification_component__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./Analytics/sendpushnotification/sendpushnotification.component */ "./src/app/Analytics/sendpushnotification/sendpushnotification.component.ts");
+
+
+
 
 
 
@@ -3493,6 +3712,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _dwnldapksendsms_dwnldapksendsms_component__WEBPACK_IMPORTED_MODULE_74__["DwnldapksendsmsComponent"],
             _viewusersfeedback_viewusersfeedback_component__WEBPACK_IMPORTED_MODULE_75__["ViewusersfeedbackComponent"],
             _sendsmstouserquery_sendsmstouserquery_component__WEBPACK_IMPORTED_MODULE_76__["SendsmstouserqueryComponent"],
+            _Analytics_sendpushnotification_sendpushnotification_component__WEBPACK_IMPORTED_MODULE_79__["SendpushnotificationComponent"],
+            _clientsManage_sendsmstoclients_sendsmstoclients_component__WEBPACK_IMPORTED_MODULE_77__["SendsmstoclientsComponent"],
+            _clientsManage_sendbulksms_sendbulksms_component__WEBPACK_IMPORTED_MODULE_78__["SendbulksmsComponent"]
         ],
         imports: [
             ng_otp_input__WEBPACK_IMPORTED_MODULE_71__["NgOtpInputModule"],
@@ -4023,7 +4245,7 @@ AddpushnotificationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"](
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\n  width: 100%;\n}\n\n.mat-form-field {\n  font-size: 14px;\n  width: 100%;\n}\n\ntd, th {\n  width: 25%;\n}\n\nimg.xlicon {\n  width: 25%;\n  margin-left: 76%;\n  margin-top: -10%;\n  margin-bottom: -4%;\n  cursor: pointer;\n}\n\ninput {\n  margin-top: 5%;\n}\n\nselect.browser-default.custom-select.filter {\n  width: 25%;\n  margin-right: 2%;\n}\n\nbutton.mat-fab.mat-button-base.mat-primary {\n  margin-top: 2%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FtcGFpZ24vY2FtcGFpZ24tbWFuYWdlbWVudC9GOlxcZ2l0IGh1YlxccmVzZWxsZXJcXEZyb250ZW5kL3NyY1xcYXBwXFxjYW1wYWlnblxcY2FtcGFpZ24tbWFuYWdlbWVudFxcY2FtcGFpZ24tbWFuYWdlbWVudC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY2FtcGFpZ24vY2FtcGFpZ24tbWFuYWdlbWVudC9jYW1wYWlnbi1tYW5hZ2VtZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBQTtBQ0NGOztBRENBO0VBQ0UsZUFBQTtFQUNBLFdBQUE7QUNFRjs7QURBQTtFQUNFLFVBQUE7QUNHRjs7QUREQTtFQUNFLFVBQUE7RUFDRSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0FDSUo7O0FERkE7RUFDRSxjQUFBO0FDS0Y7O0FESEE7RUFDRSxVQUFBO0VBQ0EsZ0JBQUE7QUNNRjs7QURKQTtFQUNFLGNBQUE7QUNPRiIsImZpbGUiOiJzcmMvYXBwL2NhbXBhaWduL2NhbXBhaWduLW1hbmFnZW1lbnQvY2FtcGFpZ24tbWFuYWdlbWVudC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG4ubWF0LWZvcm0tZmllbGQge1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG50ZCwgdGgge1xyXG4gIHdpZHRoOiAyNSU7XHJcbn1cclxuaW1nLnhsaWNvbiB7XHJcbiAgd2lkdGg6IDI1JTtcclxuICAgIG1hcmdpbi1sZWZ0OiA3NiU7XHJcbiAgICBtYXJnaW4tdG9wOiAtMTAlO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogLTQlO1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcbmlucHV0IHtcclxuICBtYXJnaW4tdG9wOiA1JTtcclxufVxyXG5zZWxlY3QuYnJvd3Nlci1kZWZhdWx0LmN1c3RvbS1zZWxlY3QuZmlsdGVyIHtcclxuICB3aWR0aDogMjUlO1xyXG4gIG1hcmdpbi1yaWdodDogMiU7XHJcbn1cclxuYnV0dG9uLm1hdC1mYWIubWF0LWJ1dHRvbi1iYXNlLm1hdC1wcmltYXJ5IHtcclxuICBtYXJnaW4tdG9wOiAyJTtcclxufVxyXG4iLCJ0YWJsZSB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4ubWF0LWZvcm0tZmllbGQge1xuICBmb250LXNpemU6IDE0cHg7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG50ZCwgdGgge1xuICB3aWR0aDogMjUlO1xufVxuXG5pbWcueGxpY29uIHtcbiAgd2lkdGg6IDI1JTtcbiAgbWFyZ2luLWxlZnQ6IDc2JTtcbiAgbWFyZ2luLXRvcDogLTEwJTtcbiAgbWFyZ2luLWJvdHRvbTogLTQlO1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbmlucHV0IHtcbiAgbWFyZ2luLXRvcDogNSU7XG59XG5cbnNlbGVjdC5icm93c2VyLWRlZmF1bHQuY3VzdG9tLXNlbGVjdC5maWx0ZXIge1xuICB3aWR0aDogMjUlO1xuICBtYXJnaW4tcmlnaHQ6IDIlO1xufVxuXG5idXR0b24ubWF0LWZhYi5tYXQtYnV0dG9uLWJhc2UubWF0LXByaW1hcnkge1xuICBtYXJnaW4tdG9wOiAyJTtcbn0iXX0= */"
+module.exports = "table {\n  width: 100%;\n}\n\n.mat-form-field {\n  font-size: 14px;\n  width: 100%;\n}\n\ntd, th {\n  width: 25%;\n}\n\nimg.xlicon {\n  width: 25%;\n  margin-left: 76%;\n  margin-top: -10%;\n  margin-bottom: -4%;\n  cursor: pointer;\n}\n\ninput {\n  margin-top: 5%;\n}\n\nselect.browser-default.custom-select.filter {\n  width: 25%;\n  margin-right: 2%;\n}\n\nbutton.mat-fab {\n  margin-top: 2%;\n}\n\n.pointer {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FtcGFpZ24vY2FtcGFpZ24tbWFuYWdlbWVudC9GOlxcZ2l0IGh1YlxccmVzZWxsZXJcXEZyb250ZW5kL3NyY1xcYXBwXFxjYW1wYWlnblxcY2FtcGFpZ24tbWFuYWdlbWVudFxcY2FtcGFpZ24tbWFuYWdlbWVudC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY2FtcGFpZ24vY2FtcGFpZ24tbWFuYWdlbWVudC9jYW1wYWlnbi1tYW5hZ2VtZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBQTtBQ0NGOztBRENBO0VBQ0UsZUFBQTtFQUNBLFdBQUE7QUNFRjs7QURBQTtFQUNFLFVBQUE7QUNHRjs7QUREQTtFQUNFLFVBQUE7RUFDRSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0FDSUo7O0FERkE7RUFDRSxjQUFBO0FDS0Y7O0FESEE7RUFDRSxVQUFBO0VBQ0EsZ0JBQUE7QUNNRjs7QURKQTtFQUNFLGNBQUE7QUNPRjs7QURMQTtFQUFVLGVBQUE7QUNTViIsImZpbGUiOiJzcmMvYXBwL2NhbXBhaWduL2NhbXBhaWduLW1hbmFnZW1lbnQvY2FtcGFpZ24tbWFuYWdlbWVudC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG4ubWF0LWZvcm0tZmllbGQge1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG50ZCwgdGgge1xyXG4gIHdpZHRoOiAyNSU7XHJcbn1cclxuaW1nLnhsaWNvbiB7XHJcbiAgd2lkdGg6IDI1JTtcclxuICAgIG1hcmdpbi1sZWZ0OiA3NiU7XHJcbiAgICBtYXJnaW4tdG9wOiAtMTAlO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogLTQlO1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcbmlucHV0IHtcclxuICBtYXJnaW4tdG9wOiA1JTtcclxufVxyXG5zZWxlY3QuYnJvd3Nlci1kZWZhdWx0LmN1c3RvbS1zZWxlY3QuZmlsdGVyIHtcclxuICB3aWR0aDogMjUlO1xyXG4gIG1hcmdpbi1yaWdodDogMiU7XHJcbn1cclxuYnV0dG9uLm1hdC1mYWJ7XHJcbiAgbWFyZ2luLXRvcDogMiU7XHJcbn1cclxuLnBvaW50ZXIge2N1cnNvcjogcG9pbnRlcjt9XHJcbiIsInRhYmxlIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5tYXQtZm9ybS1maWVsZCB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbnRkLCB0aCB7XG4gIHdpZHRoOiAyNSU7XG59XG5cbmltZy54bGljb24ge1xuICB3aWR0aDogMjUlO1xuICBtYXJnaW4tbGVmdDogNzYlO1xuICBtYXJnaW4tdG9wOiAtMTAlO1xuICBtYXJnaW4tYm90dG9tOiAtNCU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuaW5wdXQge1xuICBtYXJnaW4tdG9wOiA1JTtcbn1cblxuc2VsZWN0LmJyb3dzZXItZGVmYXVsdC5jdXN0b20tc2VsZWN0LmZpbHRlciB7XG4gIHdpZHRoOiAyNSU7XG4gIG1hcmdpbi1yaWdodDogMiU7XG59XG5cbmJ1dHRvbi5tYXQtZmFiIHtcbiAgbWFyZ2luLXRvcDogMiU7XG59XG5cbi5wb2ludGVyIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -4039,16 +4261,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CampaignManagementComponent", function() { return CampaignManagementComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
-/* harmony import */ var src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/excel.service */ "./src/app/apiCalls/excel.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+/* harmony import */ var src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/apiCalls/excel.service */ "./src/app/apiCalls/excel.service.ts");
+
 
 
 
 
 let CampaignManagementComponent = class CampaignManagementComponent {
-    constructor(apiCall, excelservice) {
+    constructor(apiCall, excelservice, router) {
         this.apiCall = apiCall;
         this.excelservice = excelservice;
+        this.router = router;
         this.awaitingPersonList = [];
         this.selectedToppings = [];
         this.allToppings = false;
@@ -4107,7 +4332,7 @@ let CampaignManagementComponent = class CampaignManagementComponent {
         });
     }
     insertnotifications() {
-        const agree = confirm("Are sure to add push notifications ?");
+        const agree = confirm('Are sure to add push notifications ?');
         if (agree) {
             const data = this.personList.map(person => person.client_id);
             const userData = { client_ids: data };
@@ -4118,10 +4343,10 @@ let CampaignManagementComponent = class CampaignManagementComponent {
     }
     getclientsbyfilter(value) {
         console.log(value);
-        const data = { account_status: value };
+        const data = { account_type: value };
         this.apiCall.getclientsbyfilter(data).subscribe((res) => {
             this.personList = res.data;
-            if (res.status == "false") {
+            if (res.status == 'false') {
                 this.errorMessage = res.message;
             }
             if (value === 'All') {
@@ -4129,31 +4354,38 @@ let CampaignManagementComponent = class CampaignManagementComponent {
             }
         });
     }
-    selectAllToppings(checked) {
-        this.selectedToppings = [];
+    selectAllToppings(checked, toppings) {
+        this.selectedToppings = toppings;
         if (checked) {
             this.allToppings = true;
-            this.selectedToppings = this.toppingList;
+            this.selectedclients = this.selectedToppings;
         }
         else {
-            console.log(this.allToppings);
+            console.log(this.selectedToppings);
             this.allToppings = false;
         }
     }
     selectNewTopping(checked, topping) {
         if (checked) {
             this.selectedToppings.push(topping);
-            console.log(this.selectedToppings);
+            this.selectedclients = this.selectedToppings;
         }
         else {
             this.selectedToppings = this.selectedToppings.filter(top => top.client_id !== topping.client_id);
         }
-        console.log(this.selectedToppings);
+    }
+    selectclients() {
+        const notify = confirm("Are you sure you want to send notification");
+        if (notify) {
+            this.apiCall.getclientids(this.selectedclients);
+            this.router.navigate(['/pushnotify']);
+        }
     }
 };
 CampaignManagementComponent.ctorParameters = () => [
-    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_2__["ApiCallService"] },
-    { type: src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_3__["ExcelService"] }
+    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+    { type: src_app_apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__["ExcelService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
 ];
 CampaignManagementComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -4221,7 +4453,7 @@ NotifytemplatesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".col-md-6 {\n  margin-top: 5%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FtcGFpZ24vcHVzaG5vdGlmeS9GOlxcZ2l0IGh1YlxccmVzZWxsZXJcXEZyb250ZW5kL3NyY1xcYXBwXFxjYW1wYWlnblxccHVzaG5vdGlmeVxccHVzaG5vdGlmeS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY2FtcGFpZ24vcHVzaG5vdGlmeS9wdXNobm90aWZ5LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvY2FtcGFpZ24vcHVzaG5vdGlmeS9wdXNobm90aWZ5LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbC1tZC02IHtcclxuICBtYXJnaW4tdG9wOiA1JTtcclxufVxyXG4iLCIuY29sLW1kLTYge1xuICBtYXJnaW4tdG9wOiA1JTtcbn0iXX0= */"
+module.exports = ".col-md-6 {\n  margin-top: 5%;\n}\n\nh3 {\n  text-align: center;\n  background-color: darkblue;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FtcGFpZ24vcHVzaG5vdGlmeS9GOlxcZ2l0IGh1YlxccmVzZWxsZXJcXEZyb250ZW5kL3NyY1xcYXBwXFxjYW1wYWlnblxccHVzaG5vdGlmeVxccHVzaG5vdGlmeS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY2FtcGFpZ24vcHVzaG5vdGlmeS9wdXNobm90aWZ5LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtBQ0NGOztBRENBO0VBQ0Usa0JBQUE7RUFDQSwwQkFBQTtFQUNBLFlBQUE7QUNFRiIsImZpbGUiOiJzcmMvYXBwL2NhbXBhaWduL3B1c2hub3RpZnkvcHVzaG5vdGlmeS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb2wtbWQtNiB7XHJcbiAgbWFyZ2luLXRvcDogNSU7XHJcbn1cclxuaDMge1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBkYXJrYmx1ZTtcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuIiwiLmNvbC1tZC02IHtcbiAgbWFyZ2luLXRvcDogNSU7XG59XG5cbmgzIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBkYXJrYmx1ZTtcbiAgY29sb3I6IHdoaXRlO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -4252,13 +4484,55 @@ let PushnotifyComponent = class PushnotifyComponent {
         this.excelservice = excelservice;
     }
     ngOnInit() {
-        this.getAllPackages();
+        this.getrateCards();
+        this.getPremiumRatecards();
+        this.getMyContacts();
     }
-    getAllPackages() {
-        this.apiCall.getAllPackages().subscribe((res) => {
+    getrateCards() {
+        this.apiCall.getrateCards().subscribe((res) => {
             console.log(res);
-            this.personList = res.data;
+            this.smspackratecards = res.result;
         });
+    }
+    getpacksbyratecard(data) {
+        const userData = { ratecard_id: data };
+        this.apiCall.getpacksbyratecard(userData).subscribe((res) => {
+            console.log(res);
+            this.personList = res.result;
+            this.smspackage_ratecard = res.result[0].ratecard_id;
+            console.log(this.smspackage_ratecard);
+            this.premiumpacks = '';
+            if (res.status == 'false') {
+                alert(res.message);
+            }
+        });
+    }
+    getPremiumRatecards() {
+        this.apiCall.getPremiumRatecards().subscribe((res) => {
+            console.log(res);
+            this.premiumpackratecards = res.result;
+        });
+    }
+    getPremiumpacksByRateCard(data) {
+        const userData = { ratecard_id: data };
+        this.apiCall.getPremiumpacksByRateCard(userData).subscribe((res) => {
+            this.premiumpacks = res.result;
+            console.log(res);
+            this.premiumplan_ratecard = res.result[0].ratecard_id;
+            console.log(this.premiumplan_ratecard);
+            this.personList = '';
+        });
+    }
+    getMyContacts() {
+        this.apiCall.client_idArray.subscribe((res = []) => {
+            this.clientsData = res;
+        });
+    }
+    confirmpackages(data) {
+        data.userData = { clientdata: this.clientsData, premiumplan_ratecard: this.premiumplan_ratecard, smspackage_ratecard: this.smspackage_ratecard };
+        console.log(data);
+        this.apiCall.confirmpackage(data);
+        this.router.navigate(['/sendnotify']);
     }
 };
 PushnotifyComponent.ctorParameters = () => [
@@ -4301,13 +4575,65 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendnotificationComponent", function() { return SendnotificationComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
 
 
 let SendnotificationComponent = class SendnotificationComponent {
-    constructor() { }
+    constructor(apiCall, router) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.boolean = false;
+    }
     ngOnInit() {
+        this.getMyContacts();
+    }
+    getMyContacts() {
+        this.apiCall.packArray.subscribe((res = []) => {
+            this.client_ids = res.userData.clientdata.map(el => el.client_id);
+            this.mobilenumbers = res.userData.clientdata.map(el => Number(el.user_mobile_number));
+            this.smspackage_ratecard = res.userData.smspackage_ratecard;
+            this.premiumplan_ratecard = res.userData.premiumplan_ratecard;
+            console.log(this.premiumplan_ratecard, this.smspackage_ratecard);
+        });
+    }
+    pushnotify(data) {
+        data.client_ids = this.client_ids;
+        data.mobilenumbers = this.mobilenumbers;
+        data.smspackage_ratecard = this.smspackage_ratecard;
+        data.premiumplan_ratecard = this.premiumplan_ratecard;
+        console.log(data);
+        if (this.boolean) {
+            this.apiCall.sendpushnotification(data).subscribe((res) => {
+                console.log(res);
+                if (res.status == 'success') {
+                    alert(res.message);
+                    this.router.navigate(['/campaignManage']);
+                }
+                else {
+                    alert(res.message);
+                }
+            });
+        }
+        this.apiCall.sendPushnotifySMS(data).subscribe((res) => {
+            console.log(res);
+            if (res.type == 'success') {
+                alert('sms sent successfully');
+                this.router.navigate(['/home']);
+            }
+        });
+    }
+    checkbox(event) {
+        console.log(event);
+        this.boolean = event;
     }
 };
+SendnotificationComponent.ctorParameters = () => [
+    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
 SendnotificationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-sendnotification',
@@ -5048,6 +5374,146 @@ EditClientsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/clientsManage/sendbulksms/sendbulksms.component.scss":
+/*!**********************************************************************!*\
+  !*** ./src/app/clientsManage/sendbulksms/sendbulksms.component.scss ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "form {\n  margin-left: 25%;\n  width: 50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2xpZW50c01hbmFnZS9zZW5kYnVsa3Ntcy9GOlxcZ2l0IGh1YlxccmVzZWxsZXJcXEZyb250ZW5kL3NyY1xcYXBwXFxjbGllbnRzTWFuYWdlXFxzZW5kYnVsa3Ntc1xcc2VuZGJ1bGtzbXMuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NsaWVudHNNYW5hZ2Uvc2VuZGJ1bGtzbXMvc2VuZGJ1bGtzbXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQkFBQTtFQUNBLFVBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NsaWVudHNNYW5hZ2Uvc2VuZGJ1bGtzbXMvc2VuZGJ1bGtzbXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJmb3JtIHtcclxuICBtYXJnaW4tbGVmdDogMjUlO1xyXG4gIHdpZHRoOiA1MCU7XHJcbn1cclxuIiwiZm9ybSB7XG4gIG1hcmdpbi1sZWZ0OiAyNSU7XG4gIHdpZHRoOiA1MCU7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/clientsManage/sendbulksms/sendbulksms.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/clientsManage/sendbulksms/sendbulksms.component.ts ***!
+  \********************************************************************/
+/*! exports provided: SendbulksmsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendbulksmsComponent", function() { return SendbulksmsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
+
+
+let SendbulksmsComponent = class SendbulksmsComponent {
+    constructor(apiCall, router, route) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.route = route;
+        this.boolean = false;
+    }
+    ngOnInit() {
+        this.getMyContacts();
+    }
+    sendsms(data) {
+        data.mobilenumbers = this.mobilenumbers;
+        this.apiCall.sendPushnotifySMS(data).subscribe((res) => {
+            console.log(res);
+            if (res.type == 'success') {
+                alert('sms sent successfully');
+                this.router.navigate(['/home']);
+            }
+        });
+    }
+    getMyContacts() {
+        this.apiCall.client_idArray.subscribe((res = []) => {
+            this.mobilenumbers = res.map(el => Number(el.user_mobile_number));
+            console.log(this.mobilenumbers);
+        });
+    }
+};
+SendbulksmsComponent.ctorParameters = () => [
+    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+];
+SendbulksmsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-sendbulksms',
+        template: __webpack_require__(/*! raw-loader!./sendbulksms.component.html */ "./node_modules/raw-loader/index.js!./src/app/clientsManage/sendbulksms/sendbulksms.component.html"),
+        styles: [__webpack_require__(/*! ./sendbulksms.component.scss */ "./src/app/clientsManage/sendbulksms/sendbulksms.component.scss")]
+    })
+], SendbulksmsComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.scss":
+/*!********************************************************************************!*\
+  !*** ./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "form {\n  margin-left: 25%;\n  width: 50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2xpZW50c01hbmFnZS9zZW5kc21zdG9jbGllbnRzL0Y6XFxnaXQgaHViXFxyZXNlbGxlclxcRnJvbnRlbmQvc3JjXFxhcHBcXGNsaWVudHNNYW5hZ2VcXHNlbmRzbXN0b2NsaWVudHNcXHNlbmRzbXN0b2NsaWVudHMuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NsaWVudHNNYW5hZ2Uvc2VuZHNtc3RvY2xpZW50cy9zZW5kc21zdG9jbGllbnRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQUE7RUFDQSxVQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jbGllbnRzTWFuYWdlL3NlbmRzbXN0b2NsaWVudHMvc2VuZHNtc3RvY2xpZW50cy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImZvcm0ge1xyXG4gIG1hcmdpbi1sZWZ0OiAyNSU7XHJcbiAgd2lkdGg6IDUwJTtcclxufVxyXG4iLCJmb3JtIHtcbiAgbWFyZ2luLWxlZnQ6IDI1JTtcbiAgd2lkdGg6IDUwJTtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: SendsmstoclientsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendsmstoclientsComponent", function() { return SendsmstoclientsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+
+
+
+
+let SendsmstoclientsComponent = class SendsmstoclientsComponent {
+    constructor(apiCall, router, route) {
+        this.apiCall = apiCall;
+        this.router = router;
+        this.route = route;
+        this.boolean = false;
+    }
+    ngOnInit() {
+        this.mobilenumbers = this.route.snapshot.paramMap.get('mobilenumber');
+    }
+    sendsms(data) {
+        data.mobilenumbers = this.mobilenumbers;
+        this.apiCall.sendSingleSMS(data).subscribe((res) => {
+            console.log(res);
+            if (res.type == 'success') {
+                alert('sms sent successfully');
+                this.router.navigate(['/home']);
+            }
+        });
+    }
+};
+SendsmstoclientsComponent.ctorParameters = () => [
+    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+];
+SendsmstoclientsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-sendsmstoclients',
+        template: __webpack_require__(/*! raw-loader!./sendsmstoclients.component.html */ "./node_modules/raw-loader/index.js!./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.html"),
+        styles: [__webpack_require__(/*! ./sendsmstoclients.component.scss */ "./src/app/clientsManage/sendsmstoclients/sendsmstoclients.component.scss")]
+    })
+], SendsmstoclientsComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/clientsManage/view-detail/view-detail.component.scss":
 /*!**********************************************************************!*\
   !*** ./src/app/clientsManage/view-detail/view-detail.component.scss ***!
@@ -5183,17 +5649,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewclientsComponent", function() { return ViewclientsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
-/* harmony import */ var _apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../apiCalls/excel.service */ "./src/app/apiCalls/excel.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/apiCalls/api-call.service */ "./src/app/apiCalls/api-call.service.ts");
+/* harmony import */ var _apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../apiCalls/excel.service */ "./src/app/apiCalls/excel.service.ts");
+
 
 
 
 
 let ViewclientsComponent = class ViewclientsComponent {
-    constructor(apiCall, excelservice) {
+    constructor(apiCall, excelservice, router) {
         this.apiCall = apiCall;
         this.excelservice = excelservice;
+        this.router = router;
         this.awaitingPersonList = [];
+        this.selectedToppings = [];
+        this.allToppings = false;
+        this.curDate = new Date();
     }
     ngOnInit() {
         this.role = this.apiCall.getRole();
@@ -5268,10 +5740,38 @@ let ViewclientsComponent = class ViewclientsComponent {
             }
         });
     }
+    selectAllToppings(checked, toppings) {
+        this.selectedToppings = toppings;
+        if (checked) {
+            this.allToppings = true;
+            this.selectedclients = this.selectedToppings;
+        }
+        else {
+            console.log(this.selectedToppings);
+            this.allToppings = false;
+        }
+    }
+    selectNewTopping(checked, topping) {
+        if (checked) {
+            this.selectedToppings.push(topping);
+            this.selectedclients = this.selectedToppings;
+        }
+        else {
+            this.selectedToppings = this.selectedToppings.filter(top => top.client_id !== topping.client_id);
+        }
+    }
+    selectclients() {
+        const notify = confirm("Are you sure you want to send Bulksms");
+        if (notify) {
+            this.apiCall.getclientids(this.selectedclients);
+            this.router.navigate(['/client/sendbulksms']);
+        }
+    }
 };
 ViewclientsComponent.ctorParameters = () => [
-    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_2__["ApiCallService"] },
-    { type: _apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_3__["ExcelService"] }
+    { type: src_app_apiCalls_api_call_service__WEBPACK_IMPORTED_MODULE_3__["ApiCallService"] },
+    { type: _apiCalls_excel_service__WEBPACK_IMPORTED_MODULE_4__["ExcelService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
 ];
 ViewclientsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

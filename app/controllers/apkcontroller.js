@@ -37,7 +37,6 @@ module.exports.deleteapk = (req, res) => {
     });
 };
 
-
 module.exports.getallapkDownloadlist = async function (req, res) {
     const partner_id=req.params.partner_id;
     console.log(partner_id)
@@ -52,4 +51,3 @@ module.exports.getallapkDownloadlist = async function (req, res) {
           }
     });
 }
-

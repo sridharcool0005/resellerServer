@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-
+const crypto = require("crypto");
 var db = mysql.createConnection({
     host: 'localhost',
     user: 'smsdba_smsdba2',
@@ -83,11 +83,9 @@ module.exports.updatePaymentStatus = async function (req, res) {
 
 module.exports.getplanexpirycontacts = async function (req, res) {
     const { fromDate, toDate } = req.body;
-    const partner_id=req.params.partner_id;
 
-
-    query = "SELECT a.client_id, b.client_firstname, b.client_lastname, b.client_district,a.user_mobile_number, a.account_type, a.account_plan_id, a.plan_activation_date, a.plan_expiry_date FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and a.partner_id =? and(plan_expiry_date BETWEEN ? AND ? )"
-    await db.query(query, [partner_id,fromDate, toDate], function (err, result, fields) {
+    query = "SELECT a.client_id, b.client_firstname, b.client_lastname, b.client_district,a.user_mobile_number, a.account_type, a.account_plan_id, a.plan_activation_date, a.plan_expiry_date FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and (plan_expiry_date BETWEEN ? AND ? )"
+    await db.query(query, [fromDate, toDate], function (err, result, fields) {
         if (err) throw err;
         res.send({
             "code": 200,
@@ -98,10 +96,8 @@ module.exports.getplanexpirycontacts = async function (req, res) {
 }
 
 module.exports.getplanexpirycontactsAll = async function (req, res) {
-    const partner_id=req.params.partner_id;
-
-    query = "SELECT a.client_id, b.client_firstname, b.client_lastname, b.client_district,a.user_mobile_number, a.account_type, a.account_plan_id, a.plan_activation_date, a.plan_expiry_date FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and a.partner_id =?"
-    await db.query(query,[partner_id] ,function (err, result, fields) {
+    query = "SELECT a.client_id, b.client_firstname, b.client_lastname, b.client_district,a.user_mobile_number, a.account_type, a.account_plan_id, a.plan_activation_date, a.plan_expiry_date FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id order by a.plan_expiry_date desc"
+    await db.query(query, function (err, result, fields) {
         if (err) throw err;
         res.send({
             "code": 200,
@@ -111,11 +107,9 @@ module.exports.getplanexpirycontactsAll = async function (req, res) {
     });
 }
 
-
 module.exports.insertnotifications = (req, res) => {
-   
-    const curDate = new Date();
-    const {client_ids}= req.body;
+    const partner_id=req.params.partner_id;
+    const {client_ids,message}= req.body;
 
     if(!client_ids){
         res.status(200).send({status:false, message:'error in adding push notifications'})
@@ -127,9 +121,10 @@ else{
         
         var values = {
             nid: nid,
+            partner_id: partner_id,
             client_id: item,
             title: 'Upgrade Premium',
-            message: 'Your Free Demo Plan is about to expire on'+' '+curDate+ 'Please upgrade to Premium to continue service without any interruption.',
+            message: message,
             action: '11',
             url: 'nil',
             status: 'new'
@@ -153,13 +148,13 @@ else{
 
 
 
+
 module.exports.registeredcontactstracking= async function (req, res) {
     const { fromDate, toDate } = req.body;
-    const partner_id=req.params.partner_id;
 
     console.log(fromDate,toDate)
-    query = "SELECT a.CLIENT_id as 'ClientID', CONCAT(b.client_firstname, ' ', b.client_lastname) as 'ClientName', a.user_mobile_number as 'MobileNumber', b.client_district as 'District', a.account_plan_id as 'PlanID', a.account_type as 'AccountType', a.created_on as 'DateofRegn', a.plan_activation_date as 'DateofActivation', a.plan_expiry_date as 'DateofExpiry' FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and a.partner_id =? and (a.created_on between ? and ? + interval 1 day) order by a.created_on asc, a.account_plan_id asc"
-    await db.query(query, [partner_id,fromDate, toDate], function (err, result, fields) {
+    query = "SELECT a.CLIENT_id as 'ClientID', CONCAT(b.client_firstname, ' ', b.client_lastname) as 'ClientName', a.user_mobile_number as 'MobileNumber', b.client_district as 'District', a.account_plan_id as 'PlanID', a.account_type as 'AccountType', a.created_on as 'DateofRegn', a.plan_activation_date as 'DateofActivation', a.plan_expiry_date as 'DateofExpiry' FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and (a.created_on between ? and ? + interval 1 day) order by a.created_on asc, a.account_plan_id asc"
+    await db.query(query, [fromDate, toDate], function (err, result, fields) {
         if (err) throw err;
         res.send({
             "code": 200,
@@ -170,9 +165,8 @@ module.exports.registeredcontactstracking= async function (req, res) {
 }
 
 module.exports.getTodayregisterdData= async function (req, res) {
-    const partner_id=req.params.partner_id;
-    query = "SELECT a.CLIENT_id as 'ClientID', CONCAT(b.client_firstname, ' ', b.client_lastname) as 'ClientName', a.user_mobile_number as 'MobileNumber', b.client_district as 'District', a.account_plan_id as 'PlanID', a.account_type as 'AccountType', a.created_on as 'DateofRegn', a.plan_activation_date as 'DateofActivation', a.plan_expiry_date as 'DateofExpiry' FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and a.partner_id =? and (a.created_on between CURRENT_date and CURRENT_DATE  + interval 1 day) order by a.created_on asc, a.account_plan_id asc"
-    await db.query(query,[partner_id], function (err, result, fields) {
+    query = "SELECT a.CLIENT_id as 'ClientID', CONCAT(b.client_firstname, ' ', b.client_lastname) as 'ClientName', a.user_mobile_number as 'MobileNumber', b.client_district as 'District', a.account_plan_id as 'PlanID', a.account_type as 'AccountType', a.created_on as 'DateofRegn', a.plan_activation_date as 'DateofActivation', a.plan_expiry_date as 'DateofExpiry' FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and (a.created_on between CURRENT_date and CURRENT_DATE  + interval 1 day) order by a.created_on asc, a.account_plan_id asc"
+    await db.query(query, function (err, result, fields) {
         if (err) throw err;
         if(!result.length){
             res.status(200).send({ status: 'false', message: 'No Client Registered Today' })
