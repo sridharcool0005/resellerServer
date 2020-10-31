@@ -73,6 +73,8 @@ const APIRoutes = function (passport) {
   router.post('/partner/:partner_id/sendSingleSMS', bulksmsController.sendSMS);
   router.post('/partner/:partner_id/sendpushnotification', bulksmsController.insertnotifications);
   router.get('/partner/:partner_id/getusersfeedbackqueries',clientController.getusersfeedbackqueries);
+  router.post('/submitcustomerdetails', clientController.submitcustomerdetails);
+  router.post('/partner/:partner_id/verifyOTP', clientController.verifyAndSaveDetails);
   // GET Routes.
   router.get('/profile', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, UserController.index));
   router.get('/admin', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, AdminController.index));
