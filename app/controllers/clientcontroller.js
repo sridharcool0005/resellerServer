@@ -478,7 +478,7 @@ module.exports.getuserdataCount = async function (req, res) {
 module.exports.getuserdataCountweekly = async function (req, res) {
   const partner_id=req.params.partner_id;
  
-  countQuery = "SELECT COUNT(client_id) AS NumberOfclients FROM portal_users WHERE partner_id =? and  (created_on between CURRENT_date and CURRENT_DATE - interval 7 day) order by created_on asc"
+  countQuery = "SELECT COUNT(client_id) AS NumberOfclients FROM portal_users WHERE partner_id =? and  (created_on between  CURRENT_DATE + interval 7 day and CURRENT_date) order by created_on asc"
   await db.query(countQuery,[partner_id], function (err, result, fields) {
     if (err) throw err;
     res.send({
@@ -552,7 +552,7 @@ console.log(hash)
 module.exports.getusersfeedbackqueries= async function (req, res) {
   const partner_id=req.params.partner_id;
   
-  Query = "SELECT  * FROM portal_users_query_feedback  where partner_id =? and subject <> 'APK Download'"
+  Query = "SELECT  * FROM portal_users_query_feedback  where partner_id =? and subject NOT like '%APK Download%' "
   await db.query(Query,[partner_id], function (err, result, fields) {
     if (err) throw err;
     res.send({

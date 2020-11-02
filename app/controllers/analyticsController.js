@@ -84,7 +84,7 @@ module.exports.updatePaymentStatus = async function (req, res) {
 module.exports.getplanexpirycontacts = async function (req, res) {
     const { fromDate, toDate } = req.body;
 
-    query = "SELECT a.client_id, b.client_firstname, b.client_lastname, b.client_district,a.user_mobile_number, a.account_type, a.account_plan_id, a.plan_activation_date, a.plan_expiry_date FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and (plan_expiry_date BETWEEN ? AND ? )"
+    query = "SELECT a.client_id, b.client_firstname, b.client_lastname, b.client_district,a.user_mobile_number, a.account_type, a.account_plan_id, a.plan_activation_date, a.plan_expiry_date FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and (plan_expiry_date BETWEEN ? AND ? ) order by a.plan_expiry_date asc"
     await db.query(query, [fromDate, toDate], function (err, result, fields) {
         if (err) throw err;
         res.send({
@@ -96,7 +96,7 @@ module.exports.getplanexpirycontacts = async function (req, res) {
 }
 
 module.exports.getplanexpirycontactsAll = async function (req, res) {
-    query = "SELECT a.client_id, b.client_firstname, b.client_lastname, b.client_district,a.user_mobile_number, a.account_type, a.account_plan_id, a.plan_activation_date, a.plan_expiry_date FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id order by a.plan_expiry_date desc"
+    query = "SELECT a.client_id, b.client_firstname, b.client_lastname, b.client_district,a.user_mobile_number, a.account_type, a.account_plan_id, a.plan_activation_date, a.plan_expiry_date FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id order by a.plan_expiry_date asc"
     await db.query(query, function (err, result, fields) {
         if (err) throw err;
         res.send({
