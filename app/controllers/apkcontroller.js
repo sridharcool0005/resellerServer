@@ -39,9 +39,10 @@ module.exports.deleteapk = (req, res) => {
 
 module.exports.getallapkDownloadlist = async function (req, res) {
     const partner_id=req.params.partner_id;
+    console.log(partner_id)
 
-    query = "SELECT * FROM  portal_users_query_feedback WHERE  partner_id =? and subject like '%APK Download%'"
-    await db.query(query,[partner_id], function (err, result, fields) {
+    query = "SELECT * FROM `portal_users_query_feedback` WHERE partner_id =? and subject like '%APK Download%'"
+    await db.query(query,[partner_id,], function (err, result, fields) {
         if (err) throw err;
         if (!result.length)  {
             res.status(200).send({status:'false' ,message: 'Your Data is Empty' });
