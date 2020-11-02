@@ -154,7 +154,7 @@ module.exports.registeredcontactstracking= async function (req, res) {
     const { fromDate, toDate } = req.body;
 
     console.log(fromDate,toDate)
-    query = "SELECT a.CLIENT_id as 'ClientID', CONCAT(b.client_firstname, ' ', b.client_lastname) as 'ClientName', a.user_mobile_number as 'MobileNumber', b.client_district as 'District', a.account_plan_id as 'PlanID', a.account_type as 'AccountType', a.created_on as 'DateofRegn', a.plan_activation_date as 'DateofActivation', a.plan_expiry_date as 'DateofExpiry' FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and (a.created_on between ? and ? + interval 1 day) and partner_id =? order by a.created_on asc, a.account_plan_id asc"
+    query = "SELECT a.CLIENT_id as 'ClientID', CONCAT(b.client_firstname, ' ', b.client_lastname) as 'ClientName', a.user_mobile_number as 'MobileNumber', b.client_district as 'District', a.account_plan_id as 'PlanID', a.account_type as 'AccountType', a.created_on as 'DateofRegn', a.plan_activation_date as 'DateofActivation', a.plan_expiry_date as 'DateofExpiry' FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and (a.created_on between ? and ? + interval 1 day) and a.partner_id =? order by a.created_on asc, a.account_plan_id asc"
     await db.query(query, [fromDate, toDate,partner_id], function (err, result, fields) {
         if (err) throw err;
         res.send({
@@ -167,7 +167,7 @@ module.exports.registeredcontactstracking= async function (req, res) {
 
 module.exports.getTodayregisterdData= async function (req, res) {
     const partner_id=req.params.partner_id;
-    query = "SELECT a.CLIENT_id as 'ClientID', CONCAT(b.client_firstname, ' ', b.client_lastname) as 'ClientName', a.user_mobile_number as 'MobileNumber', b.client_district as 'District', a.account_plan_id as 'PlanID', a.account_type as 'AccountType', a.created_on as 'DateofRegn', a.plan_activation_date as 'DateofActivation', a.plan_expiry_date as 'DateofExpiry' FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and partner_id =? and (a.created_on between CURRENT_date and CURRENT_DATE  + interval 1 day) order by a.created_on asc, a.account_plan_id asc"
+    query = "SELECT a.CLIENT_id as 'ClientID', CONCAT(b.client_firstname, ' ', b.client_lastname) as 'ClientName', a.user_mobile_number as 'MobileNumber', b.client_district as 'District', a.account_plan_id as 'PlanID', a.account_type as 'AccountType', a.created_on as 'DateofRegn', a.plan_activation_date as 'DateofActivation', a.plan_expiry_date as 'DateofExpiry' FROM `portal_users` a, portal_clients_master b where a.client_id=b.client_id and a.partner_id =? and (a.created_on between CURRENT_date and CURRENT_DATE  + interval 1 day) order by a.created_on asc, a.account_plan_id asc"
     await db.query(query,[partner_id], function (err, result, fields) {
         if (err) throw err;
         if(!result.length){
