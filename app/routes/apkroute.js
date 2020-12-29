@@ -50,7 +50,7 @@ var upload = multer({
 
 
 router.post('/uploadapk', upload.single('avatar'), (req, res, next) => {
-    const { title } = req.body;
+    const { title,partner_id } = req.body;
     const apk_id = crypto.randomBytes(3).toString("hex");
     const url = req.protocol + '://' + req.get('host');
     const image_filename = url + '/' + req.file.filename
@@ -58,6 +58,7 @@ router.post('/uploadapk', upload.single('avatar'), (req, res, next) => {
     const query = "INSERT INTO  app_nutan_apks SET ?"
 
     var newTemplate = {
+        partner_id:partner_id,
         apk_id: apk_id,
         title: title,
         apk_filename: image_filename,
@@ -76,7 +77,7 @@ router.post('/uploadapk', upload.single('avatar'), (req, res, next) => {
 
 const apkcontroller = require('../controllers/apkcontroller');
 
-router.get('/getallapkslist', apkcontroller.getallapkslist);
+router.get('/getallapkslist/:partner_id', apkcontroller.getallapkslist);
 
 router.post('/deleteapk', apkcontroller.deleteapk);
 router.get('/partner/:partner_id/getallapkDownloadlist', apkcontroller.getallapkDownloadlist)
